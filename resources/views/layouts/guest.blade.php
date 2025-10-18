@@ -3,15 +3,15 @@
 
 <head>
     <meta charset="utf-8">
-  
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+   <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ config('app.name', 'Gestion Chaptel') }}</title>
+   
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.0/material.blue-light_blue.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<title>Login</title>
 	
-   
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @yield('css')
@@ -35,6 +35,6 @@
     <!-- Bootstrap Core Js -->
     <script src="{{ asset('theme/plugins/bootstrap/js/bootstrap.js') }}"></script>
     <script src="https://storage.googleapis.com/code.getmdl.io/1.1.0/material.min.js"></script>
+    @yield('script')
 </body>
-
 </html>
