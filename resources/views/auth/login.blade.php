@@ -42,9 +42,9 @@
                         <div class="form-line">
                             <x-input-label for="email" :value="__('Email')" /><br>
                             <!-- <input type="text" class="form-control" id="login" name="login" value="{{ old('login') }}" placeholder="Username" autocomplete="username" required autofocus> -->
-                            <input class="mdl-textfield__input @error('email') is-invalid @enderror" type="text" id="email" name="email" value="{{ old('email') }}" required autocomplete="off" autofocus/>
-                            <x-input-error :message="$errors->get('email') class="mt-2" />
-                            <x-input-error :message="$errors->get('username') class="mt-2" />    
+                            <input class="mdl-textfield__input @error('email') is-invalid @enderror" type="text" id="email" name="email" value="{{ old('email') }}" required autocomplete="off" autofocus />
+                            <x-input-error :message="$errors->get('email') class=" mt-2" />
+                            <x-input-error :message="$errors->get('username') class=" mt-2" />
                         </div>
                     </div>
                     <div class="input-group">
@@ -54,7 +54,7 @@
                         <div class="form-line">
                             <x-input-label for="password" :value="__('Mot de Passe')" />
                             <input type="password" class="form-control" name="password" placeholder="Password" required>
-                             <x-input-error :message="$errors->get('password') class="mt-2" />
+                            <x-input-error :message="$errors->get('password') class=" mt-2" />
                         </div>
                     </div>
                     <div class="row">
@@ -80,20 +80,20 @@
     </div>
 
     <!-- Jquery Core Js -->
-       <script src="{{ asset('theme/plugins/jquery/jquery.min.js')}}"></script>
+    <script src="{{ asset('theme/plugins/jquery/jquery.min.js')}}"></script>
 
     <!-- Bootstrap Core Js -->
-     <script src="{{ asset('theme/plugins/bootstrap/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('theme/plugins/bootstrap/js/bootstrap.js') }}"></script>
 
     <!-- Waves Effect Plugin Js -->
     <script src="{{ asset('theme/plugins/node-waves/waves.js') }}"></script>
 
     <!-- Validation Plugin Js -->
-     <script src="{{ asset('theme/plugins/jquery-validation/jquery.validate.js') }}"></script>
+    <script src="{{ asset('theme/plugins/jquery-validation/jquery.validate.js') }}"></script>
 
     <!-- Custom Js -->
-      <script src="{{ asset('theme/js/admin.js') }}"></script>
-     <script src="{{ asset('theme/js/pages/examples/sign-in.js') }}"></script>
+    <script src="{{ asset('theme/js/admin.js') }}"></script>
+    <script src="{{ asset('theme/js/pages/examples/sign-in.js') }}"></script>
 </body>
 
 </html>

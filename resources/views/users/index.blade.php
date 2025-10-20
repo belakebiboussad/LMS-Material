@@ -46,27 +46,27 @@
                                     @foreach($users as $user)
                                     <tr>
                                         <td>
-                                            <div class="d-flex px-2 py-1">
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <p class="mb-0 text-sm">{{ $user->name }}</p>
-                                                </div>
+
+                                            <div class="align-middle text-center">
+
+                                                <span class="text-secondary">{{ $user->name }}</span>
                                             </div>
+
                                         </td>
                                         <td>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="mb-0 text-sm">{{ $user->username }}</h6>
-
+                                            <div class="align-middle text-center">
+                                                <span class="text-secondary">{{ $user->username }}</span>
                                             </div>
                                         </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <p class="text-xs text-secondary mb-0">{{ $user->email }}
+                                        <td class="align-middle text-center">
+                                            <p class="text-secondary">{{ $user->email }}
                                             </p>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">{{ $user->first()->name }}</span>
+                                            <span class="text-secondary">{{ $user->first()->name }}</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">{{ $user->created_at }}</span>
+                                            <span class="text-secondary text-xs">{{ $user->created_at }}</span>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             @if($user->status == 1)
@@ -82,7 +82,7 @@
                                                 <i class="material-icons">edit</i>
                                                 <div class="ripple-container"></div>
                                             </a>
-                                            <a class="btn btn-danger btn-link" href ="{{ route('users.destroy',$user)}}"
+                                            <a class="btn btn-danger btn-link" href="{{ route('users.destroy',$user)}}"
                                                 data-original-title="" title="">
                                                 <i class="material-icons">close</i>
                                             </a>
