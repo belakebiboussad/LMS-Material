@@ -84,12 +84,13 @@
                                                 <i class="material-icons">edit</i>
                                                 <div class="ripple-container"></div>
                                             </a>
-                                            <a class="btn btn-danger btn-link" href="{{ route('users.destroy',$user)}}"
-                                                data-original-title="" title="">
-                                                <i class="material-icons"><span class="material-icons-round">
-                                                        delete
-                                                    </span></i>
-                                            </a>
+                                            <form action="{{ route('users.destroy',$user) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-link" {{ Auth::id() === $user->id ? 'disabled' :''}}>
+                                                     <i class="material-icons" style="font-size: 18px;">close</i>
+                                                </button>
+                                            </form>
                                             <div class="ripple-container"></div>
                                         </td>
                                     </tr>

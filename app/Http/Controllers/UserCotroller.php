@@ -39,7 +39,7 @@ class UserCotroller extends Controller
             'role' => 'required|string|max:255',
             'password' => 'required|string|min:8',
         ]);
-        if ($request->input('role') === 'admin') {
+        if ($request->input('role') === 'Admin') {
 
             $adminUsers = User::whereHas('roles', function ($query) {
                 $query->where('name', 'admin');
@@ -48,7 +48,7 @@ class UserCotroller extends Controller
                 return back()->withInput()->withErrors(['errors' => 'Only one admin user is allowed.']);
             }
         }
-        $user = User::create($validatedData);
+        $user = User::create($request->all());
         $role = $request->input('role');
         $user->assignRole($role);
         return redirect()->route('users.index')->with('success', 'utilisateur créé avec succès');
@@ -63,7 +63,7 @@ class UserCotroller extends Controller
                 return back()->withErrors(['status' => 'Only one admin user is allowed.']);
             }
         }
-        $user->update($request->validated());
+        $user->update($request->all());
         return redirect()->route('users.index')->with('success', 'utilisateur mis à jour avec succès');
     }
     public function destroy(User $user)

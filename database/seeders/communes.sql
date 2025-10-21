@@ -1,5 +1,5 @@
 
-INSERT INTO `livestockdb`.`cities` (`id`, `name`, `daira_id`) VALUES 
+INSERT INTO `laravmaterial`.`cities` (`id`, `name`, `daira_id`) VALUES 
 (1, 'Adrar', 1),
 (2, 'Bouda', 1),
 (3, 'Ouled Ahmed Tammi', 1),
@@ -501,7 +501,7 @@ INSERT INTO `livestockdb`.`cities` (`id`, `name`, `daira_id`) VALUES
 (505, 'Akerrou', 189),
 (506, 'Azeffoun', 189);
 
-INSERT INTO `livestockdb`.`cities` (`id`, `name`, `daira_id`) VALUES 
+INSERT INTO `laravmaterial`.`cities` (`id`, `name`, `daira_id`) VALUES 
 (507, 'Ait Mahmoud', 190),
 (508, 'Ait Aissi', 190),
 (509, 'Ait Douala', 190),
@@ -1003,7 +1003,7 @@ INSERT INTO `livestockdb`.`cities` (`id`, `name`, `daira_id`) VALUES
 (1009, 'M''Sila', 350),
 (1010, 'Hammam Dalaa', 351);
 
-INSERT INTO `livestockdb`.`cities` (`id`, `name`, `daira_id`) VALUES 
+INSERT INTO `laravmaterial`.`cities` (`id`, `name`, `daira_id`) VALUES 
 (1011, 'Tarmount', 351),
 (1012, 'Ouled Mansour', 351),
 (1013, 'Ouanougha', 351),
@@ -1505,7 +1505,7 @@ INSERT INTO `livestockdb`.`cities` (`id`, `name`, `daira_id`) VALUES
 (1509, 'Sebseb', 531),
 (1510, 'Berriane', 532);
 
-INSERT INTO `livestockdb`.`cities` (`id`, `name`, `daira_id`) VALUES 
+INSERT INTO `laravmaterial`.`cities` (`id`, `name`, `daira_id`) VALUES 
 (1511, 'Dhayet Bendhahoua', 533),
 (1512, 'Mansoura', 534),
 (1513, 'Hassi Fehal', 534),
