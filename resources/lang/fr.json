@@ -1,6 +1,7 @@
-<?php
-  
-  return [
-   "Login": "Welcome to Login Page!",
-   "Logout": "You are logged out!",
-  ]
+{
+    "Login": "Connexion",
+    "Logout": "Se déconnecter",
+    "Farmers": "Eleveurs",
+    "Farmer": "eleveur",
+    "User add": "Ajouter un Eleveur"
+}

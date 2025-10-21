@@ -42,7 +42,7 @@
                         <div class="form-line">
                             <x-input-label for="email" :value="__('Email')" /><br>
                             <!-- <input type="text" class="form-control" id="login" name="login" value="{{ old('login') }}" placeholder="Username" autocomplete="username" required autofocus> -->
-                            <input class="mdl-textfield__input @error('email') is-invalid @enderror" type="text" id="email" name="email" value="{{ old('email') }}" required autocomplete="off" autofocus />
+                            <input class="mdl-textfield__input @error('email') is-invalid @enderror" type="text" id="email" name="email" value="admin@example.com" required autocomplete="off" autofocus />
                             <x-input-error :message="$errors->get('email') class=" mt-2" />
                             <x-input-error :message="$errors->get('username') class=" mt-2" />
                         </div>
@@ -53,7 +53,7 @@
                         </span>
                         <div class="form-line">
                             <x-input-label for="password" :value="__('Mot de Passe')" />
-                            <input type="password" class="form-control" name="password" placeholder="Password" required>
+                            <input type="password" class="form-control" name="password" placeholder="Password" value="password" required>
                             <x-input-error :message="$errors->get('password') class=" mt-2" />
                         </div>
                     </div>

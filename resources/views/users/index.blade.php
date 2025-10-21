@@ -12,7 +12,9 @@
                     </div>
                     <div class="me-3 my-3 text-end">
                         <a class="btn mb-0" href="{{ route('users.create') }}"><i
-                                class="material-icons text-sm">add</i>&nbsp;&nbsp;Nouveau utilisateur</a>
+                                class="material-icons text-sm">add</i>&nbsp;&nbsp;
+                            {{ __('User add') }}
+                        </a>
                     </div>
                     <div class="card-body px-0 pb-2">
                         <div class="table-responsive p-0">
@@ -63,7 +65,7 @@
                                             </p>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-secondary">{{ $user->first()->name }}</span>
+                                            <span class="text-secondary">{{ $user->roles->first()->name }}</span>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span class="text-secondary text-xs">{{ $user->created_at }}</span>
@@ -84,7 +86,9 @@
                                             </a>
                                             <a class="btn btn-danger btn-link" href="{{ route('users.destroy',$user)}}"
                                                 data-original-title="" title="">
-                                                <i class="material-icons">close</i>
+                                                <i class="material-icons"><span class="material-icons-round">
+                                                        delete
+                                                    </span></i>
                                             </a>
                                             <div class="ripple-container"></div>
                                         </td>
