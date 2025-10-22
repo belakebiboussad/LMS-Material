@@ -21,7 +21,7 @@
     <!-- Animation Css -->
     <link href="{{ asset('theme/plugins/animate-css/animate.css') }}" rel="stylesheet" />
     <!-- Custom Css -->
-    <link href="{{ asset('theme/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('theme/css/style.css') }}" rel="stylesheet"> 
 </head>
 
 <body class="login-page">
@@ -92,8 +92,8 @@
     <script src="{{ asset('theme/plugins/jquery-validation/jquery.validate.js') }}"></script>
 
     <!-- Custom Js -->
-    <script src="{{ asset('theme/js/admin.js') }}"></script>
-    <script src="{{ asset('theme/js/pages/examples/sign-in.js') }}"></script>
+     <script src="{{-- asset('theme/js/admin.js') --}}"></script>
+     <script src="{{-- asset('theme/js/pages/examples/sign-in.js') --}}"></script> 
 </body>
 
 </html>

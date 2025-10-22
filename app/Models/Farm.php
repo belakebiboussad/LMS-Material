@@ -15,11 +15,16 @@ class Farm extends Model
      * @var list<string>
      */
     protected $fillable = [
+        'recordNbr',
         'name',
-        'position',
+        'creationDt',
+        'owner_id',
+        'area',
+        'address',
+        'wilaya_id',
+        //'position',
         'x_lon',
         'y_lat',
-        'wilaya_id',
-        'owner_id',
+        'phone'
     ];
 }

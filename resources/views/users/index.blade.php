@@ -88,7 +88,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-link" {{ Auth::id() === $user->id ? 'disabled' :''}}>
-                                                    <i class="material-icons" style="font-size: 18px;">close</i>
+                                                    <i class="material-icons">close</i>
                                                 </button>
                                             </form>
                                             <div class="ripple-container"></div>

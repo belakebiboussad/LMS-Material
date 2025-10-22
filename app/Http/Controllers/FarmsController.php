@@ -16,7 +16,9 @@ class FarmsController extends Controller
     }
     public function create()
     {
-        $owners = User::all()->pluck('name', 'id');
+        $owners = User::whereHas('roles', function ($query) {
+            $query->whereIn('name', ['Eleveur', 'Gardien']);
+        })->pluck('name','id');
         $wilayas = Wilaya::all()->pluck('name', 'id');
         $animalTypes = AnimalType::all()->pluck('name', 'id');
         return view('farms.create', compact('owners', 'wilayas', 'animalTypes'));
@@ -24,8 +26,8 @@ class FarmsController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'recordNbr' => 'required|string|max:10',
             'name' => 'required|string|max:255',
-            'position' => 'required|string|max:255',
             'x_lon' => 'required|numeric',
             'y_lat' => 'required|numeric',
             'wilaya_id' => 'required|exists:wilayas,id',
