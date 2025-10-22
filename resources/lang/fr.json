@@ -3,5 +3,9 @@
     "Logout": "Se déconnecter",
     "Farmers": "Eleveurs",
     "Farmer": "eleveur",
-    "User add": "Ajouter un Eleveur"
+    "Farmes": "Fermes",
+    "Farme": "Ferme",
+
+    "User add": "Ajouter un Eleveur",
+    "Farm add": "Ajouter une Ferme"
 }

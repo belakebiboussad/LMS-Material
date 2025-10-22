@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FarmsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserCotroller;
@@ -24,4 +25,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::middleware('auth')->group(function () {
     Route::resource('users', UserCotroller::class);
+});
+Route::middleware('auth')->group(function () {
+    Route::resource('farms', FarmsController::class);
 });

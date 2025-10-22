@@ -29,7 +29,7 @@ class UserCotroller extends Controller
     public function show(User $user) {}
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'name' => 'required|string|max:255',
 
             'lastName' => 'required|string|max:255',
@@ -64,6 +64,7 @@ class UserCotroller extends Controller
             }
         }
         $user->update($request->all());
+        $user->assignRole($request->input('role'));
         return redirect()->route('users.index')->with('success', 'utilisateur mis à jour avec succès');
     }
     public function destroy(User $user)

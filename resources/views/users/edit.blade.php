@@ -58,7 +58,7 @@
               <label class="form-label">Commune</label>
               <select type="text" name="commune_id" class="form-control border border-2 p-2">
                 @foreach($cities as $city)
-                <option value="{{ $city->id }}" class="border-2 p-2">{{ $city->name }}</option>
+                <option value="{{ $city->id }}" class="border-2 p-2" @if ( $user->commune_id == $city->id) selected @endif>{{ $city->name }}</option>
                 @endforeach
               </select>
               @error('commune_id')
@@ -89,7 +89,7 @@
               <label for="role" class="ms-0">Role</label>
               <select class="form-control border border-2 p-2" title="Role" name="role">
                 @foreach($roles as $key=>$role)
-                <option value="{{ $role->name }}" class="border-2 p-2" @if ( $user->roles->first()->name == $role->name) selected @endif>
+                <option value="{{ $role->name }}" @if($user->roles->pluck('name')->contains($role->name)) selected @endif>
                   {{ $role->name }}
                 </option>
                 @endforeach

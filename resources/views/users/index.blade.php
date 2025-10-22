@@ -65,7 +65,7 @@
                                             </p>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-secondary">{{ $user->roles->first()->name }}</span>
+                                            <span class="text-secondary">{{ $user->roles->first()->name ?? '' }}</span>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span class="text-secondary text-xs">{{ $user->created_at }}</span>
@@ -88,7 +88,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-link" {{ Auth::id() === $user->id ? 'disabled' :''}}>
-                                                     <i class="material-icons" style="font-size: 18px;">close</i>
+                                                    <i class="material-icons" style="font-size: 18px;">close</i>
                                                 </button>
                                             </form>
                                             <div class="ripple-container"></div>
