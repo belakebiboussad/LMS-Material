@@ -37,7 +37,7 @@
                 <a class="menu-toggle" href="{{ route('users.index') }}">
                     <i class="material-icons">people</i>
                     <span>
-                        {{ __('Farmers') }}
+                        {{ __('Users') }}
                     </span>
                 </a>
             </li>

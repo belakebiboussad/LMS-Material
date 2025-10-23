@@ -88,7 +88,9 @@
               <label for="role" class="ms-0">Role</label>
               <select class="form-control border border-2 p-2" title="Role" name="role">
                 @foreach($roles as $role)
-                <option value="{{ $role->name }}" class="border-2 p-2">{{ $role->name }}</option>
+                <option value="{{ $role->name }}" class="border-2 p-2">
+                  {{ __(  $role->name) }}
+                </option>
                 @endforeach
               </select>
             </div>

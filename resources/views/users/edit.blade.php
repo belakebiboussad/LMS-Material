@@ -21,21 +21,21 @@
           <div class="row">
             <div class="mb-3 col-md-6">
               <label class="form-label">Nom</label>
-              <input type="text" name="name" class="form-control border border-2 p-2" value='{{ old('name', $user->name)   }}' required>
+              <input type="text" name="name" class="form-control border border-2 p-2" value="{{ old('name', $user->name) }}" required>
               @error('name')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label">Prenom</label>
-              <input type="text" name="lastName" class="form-control border border-2 p-2" value='{{ old('lastName', $user->lastName) }}' required>
+              <input type="text" name="lastName" class="form-control border border-2 p-2" value="{{ old('lastName', $user->lastName) }}" required>
               @error('lastName')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label">Né(e) le</label>
-              <input type="date" name="birthDate" class="form-control border border-2 p-2" value='{{ old('birthDate', $user->birthDate) }}'>
+              <input type="date" name="birthDate" class="form-control border border-2 p-2" value="{{ old('birthDate', $user->birthDate) }}">
               @error('birthDate')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
@@ -49,7 +49,7 @@
             </div>
             <div class=" mb-3 col-md-6">
               <label class="form-label">Addresse</label>
-              <input type="text" name="address" class="form-control border border-2 p-2" value='{{ old('address', $user->address) }}'>
+              <input type="text" name="address" class="form-control border border-2 p-2" value="{{ old('address', $user->address) }}">
               @error('address')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
@@ -90,7 +90,7 @@
               <select class="form-control border border-2 p-2" title="Role" name="role">
                 @foreach($roles as $key=>$role)
                 <option value="{{ $role->name }}" @if($user->roles->pluck('name')->contains($role->name)) selected @endif>
-                  {{ $role->name }}
+                  {{ __(  $role->name) }}
                 </option>
                 @endforeach
               </select>

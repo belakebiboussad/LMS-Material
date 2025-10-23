@@ -39,7 +39,7 @@ class UserCotroller extends Controller
             'role' => 'required|string|max:255',
             'password' => 'required|string|min:8',
         ]);
-        if ($request->input('role') === 'Admin') {
+        if ($request->input('role') === 'admin') {
 
             $adminUsers = User::whereHas('roles', function ($query) {
                 $query->where('name', 'admin');

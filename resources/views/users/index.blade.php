@@ -35,11 +35,11 @@
                                             ROLE</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Date création
+                                            Status
                                         </th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Status
+                                            Date création
                                         </th>
                                         <th class="text-secondary opacity-7"></th>
                                     </tr>
@@ -67,15 +67,15 @@
                                         <td class="align-middle text-center">
                                             <span class="text-secondary">{{ $user->roles->first()->name ?? '' }}</span>
                                         </td>
-                                        <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs">{{ $user->created_at }}</span>
-                                        </td>
                                         <td class="align-middle text-center text-sm">
                                             @if($user->status == 1)
                                             <span class="badge badge-sm bg-gradient-success">Active</span>
                                             @else
                                             <span class="badge badge-sm bg-gradient-danger">Inactive</span>
                                             @endif
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs">{{ $user->created_at->format('H:i:s d/m/Y') }}</span>
                                         </td>
                                         <td class="align-middle">
                                             <a rel="tooltip" class="btn btn-success btn-link"
@@ -88,7 +88,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-link" {{ Auth::id() === $user->id ? 'disabled' :''}}>
-                                                    <i class="material-icons">close</i>
+                                                    <i class="material-icons" style="font-size: 14px;">close</i>
                                                 </button>
                                             </form>
                                             <div class="ripple-container"></div>
