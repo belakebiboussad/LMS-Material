@@ -21,6 +21,7 @@ class FarmsController extends Controller
         $owners = User::whereHas('roles', function ($query) {
             $query->whereIn('name', ['farmer', 'guardian']);
         })->pluck('name', 'id');
+        dd($owners);
         $wilayas = Wilaya::all()->pluck('name', 'id');
         $animalTypes = AnimalType::all()->pluck('name', 'id');
         return view('farms.create', compact('owners', 'wilayas', 'animalTypes'));
