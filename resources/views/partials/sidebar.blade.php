@@ -48,11 +48,16 @@
                 </a>
             </li>
 
-
             <li>
                 <a href="pages/changelogs.html">
                     <i class="material-icons">update</i>
-                    <span>Changelogs</span>
+                    <span>Animals</span>
+                </a>
+            </li>
+            <li>
+                <a href="pages/changelogs.html">
+                    <i class="material-icons">update</i>
+                    <span>Tags</span>
                 </a>
             </li>
             <li class="header">LABELS</li>

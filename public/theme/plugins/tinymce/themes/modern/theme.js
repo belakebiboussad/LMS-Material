@@ -889,7 +889,7 @@ tinymce.ThemeManager.add('modern', function(editor) {
 	 */
 	self.renderUI = function(args) {
 		var skin = settings.skin !== false ? settings.skin || 'lightgray' : false;
-
+		
 		if (skin) {
 			var skinUrl = settings.skin_url;
 

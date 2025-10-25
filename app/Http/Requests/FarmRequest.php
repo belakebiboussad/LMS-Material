@@ -27,8 +27,8 @@ class FarmRequest extends FormRequest
         return [
             'recordNbr' => 'required|string|max:10',
             'name' => 'required|string|max:255',
-            'x_lon' => ['require', new LatitudeRule],
-            'y_lat' => ['required', new LongitudeRule],
+            'x_lon' => ['required', new LongitudeRule],
+            'y_lat' => ['required', new LatitudeRule],
             'wilaya_id' => 'required|exists:wilayas,id',
             'owner_id' => 'required|exists:users,id',
             'animal_types' => 'array',

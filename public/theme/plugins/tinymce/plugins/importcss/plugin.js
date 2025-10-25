@@ -25,7 +25,6 @@ tinymce.PluginManager.add('importcss', function(editor) {
 
 	function isSkinContentCss(href) {
 		var settings = editor.settings, skin = settings.skin !== false ? settings.skin || 'lightgray' : false;
-
 		if (skin) {
 			var skinUrl = settings.skin_url;
 
