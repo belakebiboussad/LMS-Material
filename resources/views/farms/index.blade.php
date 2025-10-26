@@ -23,6 +23,9 @@
                   <tr>
                     <th
                       class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      numéro</th>
+                    <th
+                      class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                       nom</th>
                     <th
                       class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
@@ -48,6 +51,11 @@
                 <tbody>
                   @foreach ($farms as $farm)
                   <tr>
+                     <td>
+                      <div class="text-xs mb-0">
+                        <p> {{ $farm->recordNbr }}</p>
+                      </div>
+                    </td>
                     <td>
                       <div class="text-xs mb-0">
                         <p> {{ $farm->name }}</p>

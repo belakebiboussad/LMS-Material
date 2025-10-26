@@ -1,9 +1,6 @@
   @extends('layouts.app')
   @section('title', __('farme.create'))
   @section('css')
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
-    integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-    crossorigin="" />
   <style>
     #mapid {
       height: 300px;
@@ -21,7 +18,7 @@
         </div>
       </div>
       <div class="card-body p-3">
-        <form method='POST' action="{{ route('farms.store') }}">
+        <form method='POST' action="{{ route('farms.store') }}" novalidate>
           @csrf
           @if (session('errors'))
           <div class="alert alert-warning" role="alert">
@@ -31,14 +28,14 @@
           <div class="row">
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('farme.recordNbr') }}</label>
-              <input type="text" name="recordNbr" class="form-control border border-2 p-2 {{ $errors->has('recordNbr') ? ' is-invalid' : '' }}" value="{{ old('recordNbr') ?? '' }}" required>
+              <input type="text" name="recordNbr" class="form-control border border-2 p-2 {{ $errors->has('recordNbr') ? ' is-invalid' : '' }}" value="{{ old('recordNbr') ?? '' }}" required >
               @error('recordNbr')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
-              <label class="form-label">Nom</label>
-              <input type="text" name="name" class="form-control border border-2 p-2" value="{{ old('name') ?? '' }}" required>
+              <label class="form-label">{{ __('farme.name') }}</label>
+              <input type="text" name="name" class="form-control border border-2 p-2" {{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ old('name') ?? '' }}" required>
               @error('name')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
@@ -76,14 +73,14 @@
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('farme.area') }}</label>
-              <input type="number" step="0.01" min="0" name="area" class="form-control border border-2 p-2" value="{{ old('area') ?? '' }}" required>
+              <input type="number" step="0.01" min="0" name="area" class="form-control border border-2 p-2" value="{{ old('area') ?? '' }}">
               @error('area')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('farme.address') }}</label>
-              <input type="text" name="address" class="form-control border border-2 p-2" value="{{ old('address') ?? '' }}" required>
+              <input type="text" name="address" class="form-control border border-2 p-2" value="{{ old('address') ?? '' }}">
               @error('address')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
@@ -103,21 +100,21 @@
             </div>
             <div class="mb-3 col-md-3">
               <label class="form-label">{{ __('farme.phone') }}</label>
-              <input type="tel" name="phone" pattern="[0][]4-8][0-9]" placeholder="0xxxxxxxxx" class="form-control border border-2 p-2" value="{{ old('phone') ?? '' }}" required>
+              <input type="tel" name="phone" pattern="[0][]4-8][0-9]" placeholder="0xxxxxxxxx" class="form-control border border-2 p-2" value="{{ old('phone') ?? '' }}">
               @error('phone')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('farme.latitude') }}</label>
-              <input type="number" name="y_lat" id="latitude" step="0.001" class="form-control border border-2 p-2" value="{{ old('latitude', request('latitude')) }}" required>
+              <input type="number" name="y_lat" id="latitude" step="0.001" class="form-control border border-2 p-2" value="{{ old('y_lat', request('y_lat')) }}" required>
               @error('y_lat')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('farme.longitude') }}</label>
-              <input type="number" name="x_lon" id="longitude" step="0.001" class="form-control border border-2 p-2" value="{{ old('longitude', request('longitude')) }}" required>
+              <input type="number" name="x_lon" id="longitude" step="0.001" class="form-control border border-2 p-2" value="{{ old('x_lon', request('x_lon')) }}" required>
               @error('x_lon')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
@@ -135,9 +132,6 @@
   </div>
   @endsection
   @push('scripts')
-  <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
-    integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
-    crossorigin=""></script>
   <script>
     var mapCenter = [28.0289837, 1.6666663];
     var map = L.map('mapid').setView(mapCenter, 6);

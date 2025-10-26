@@ -3,8 +3,7 @@
 namespace App\Http\Requests;
 
 
-use App\Rules\LatitudeRule;
-use App\Rules\LongitudeRule;
+/*use App\Rules\LatitudeRule;use App\Rules\LongitudeRule;*/
 use Illuminate\Foundation\Http\FormRequest;
 
 class FarmRequest extends FormRequest
@@ -25,12 +24,15 @@ class FarmRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'recordNbr' => 'required|string|max:10',
+            'recordNbr' => 'required|string|max:10|unique:farms,recordNbr,',
             'name' => 'required|string|max:255',
-            'x_lon' => ['required', new LongitudeRule],
-            'y_lat' => ['required', new LatitudeRule],
-            'wilaya_id' => 'required|exists:wilayas,id',
             'owner_id' => 'required|exists:users,id',
+            'creationDt' => 'required|date',
+            'animal_types' => 'required',
+            /* 'x_lon' => ['required', new LongitudeRule],'y_lat' => ['required', new LatitudeRule],*/
+            'y_lat'  => 'nullable|required_with:x_lon|max:15',
+            'x_lon' => 'nullable|required_with:y_lat|max:15',
+            'wilaya_id' => 'required|exists:wilayas,id',
             'animal_types' => 'array',
             'animal_types.*' => 'exists:animal_types,id',
         ];
