@@ -1,13 +1,8 @@
 {
-    "Login": "Connexion",
-    "Logout": "Se déconnecter",
     "Users": "Utilisateurs",
     "User": "Utilisateur",
     "farmer": "Eleveur",
     "guardian": "Gardien",
     "veterinarian": "vetirinaire",
-    "Farmes": "Fermes",
-    "Farme": "Ferme",
-    "User add": "Ajouter un Utilisateur",
-    "Farm add": "Ajouter une Ferme"
+    "User add": "Ajouter un Utilisateur"
 }

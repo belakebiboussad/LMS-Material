@@ -13,7 +13,7 @@
           <div class="me-3 my-3 text-end">
             <a class="btn mb-0" href="{{ route('farms.create') }}"><i
                 class="material-icons text-sm">add</i>&nbsp;&nbsp;
-              {{ __('Farm add') }}
+              {{ __('farme.create') }}
             </a>
           </div>
           <div class="card-body px-0 pb-2">

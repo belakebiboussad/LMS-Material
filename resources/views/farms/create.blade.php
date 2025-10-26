@@ -1,11 +1,22 @@
   @extends('layouts.app')
+  @section('title', __('farme.create'))
+  @section('css')
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
+    integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+    crossorigin="" />
+  <style>
+    #mapid {
+      height: 300px;
+    }
+  </style>
+  @endsection
   @section('content')
   <div class="main-content position-relative bg-gray-100  h-100">
     <div class="card card-plain h-100">
       <div class="card-header pb-0 p-3">
         <div class="row">
           <div class="col-md-8 d-flex align-items-center">
-            <h6 class="mb-3">Ajouter une {{ __('Farme') }}</h6>
+            <h3 class="mb-3">{{ __('farme.create') }}</h3>
           </div>
         </div>
       </div>
@@ -19,8 +30,8 @@
           @endif
           <div class="row">
             <div class="mb-3 col-md-6">
-              <label class="form-label">N° Enregistrement</label>
-              <input type="text" name="recordNbr" class="form-control border border-2 p-2" value="{{ old('recordNbr') ??'' }}" required>
+              <label class="form-label">{{ __('farme.recordNbr') }}</label>
+              <input type="text" name="recordNbr" class="form-control border border-2 p-2 {{ $errors->has('recordNbr') ? ' is-invalid' : '' }}" value="{{ old('recordNbr') ?? '' }}" required>
               @error('recordNbr')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
@@ -33,7 +44,7 @@
               @enderror
             </div>
             <div class="mb-3 col-md-6">
-              <label class="form-label">Propriétaire</label>
+              <label class="form-label">{{ __('farme.owner') }}</label>
               <select name="owner_id" class="form-control border border-2 p-2">
                 @foreach($owners as $key=>$owner)
                 <option value="{{ $key }}" class="border-2 p-2">
@@ -46,7 +57,7 @@
               @enderror
             </div>
             <div class="mb-3 col-md-6">
-              <label class="form-label">Type</label>
+              <label class="form-label">{{ __('farme.type') }}</label>
               <div class="col-md-12">
                 @foreach($animalTypes as $key=>$type)
                 <input type="checkbox" name="animal_types[]" id="{{ $type }}" class="filled-in chk-col-pink" value="{{ $key }}">
@@ -57,28 +68,28 @@
           </div>
           <div class="row">
             <div class="mb-3 col-md-6">
-              <label class="form-label">Date création</label>
+              <label class="form-label">{{ __('farme.creationDt') }}</label>
               <input type="date" name="creationDt" class="form-control border border-2 p-2" value="{{ old('creationDt') ?? '' }}">
               @error('creationDt')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
-              <label class="form-label">Superficie(ha)</label>
+              <label class="form-label">{{ __('farme.area') }}</label>
               <input type="number" step="0.01" min="0" name="area" class="form-control border border-2 p-2" value="{{ old('area') ?? '' }}" required>
               @error('area')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
-              <label class="form-label">Adresse</label>
+              <label class="form-label">{{ __('farme.address') }}</label>
               <input type="text" name="address" class="form-control border border-2 p-2" value="{{ old('address') ?? '' }}" required>
               @error('address')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
-            <div class="mb-3 col-md-6">
-              <label class="form-label">Wilaya</label>
+            <div class="mb-3 col-md-3">
+              <label class="form-label">{{ __('farme.wilaya') }}</label>
               <select name="wilaya_id" class="form-control border border-2 p-2">
                 @foreach($wilayas as $key=>$wilaya)
                 <option value="{{ $key }}" class="border-2 p-2">
@@ -91,27 +102,28 @@
               @enderror
             </div>
             <div class="mb-3 col-md-3">
-              <label class="form-label">longitude</label>
-              <input type="number" name="x_lon" step="0.001" min="0" class="form-control border border-2 p-2" value="{{ old('x_lon') ?? '' }}" required>
-              @error('x_lon')
-              <p class='text-danger inputerror'>{{ $message }} </p>
-              @enderror
-            </div>
-            <div class="mb-3 col-md-3">
-              <label class="form-label">latitude</label>
-              <input type="number" name="y_lat" step="0.001" min="0" class="form-control border border-2 p-2" value="{{ old('y_lat') ?? '' }}" required>
-              @error('y_lat')
-              <p class='text-danger inputerror'>{{ $message }} </p>
-              @enderror
-            </div>
-            <div class="mb-3 col-md-6">
-              <label class="form-label">Téléphone</label>
+              <label class="form-label">{{ __('farme.phone') }}</label>
               <input type="tel" name="phone" pattern="[0][]4-8][0-9]" placeholder="0xxxxxxxxx" class="form-control border border-2 p-2" value="{{ old('phone') ?? '' }}" required>
               @error('phone')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
+            <div class="mb-3 col-md-6">
+              <label class="form-label">{{ __('farme.latitude') }}</label>
+              <input type="number" name="y_lat" id="latitude" step="0.001" class="form-control border border-2 p-2" value="{{ old('latitude', request('latitude')) }}" required>
+              @error('y_lat')
+              <p class='text-danger inputerror'>{{ $message }} </p>
+              @enderror
+            </div>
+            <div class="mb-3 col-md-6">
+              <label class="form-label">{{ __('farme.longitude') }}</label>
+              <input type="number" name="x_lon" id="longitude" step="0.001" class="form-control border border-2 p-2" value="{{ old('longitude', request('longitude')) }}" required>
+              @error('x_lon')
+              <p class='text-danger inputerror'>{{ $message }} </p>
+              @enderror
+            </div>
           </div>
+          <div id="mapid"></div>
           <div class="row mb-0">
             <div class="text-center mt-4">
               <button type="submit" class="btn bg-gradient-dark">Enregistrer</button>
@@ -122,3 +134,36 @@
     </div>
   </div>
   @endsection
+  @push('scripts')
+  <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
+    integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+    crossorigin=""></script>
+  <script>
+    var mapCenter = [28.0289837, 1.6666663];
+    var map = L.map('mapid').setView(mapCenter, 6);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+    var marker = L.marker(mapCenter).addTo(map);
+
+    function updateMarker(lat, lng) {
+      marker
+        .setLatLng([lat, lng])
+        .bindPopup("Your location :  " + marker.getLatLng().toString())
+        .openPopup();
+      return false;
+    };
+    map.on('click', function(e) {
+      let latitude = e.latlng.lat.toString().substring(0, 15);
+      let longitude = e.latlng.lng.toString().substring(0, 15);
+      $('#latitude').val(latitude);
+      $('#longitude').val(longitude);
+      updateMarker(latitude, longitude);
+    });
+    var updateMarkerByInputs = function() {
+      return updateMarker($('#latitude').val(), $('#longitude').val());
+    }
+    $('#latitude').on('input', updateMarkerByInputs);
+    $('#longitude').on('input', updateMarkerByInputs);
+  </script>
+  @endpush
