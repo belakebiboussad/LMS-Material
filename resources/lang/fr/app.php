@@ -9,6 +9,7 @@ return [
 
   // Actions
   'show'           => 'Afficher Détail',
+  'save'          => 'Enregistrer',
   'edit'           => 'Edit',
   'delete'         => 'Supprimer',
   'cancel'         => 'Annuler',

@@ -1,5 +1,5 @@
   @extends('layouts.app')
-  @section('title', __('farme.create'))
+  @section('title', __('farme.edit'))
   @section('css')
   <style>
     #mapid {
@@ -13,13 +13,14 @@
       <div class="card-header pb-0 p-3">
         <div class="row">
           <div class="col-md-8 d-flex align-items-center">
-            <h3 class="mb-3">{{ __('farme.create') }}</h3>
+            <h6 class="mb-3">{{ __('farme.edit') }}</h6>
           </div>
         </div>
       </div>
       <div class="card-body p-3">
-        <form method='POST' action="{{ route('farms.store') }}" novalidate>
+        <form method='POST' action="{{ route('farms.update',$farm) }}">
           @csrf
+          @method('PUT')
           @if (session('errors'))
           <div class="alert alert-warning" role="alert">
             {{ session('errors') }}
@@ -28,14 +29,14 @@
           <div class="row">
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('farme.recordNbr') }}</label>
-              <input type="text" name="recordNbr" class="form-control border border-2 p-2 {{ $errors->has('recordNbr') ? ' is-invalid' : '' }}" value="{{ old('recordNbr') ?? '' }}" required >
+              <input type="text" name="recordNbr" class="form-control border border-2 p-2 {{ $errors->has('recordNbr') ? ' is-invalid' : '' }}" value="{{  old('recordNbr', $farm->recordNbr) }}" required>
               @error('recordNbr')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('farme.name') }}</label>
-              <input type="text" name="name" class="form-control border border-2 p-2" {{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ old('name') ?? '' }}" required>
+              <input type="text" name="name" class="form-control border border-2 p-2 {{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ old('name', $farm->name) }}" required>
               @error('name')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
@@ -66,21 +67,21 @@
           <div class="row">
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('farme.creationDt') }}</label>
-              <input type="date" name="creationDt" class="form-control border border-2 p-2" value="{{ old('creationDt') ?? '' }}">
+              <input type="date" name="creationDt" class="form-control border border-2 p-2" value="{{ old('creationDt', $farm->creationDt) }}">
               @error('creationDt')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('farme.area') }}</label>
-              <input type="number" step="0.01" min="0" name="area" class="form-control border border-2 p-2" value="{{ old('area') ?? '' }}">
+              <input type="number" step="0.01" min="0" name="area" class="form-control border border-2 p-2" value="{{ old('area', $farm->area) }}">
               @error('area')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('farme.address') }}</label>
-              <input type="text" name="address" class="form-control border border-2 p-2" value="{{ old('address') ?? '' }}">
+              <input type="text" name="address" class="form-control border border-2 p-2" value="{{ old('address', $farm->address) }}">
               @error('address')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
@@ -100,21 +101,21 @@
             </div>
             <div class="mb-3 col-md-3">
               <label class="form-label">{{ __('farme.phone') }}</label>
-              <input type="tel" name="phone" pattern="[0][]4-8][0-9]" placeholder="0xxxxxxxxx" class="form-control border border-2 p-2" value="{{ old('phone') ?? '' }}">
+              <input type="tel" name="phone" pattern="[0][4-8][0-9]8" placeholder="0xxxxxxxxx" class="form-control border border-2 p-2" value="{{ old('phone', $farm->phone) }}">
               @error('phone')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('farme.latitude') }}</label>
-              <input type="number" name="y_lat" id="latitude" step="0.001" class="form-control border border-2 p-2" value="{{ old('y_lat', request('y_lat')) }}" required>
+              <input type="text" name="y_lat" id="latitude" class="form-control border border-2 p-2" value="{{ old('y_lat', $farm->y_lat) }}" required>
               @error('y_lat')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('farme.longitude') }}</label>
-              <input type="number" name="x_lon" id="longitude" step="0.001" class="form-control border border-2 p-2" value="{{ old('x_lon', request('x_lon')) }}" required>
+              <input type="text" name="x_lon" id="longitude" class="form-control border border-2 p-2" value="{{ old('x_lon', $farm->x_lon) }}" required>
               @error('x_lon')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
@@ -123,7 +124,8 @@
           <div id="mapid"></div>
           <div class="row mb-0">
             <div class="text-center mt-4">
-              <button type="submit" class="btn bg-gradient-dark">Enregistrer</button>
+              <button type="submit" class="btn bg-gradient-dark">{{ __('app.save') }}</button>
+              <a href="{{ route('farms.index') }}" class="btn btn-link btn-warning">{{ __('app.cancel') }}</a>
             </div>
           </div>
         </form>
@@ -133,7 +135,8 @@
   @endsection
   @push('scripts')
   <script>
-    var mapCenter = [28.0289837, 1.6666663];
+    //var mapCenter = [28.0289837, 1.6666663];
+    var mapCenter = [{{ $farm->y_lat }}, {{ $farm->x_lon }}];
     var map = L.map('mapid').setView(mapCenter, 6);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'

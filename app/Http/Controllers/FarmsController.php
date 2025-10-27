@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FarmRequest;
+use App\Http\Requests\FarmUpdateRequest;
 use App\Models\AnimalType;
 use App\Models\Farm;
 use App\Models\User;
@@ -63,7 +64,7 @@ class FarmsController extends Controller
     {
         return view('farms.show', compact('farm'));
     }
-    public function update(FarmRequest $request, Farm $farm)
+    public function update(FarmUpdateRequest $request, Farm $farm)
     {
         $validated = $request->validated();
 

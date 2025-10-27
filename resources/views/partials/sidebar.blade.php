@@ -41,6 +41,7 @@
                     </span>
                 </a>
             </li>
+            <li class="header">ASSETS</li>
             <li>
                 <a href="{{ route('farms.index') }}" class="menu-toggle">
                     <i class="material-icons">home</i>
@@ -50,7 +51,8 @@
 
             <li>
                 <a href="pages/changelogs.html">
-                    <i class="material-icons">update</i>
+                    <i class="material-icons">pets</i>
+                    <i class="fa fa-cow"></i>
                     <span>Animals</span>
                 </a>
             </li>
@@ -61,24 +63,6 @@
                 </a>
             </li>
             <li class="header">LABELS</li>
-            <li>
-                <a href="javascript:void(0);">
-                    <i class="material-icons col-red">donut_large</i>
-                    <span>Important</span>
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void(0);">
-                    <i class="material-icons col-amber">donut_large</i>
-                    <span>Warning</span>
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void(0);">
-                    <i class="material-icons col-light-blue">donut_large</i>
-                    <span>Information</span>
-                </a>
-            </li>
         </ul>
     </div>
     <!-- #Menu -->
@@ -86,7 +70,6 @@
     <div class="legal">
         <div class="copyright">
             &copy; 2025 <a href="javascript:void(0);">{{ config('app.name') }}</a>.
-
         </div>
         <div class="version">
             <b>Version: </b> 0.0.1

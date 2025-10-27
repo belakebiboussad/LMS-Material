@@ -15,6 +15,7 @@ return [
   'longitude'  => 'Longitude',
   'phone'      => 'Téléphone',
   // Actions
+  'index' => 'Liste des fermes',
   'create'         => 'Ajouter une Ferme',
   'created'        => 'Une nouvelle Ferme à été crée.',
   'show'           => 'Voir Détail de la Ferme',

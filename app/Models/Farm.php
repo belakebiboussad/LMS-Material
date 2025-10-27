@@ -21,8 +21,7 @@ class Farm extends Model
         'owner_id',
         'area',
         'address',
-        'wilaya_id',
-        //'position',
+        'wilaya_id',//'position',
         'x_lon',
         'y_lat',
         'phone'

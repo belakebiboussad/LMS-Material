@@ -5,15 +5,15 @@
     <div class="row">
       <div class="col-12">
         <div class="card my-4">
-          <div class="card-header">
-            <div class="bg-gradient-primary shadow-primary border-radius-lg">
-              <h6 class="text-white mx-3"></h6>
+          <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+              <h4 class="text-white mx-3">{{ __('farm.index') }}</h4>
             </div>
           </div>
           <div class="me-3 my-3 text-end">
-            <a class="btn mb-0" href="{{ route('farms.create') }}"><i
+            <a class="btn bg-gradient-dark mb-0" href="{{ route('farms.create') }}"><i
                 class="material-icons text-sm">add</i>&nbsp;&nbsp;
-              {{ __('farme.create') }}
+              {{ __('farm.create') }}
             </a>
           </div>
           <div class="card-body px-0 pb-2">
