@@ -13,6 +13,6 @@ return [
   'delete'         => 'Supprimer',
   'cancel'         => 'Annuler',
   'reset'          => 'Reset',
-  'delete_confirm' => 'Are you sure to delete this?',
+  'delete_confirm' => 'Êtes-vous sûr de vouloir supprimer ceci ?',
   'delete_confirm_button' => 'YES, delete it!',
 ];
