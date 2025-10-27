@@ -5,7 +5,7 @@
       <div class="card-header pb-0 p-3">
         <div class="row">
           <div class="col-md-8 d-flex align-items-center">
-            <h6 class="mb-3">Modifier la {{ __('Farme') }}</h6>
+            <h6 class="mb-3">{{ __('farme.edit') }}</h6>
           </div>
         </div>
       </div>
@@ -100,7 +100,7 @@
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label">latitude</label>
-              <input type="number" name="y_lat" id= "latitude" step="0.0000001" min="0" class="form-control border border-2 p-2" value="{{ old('y_lat', $farm->y_lat) }}" required>
+              <input type="number" name="y_lat" id="latitude" step="0.0000001" min="0" class="form-control border border-2 p-2" value="{{ old('y_lat', $farm->y_lat) }}" required>
               @error('y_lat')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror

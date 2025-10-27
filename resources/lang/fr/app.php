@@ -14,5 +14,5 @@ return [
   'cancel'         => 'Annuler',
   'reset'          => 'Reset',
   'delete_confirm' => 'Êtes-vous sûr de vouloir supprimer ceci ?',
-  'delete_confirm_button' => 'YES, delete it!',
+  'delete_confirm_button' => 'OUI, supprimez-le ! ',
 ];
