@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('colors', function (Blueprint $table) {
-            $table->unsignedInteger('id');
+            $table->increments('id'); 
             $table->string('name',30);
             $table->char('hexCode',7);
         });

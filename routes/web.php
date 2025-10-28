@@ -4,7 +4,7 @@ use App\Http\Controllers\FarmsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserCotroller;
-
+use App\Http\Controllers\AnimalsController;
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -28,4 +28,7 @@ Route::middleware('auth')->group(function () {
 });
 Route::middleware('auth')->group(function () {
     Route::resource('farms', FarmsController::class);
+});
+Route::middleware('auth')->group(function () {
+    Route::resource('animals', AnimalsController::class);
 });

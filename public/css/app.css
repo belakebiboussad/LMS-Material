@@ -823,12 +823,20 @@ h1, .h1, .h1, h2, .h2, .h2, h3, .h3, .h3, h4, .h4, .h4 {
 a {
   letter-spacing: 0rem;
   color: #344767; }
+.text-lg {
+  font-size: 1.125rem !important; }
+
+.text-md {
+  font-size: 1rem !important; }
+
 .text-sm {
-    font-size: 0.875rem !important;
-}
+  font-size: 0.875rem !important; }
+
 .text-xs {
-    line-height: 1.25;
-}
+  font-size: 0.75rem !important; }
+
+.text-xxs {
+  font-size: 0.65rem !important; }
 .card {
     position: relative;
     display: flex;

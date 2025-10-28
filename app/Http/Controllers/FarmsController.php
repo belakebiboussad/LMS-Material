@@ -15,7 +15,7 @@ class FarmsController extends Controller
     public function index()
     {
         $farms = Farm::with(['owner', 'wilaya', 'animalTypes'])->get();
-        return view('farms.index', compact('farms'));
+        return view('assets.farms.index', compact('farms'));
     }
     public function create()
     {
@@ -24,7 +24,7 @@ class FarmsController extends Controller
         })->pluck('name', 'id');
         $wilayas = Wilaya::all()->pluck('name', 'id');
         $animalTypes = AnimalType::all()->pluck('name', 'id');
-        return view('farms.create', compact('owners', 'wilayas', 'animalTypes'));
+        return view('assets.farms.create', compact('owners', 'wilayas', 'animalTypes'));
     }
     public function edit(Farm $farm)
     {
@@ -33,7 +33,7 @@ class FarmsController extends Controller
         })->pluck('name', 'id');
         $wilayas = Wilaya::all()->pluck('name', 'id');
         $animalTypes = AnimalType::all()->pluck('name', 'id');
-        return view('farms.edit', compact('farm', 'owners', 'wilayas', 'animalTypes'));
+        return view('assets.farms.edit', compact('farm', 'owners', 'wilayas', 'animalTypes'));
     }
     public function store(FarmRequest $request)
     {
@@ -58,7 +58,7 @@ class FarmsController extends Controller
             }
         }
 
-        return redirect()->route('farms.index')->with('success', 'Farm created successfully.');
+        return redirect()->route('assets.farms.index')->with('success', 'Farm created successfully.');
     }
     public function show(Farm $farm)
     {

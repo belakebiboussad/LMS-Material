@@ -13,7 +13,7 @@
       <div class="card-header pb-0 p-3">
         <div class="row">
           <div class="col-md-8 d-flex align-items-center">
-            <h3 class="mb-3">{{ __('farme.create') }}</h3>
+            <h3 class="mb-3">{{ __('farm.create') }}</h3>
           </div>
         </div>
       </div>

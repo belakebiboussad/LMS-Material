@@ -50,7 +50,7 @@
             </li>
 
             <li>
-                <a href="pages/changelogs.html">
+                <a href="{{ route('animals.index') }}">
                     <i class="material-icons">pets</i>
                     <i class="fa fa-cow"></i>
                     <span>Animals</span>
