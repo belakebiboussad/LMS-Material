@@ -17,8 +17,8 @@ return new class extends Migration
             $table->unsignedTinyInteger('animalType_id');
             $table->unsignedInteger('color_id')->nullable();
             $table->double('weight',8,2)->nullable();
-            $table->dateTime('birthDate')->nullable();
-            $table->string('sexe')->default(App\Enums\Sexe::Male);
+            $table->dateTime('dob')->nullable();
+            $table->string('sexe');
             $table->unsignedBigInteger('breed_id');
             $table->dateTime('dethDate');
             $table->boolean('is_seek')->nullable();

@@ -12,6 +12,5 @@ class Tag extends Model
    //Numéro,Date délivrance,Numéro demande,Numéro exploitation,Type (Ovin, Bovin,Camel)
    protected $fillable = [
     'Number',
-
    ];
 }

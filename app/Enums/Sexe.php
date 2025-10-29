@@ -2,20 +2,14 @@
 
 namespace App\Enums;
 
-final class Sexe
+enum Sexe: string
 {
-   public const Male="masculin";
-   public const FEMALE="féminin";
-    public static function values(): array
-    {
-        return [
-            self::Male,
-            self::FEMALE,
-        ];
+    case MALE = 'male';
+    case FEMAL = 'féminin';
+    public function label(){
+        return match($this) {
+            self::MALE =>'Male',
+            self::FEMAL =>'Féminin',
+        };
     }
-
-    public static function isValid(string $value): bool
-    {
-        return in_array($value, self::values(), true);
-    }  
 }

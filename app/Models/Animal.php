@@ -12,7 +12,7 @@ class Animal extends Model
         'animalType_id',
         'color_id',
         'weight',
-        'birthDate',
+        'dob',
         'sexe',
         'breed_id',
         'dethDate',
