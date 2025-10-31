@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class RolesAndPermissionsSeeder extends Seeder
 {
@@ -13,26 +14,52 @@ class RolesAndPermissionsSeeder extends Seeder
      */
     public function run(): void
     {
-        $wnerRole = Role::create(['name' => 'Owner']);
-        Role::create(['name' => 'user']);
-        $wnerRole->givePermissionTo('animals.create');
-        $wnerRole->givePermissionTo('animals.update');
-        $wnerRole->givePermissionTo('animals.view');
-        $wnerRole->givePermissionTo('animals.delete');
-        //
-        $wnerRole->givePermissionTo('breeds.create');
-        $wnerRole->givePermissionTo('breeds.update');
-        $wnerRole->givePermissionTo('breeds.view');
-        $wnerRole->givePermissionTo('breeds.delete');
-        //
-        $wnerRole->givePermissionTo('vaccins.create');
-        $wnerRole->givePermissionTo('vaccins.update');
-        $wnerRole->givePermissionTo('vaccins.view');
-        $wnerRole->givePermissionTo('vaccins.delete');
-        //
-        $wnerRole->givePermissionTo('treatment.create');
-        $wnerRole->givePermissionTo('treatment.update');
-        $wnerRole->givePermissionTo('treatment.view');
-        $wnerRole->givePermissionTo('treatment.delete');
+        Role::create(['name' => 'farmer']);
+        Role::create(['name' => 'guardian']);
+        Role::create(['name' => 'veterinarian']);
+        $permissionNames = [
+            'animals.create',
+            'animals.update',
+            'animals.view',
+            'animals.delete',
+            'breeds.create',
+            'breeds.update',
+            'breeds.view',
+            'breeds.delete',
+            'farms.create',
+            'farms.update',
+            'farms.view',
+            'farms.delete',
+            'tags.create',
+            'tags.update',
+            'tags.view',
+        ];
+        $roleNames = ['farmer', 'guardian']; // Example role names
+        $permissions = Permission::whereIn('name', $permissionNames)->get();
+        foreach ($roleNames as $roleName) {
+            $role = Role::findByName($roleName);
+            if ($role) {
+                $role->syncPermissions($permissions);
+            }
+        }
+
+        $permissionNames = [
+            'vaccinations.create',
+            'vaccinations.update',
+            'vaccinations.view',
+            'vaccinations.delete',
+            'treatments.create',
+            'treatments.update',
+            'treatments.view',
+            'treatments.delete',
+        ];
+        $roleNames = ['veterinarian']; // Example role names
+        $permissions = Permission::whereIn('name', $permissionNames)->get();
+        foreach ($roleNames as $roleName) {
+            $role = Role::findByName($roleName);
+            if ($role) {
+                $role->syncPermissions($permissions);
+            }
+        }
     }
 }

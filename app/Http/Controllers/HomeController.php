@@ -28,7 +28,7 @@ class HomeController extends BaseController
         $user = Auth::user();
         if ($user->hasRole('admin')) {
             return view('admin.dashboard');
-        } elseif ($user->hasRole('Owner')) {
+        } elseif ($user->hasRole('eleveur')) {
             return view('owner.dashboard');
         } else {
             return view('user.dashboard');

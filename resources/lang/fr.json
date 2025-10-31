@@ -1,6 +1,9 @@
-<?php
-  
-  return [
-   "Login": "Welcome to Login Page!",
-   "Logout": "You are logged out!",
-  ]
+{
+    "Users": "Utilisateurs",
+    "User": "Utilisateur",
+    "farmer": "Eleveur",
+    "guardian": "Gardien",
+    "veterinarian": "vetirinaire",
+    "User add": "Ajouter un Utilisateur",
+    "User list": "Liste des Utilisateur"
+}

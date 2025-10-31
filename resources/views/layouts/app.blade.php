@@ -5,18 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Welcome To | Bootstrap Based Admin Template - Material Design</title>
-    <!-- Favicon-->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-
-    <!-- Google Fonts -->
+    <title>@yield('title') | {{ config('app.name') }}</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/favicon/favicon.ico') }}">
     @include('partials.head')
     @yield('css')
 </head>
 
-<body class="theme-red">
+<body class="theme-light-green">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -56,7 +53,7 @@
         @include('partials.sidebar')
         <!-- #END# Left Sidebar -->
         <!-- Right Sidebar -->
-         @include('partials.asidebar')
+        @include('partials.asidebar')
         <!-- #END# Right Sidebar -->
     </section>
 
@@ -66,7 +63,8 @@
         </div>
     </section>
 
-   @include('partials.script')
+    @include('partials.script')
+    @stack('scripts')
 </body>
 
 </html>

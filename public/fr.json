@@ -1,0 +1,8 @@
+<?php
+  
+  return [
+   "Login": "Welcome to Login Page!",
+   "Logout": "You are logged out!",
+   "Farmers": "Eleveurs",
+   "Farmers": "Eleveur",
+  ]

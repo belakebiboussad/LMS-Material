@@ -1,15 +1,15 @@
 <?php
 
+use App\Http\Controllers\FarmsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserCotroller;
+use App\Http\Controllers\AnimalsController;
 Route::get('/', function () {
     return view('auth.login');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {// return view('dashboard');// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -18,10 +18,17 @@ Route::middleware('auth')->group(function () {
 });
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('users', UserCotroller::class);
-
+Route::middleware('auth')->group(function () {
+    Route::resource('users', UserCotroller::class);
+});
+Route::middleware('auth')->group(function () {
+    Route::resource('farms', FarmsController::class);
+});
+Route::middleware('auth')->group(function () {
+    Route::resource('animals', AnimalsController::class);
+});

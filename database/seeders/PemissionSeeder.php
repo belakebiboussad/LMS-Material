@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
+
 class PemissionSeeder extends Seeder
 {
     /**
@@ -12,117 +13,117 @@ class PemissionSeeder extends Seeder
      */
     public function run(): void
     {
-         
+
         $permissions = [
             [
-                "name"=> "roles.create"
+                "name" => "roles.create"
             ],
             [
-                "name"=> "roles.update"
+                "name" => "roles.update"
             ],
             [
-                "name"=> "roles.view"
+                "name" => "roles.view"
             ],
             [
-                "name"=> "roles.delete"
+                "name" => "roles.delete"
             ],
             [
-                "name"=> "permissions.create"
+                "name" => "permissions.create"
             ],
             [
-                "name"=> "permissions.update"
+                "name" => "permissions.update"
             ],
             [
-                "name"=> "permissions.view"
+                "name" => "permissions.view"
             ],
             [
-                "name"=> "permissions.delete"
+                "name" => "permissions.delete"
             ],
             [
-                "name"=> "tags.create"
+                "name" => "tags.create"
             ],
             [
-                "name"=> "tags.update"
+                "name" => "tags.update"
             ],
             [
-                "name"=> "tags.view"
+                "name" => "tags.view"
             ],
             [
-                "name"=> "tags.delete"
+                "name" => "tags.delete"
             ],
             [
-                "name"=> "users.create"
+                "name" => "users.create"
             ],
             [
-                "name"=> "users.update"
+                "name" => "users.update"
             ],
             [
-                "name"=> "users.view"
+                "name" => "users.view"
             ],
             [
-                "name"=> "users.delete"
+                "name" => "users.delete"
             ],
             [
-                "name"=> "owners.create"
+                "name" => "owners.create"
             ],
             [
-                "name"=> "owners.update"
+                "name" => "owners.update"
             ],
             [
-                "name"=> "owners.view"
+                "name" => "owners.view"
             ],
             [
-                "name"=> "owners.delete"
+                "name" => "owners.delete"
             ],
             [
-                "name"=> "animals.create"
+                "name" => "animals.create"
             ],
             [
-                "name"=> "animals.update"
+                "name" => "animals.update"
             ],
             [
-                "name"=> "animals.view"
+                "name" => "animals.view"
             ],
             [
-                "name"=> "animals.delete"
+                "name" => "animals.delete"
             ],
             [
-                "name"=> "breeds.create"
+                "name" => "breeds.create"
             ],
             [
-                "name"=> "breeds.update"
+                "name" => "breeds.update"
             ],
             [
-                "name"=> "breeds.view"
+                "name" => "breeds.view"
             ],
             [
-                "name"=> "breeds.delete"
+                "name" => "breeds.delete"
             ],
             [
-                "name"=> "vaccins.create"
+                "name" => "vaccinations.create"
             ],
             [
-                "name"=> "vaccins.update"
+                "name" => "vaccinations.update"
             ],
             [
-                "name"=> "vaccins.view"
+                "name" => "vaccinations.view"
             ],
             [
-                "name"=> "vaccins.delete"
+                "name" => "vaccinations.delete"
             ],
             [
-                "name"=> "treatment.create"
+                "name" => "treatments.create"
             ],
             [
-                "name"=> "treatment.update"
+                "name" => "treatments.update"
             ],
             [
-                "name"=> "treatment.view"
+                "name" => "treatments.view"
             ],
             [
-                "name"=> "treatment.delete"
+                "name" => "treatments.delete"
             ],
-            
+
         ];
 
         //iterate all permissions and store into the permission table
