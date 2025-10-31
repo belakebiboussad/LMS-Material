@@ -9,9 +9,8 @@
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css"> -->
     <!-- Bootstrap Core Css -->
     <link href="{{ asset('theme/plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
 
@@ -22,6 +21,78 @@
     <link href="{{ asset('theme/plugins/animate-css/animate.css') }}" rel="stylesheet" />
     <!-- Custom Css -->
     <link href="{{ asset('theme/css/style.css') }}" rel="stylesheet">
+    <style>
+        /* fallback */
+        @font-face {
+            font-family: 'Material Icons';
+            font-style: normal;
+            font-weight: 400;
+            src: url(./fonts/material-icons/flUhRq6tzZclQEJ-Vdg-IuiaDsNY.eot);
+            /* For IE6-8 */
+            src: url(./fonts/material-icons/flUhRq6tzZclQEJ-Vdg-IuiaDsNa.woff) format('woff'),
+                url(./fonts/mamaterial-icons/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format('woff2'),
+                url(./fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNZ.ttf) format('truetype');
+        }
+
+        /* fallback */
+        @font-face {
+            font-family: 'Material Icons Outlined';
+            font-style: normal;
+            font-weight: 400;
+            src: url(./fonts/material-icons/gok-H7zzDkdnRel8-DQ6KAXJ69wP1tGnf4ZGhUca.eot);
+            /* For IE6-8 */
+            src: url(./fonts/material-icons/gok-H7zzDkdnRel8-DQ6KAXJ69wP1tGnf4ZGhUcY.woff) format('woff'),
+                url(./fonts/material-icons/gok-H7zzDkdnRel8-DQ6KAXJ69wP1tGnf4ZGhUcel5euIg.woff2) format('woff2'),
+                url(./fonts/material-icons/gok-H7zzDkdnRel8-DQ6KAXJ69wP1tGnf4ZGhUcd.otf) format('opentype');
+        }
+
+
+        .material-icons {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 20px;
+            /* Preferred icon size */
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            /* Support for all WebKit browsers. */
+            -webkit-font-smoothing: antialiased;
+            /* Support for Safari and Chrome. */
+            text-rendering: optimizeLegibility;
+            /* Support for Firefox. */
+            -moz-osx-font-smoothing: grayscale;
+            /* Support for IE. */
+            font-feature-settings: 'liga';
+        }
+
+        .material-icons-outlined {
+            font-family: 'Material Icons Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            /* Preferred icon size */
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            /* Support for all WebKit browsers. */
+            -webkit-font-smoothing: antialiased;
+            /* Support for Safari and Chrome. */
+            text-rendering: optimizeLegibility;
+            /* Support for Firefox. */
+            -moz-osx-font-smoothing: grayscale;
+            /* Support for IE. */
+            font-feature-settings: 'liga';
+        }
+    </style>
 </head>
 
 <body class="login-page">
