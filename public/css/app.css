@@ -947,6 +947,9 @@
             color: #344767;
         }
 
+        .text-xl {
+            font-size: 1.16rem !important;
+        }
         .text-lg {
             font-size: 1.125rem !important;
         }
