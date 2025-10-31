@@ -9,7 +9,9 @@
     <title>{{ config('app.name', 'Gestion Chaptel') }}</title>
    
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.0/material.blue-light_blue.min.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+    <link href="{{ asset('theme/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 	<title>Login</title>
 	
     <!-- Scripts -->
