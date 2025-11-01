@@ -7700,7 +7700,7 @@ fieldset[disabled] .form-control {
 .login-page {
   background-color: #00BCD4;
   padding-left: 0;
-  max-width: 360px;
+  max-width: 420px;
   margin: 5% auto;
   overflow-x: hidden; }
   .login-page .login-box .msg {
@@ -7719,7 +7719,7 @@ fieldset[disabled] .form-control {
       width: 100%;
       text-align: center;
       color: #fff; }
-    .login-page .login-box .logo small {
+    .login-page .login-box .logo abbr {
       display: block;
       width: 100%;
       text-align: center;

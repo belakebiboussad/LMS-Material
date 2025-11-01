@@ -9,7 +9,7 @@
     <title>{{ config('app.name', 'Gestion Chaptel') }}</title>
    
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.0/material.blue-light_blue.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+
     <!-- Bootstrap Core Css -->
     <link href="{{ asset('theme/plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
 
@@ -46,16 +46,16 @@
 
     <!-- Bootstrap Core Js -->
     <script src="{{ asset('theme/plugins/bootstrap/js/bootstrap.js') }}"></script>
-    <script src="https://storage.googleapis.com/code.getmdl.io/1.1.0/material.min.js"></script>
-     <!-- Waves Effect Plugin Js -->
+    <script src="{{ asset('theme/js//material.min.js') }}"></script>
+    <!-- Waves Effect Plugin Js -->
     <script src="{{ asset('theme/plugins/node-waves/waves.js') }}"></script>
 
     <!-- Validation Plugin Js -->
     <script src="{{ asset('theme/plugins/jquery-validation/jquery.validate.js') }}"></script>
 
     <!-- Custom Js -->
-    <script src="{{-- asset('theme/js/admin.js') --}}"></script>
-    <script src="{{-- asset('theme/js/pages/examples/sign-in.js') --}}"></script>
+    <!-- <script src="{{-- asset('theme/js/admin.js') --}}"></script> -->
+    <!-- <script src="{{-- asset('theme/js/pages/examples/sign-in.js') --}}"></script> -->
     @yield('script')
 </body>
 </html>

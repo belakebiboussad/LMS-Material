@@ -1,7 +1,7 @@
   @extends('layouts.app')
   @section('content')
   <div class="main-content position-relative bg-gray-100  h-100">
-    <form method='POST' action="{{ route('users.store') }}">
+    <form method='POST' action="{{ route('users.store') }}" novalidate>
       @csrf
       <div class="card card-plain h-100">
         <div class="card-header pb-0 p-3">

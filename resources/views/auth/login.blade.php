@@ -1,11 +1,11 @@
 @extends('layouts.guest')
 
 @section('content')
-<div class="container">
+<div class="container login-page">
      <div class="login-box">
         <div class="logo">
             <a href="javascript:void(0);"><b>{{ config('app.name') }}</b></a>
-            <small>LMS</small>
+            <abbr title="Livestock managment system">LMS </abbr>
         </div>
         <div class="card">
             <div class="body">
@@ -18,7 +18,6 @@
                         </span>
                         <div class="form-line">
                             <x-input-label for="email" :value="__('auth.Email_Address')" /><br>
-                            <!-- <input type="text" class="form-control" id="login" name="login" value="{{ old('login') }}" placeholder="Username" autocomplete="username" required autofocus> -->
                             <input class="mdl-textfield__input @error('email') is-invalid @enderror" type="text" id="email" name="email" value="admin@example.com" required autocomplete="off" autofocus />
                             <x-input-error :message="$errors->get('email') class=" mt-2" />
                             <x-input-error :message="$errors->get('username') class=" mt-2" />
