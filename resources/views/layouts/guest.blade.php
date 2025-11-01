@@ -46,6 +46,7 @@
 
     <!-- Bootstrap Core Js -->
     <script src="{{ asset('theme/plugins/bootstrap/js/bootstrap.js') }}"></script>
+
     <script src="{{ asset('theme/js//material.min.js') }}"></script>
     <!-- Waves Effect Plugin Js -->
     <script src="{{ asset('theme/plugins/node-waves/waves.js') }}"></script>
