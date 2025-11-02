@@ -22,27 +22,27 @@
                 <thead>
                   <tr>
                     <th
-                      class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      class="text-uppercase text-secondary text-md font-weight-bolder opacity-7">
                       numéro</th>
                     <th
-                      class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      class="text-uppercase text-secondary text-md font-weight-bolder opacity-7">
                       nom</th>
                     <th
-                      class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                      class="text-uppercase text-secondary text-md font-weight-bolder opacity-7 ps-2">
                       Propriaitaire</th>
                     <th
-                      class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">
                       Wilaya
                     </th>
                     <th
-                      class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">
                       Longitude</th>
                     <th
-                      class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">
                       Latitude</th>
 
                     <th
-                      class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">
                       Date création</th>
 
                     <th class="text-secondary opacity-7"></th>
@@ -52,17 +52,17 @@
                   @foreach ($farms as $farm)
                   <tr>
                      <td>
-                      <div class="text-xs mb-0">
+                      <div class="text-sm mb-0">
                         <p> {{ $farm->recordNbr }}</p>
                       </div>
                     </td>
                     <td>
-                      <div class="text-xs mb-0">
+                      <div class="text-sm mb-0">
                         <p> {{ $farm->name }}</p>
                       </div>
                     </td>
                     <td>
-                      <p class="text-xs mb-0">
+                      <p class="text-sm mb-0">
                         {{ $farm->owner->name }}
                       </p>
                     </td>
@@ -72,15 +72,15 @@
                     </td>
                     <td class="align-middle text-center">
                       <span
-                        class="text-secondary text-xs">{{ $farm->x_lon }}</span>
+                        class="text-secondary text-sm">{{ $farm->x_lon }}</span>
                     </td>
                     <td class="align-middle text-center">
                       <span
-                        class="text-secondary text-xs">{{ $farm->y_lat }}</span>
+                        class="text-secondary text-sm">{{ $farm->y_lat }}</span>
                     </td>
                     <td class="align-middle text-center">
                       <span
-                        class="text-secondary text-xs">{{ $farm->created_at->format('H:i:s d/m/Y') }}</span>
+                        class="text-secondary text-sm">{{ $farm->created_at->format('H:i:s d/m/Y') }}</span>
                     </td>
 
                     <td class="align-middle">

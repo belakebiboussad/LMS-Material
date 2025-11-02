@@ -11,6 +11,13 @@ class Tag extends Model
    public $incrementing = false;
    //Numéro,Date délivrance,Numéro demande,Numéro exploitation,Type (Ovin, Bovin,Camel)
    protected $fillable = [
-    'Number',
+    'brand',
+    'mac_address',
+    'antenna_port',
+    'eid',
+    'tagVis_id',
+    'type',
+    'animalType_id',
+    'status',
    ];
 }

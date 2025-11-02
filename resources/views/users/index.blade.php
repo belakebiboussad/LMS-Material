@@ -21,23 +21,23 @@
                                 <thead>
                                     <tr>
                                         <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            class="text-uppercase text-secondary text-md font-weight-bolder opacity-7">
                                             nom</th>
                                         <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            class="text-uppercase text-secondary text-md font-weight-bolder opacity-7 ps-2">
                                             username</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">
                                             EMAIL</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">
                                             ROLE</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">
                                             Status
                                         </th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">
                                             Date création
                                         </th>
                                         <th class="text-secondary opacity-7"></th>
@@ -74,7 +74,7 @@
                                             @endif
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs">{{ $user->created_at->format('H:i:s d/m/Y') }}</span>
+                                            <span class="text-secondary text-sm">{{ $user->created_at->format('H:i:s d/m/Y') }}</span>
                                         </td>
                                         <td class="align-middle">
                                             <a rel="tooltip" class="btn btn-lg btn-success btn-link"
@@ -91,7 +91,6 @@
                                                 <div class="ripple-container"></div>
                                                 </button>
                                             </form>
-                                            
                                         </td>
                                     </tr>
                                     @endforeach
