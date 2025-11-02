@@ -24,5 +24,10 @@ class Animal extends Model
         'birthDate' => 'datetime',
         'dethDate' => 'datetime',
         'sexe' => Sexe::class, // Cast 'sexe' to Sexe enum
+        'is_castred' => 'boolean',
+        'is_seek' => 'boolean', 
+        'rfid_id' => 'string',
+        'animalType_id' => AnimalType::class,
     ];
+    
 }

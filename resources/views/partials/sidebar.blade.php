@@ -33,14 +33,17 @@
                     <span>Home</span>
                 </a>
             </li>
+            @if(Auth::user()->hasRole(['admin', 'vet']))
+            @if(Auth::user()->hasRole(['admin']))
             <li>
                 <a href="{{ route('users.index') }}">
                     <i class="material-icons">people</i>
                     <span>
                         {{ __('Users') }}
                     </span>
-                </a>
+                </a><div class=""></div>
             </li>
+            @endif
             <li>
                 <a href="#" class="menu-toggle">
                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAACNUlEQVR4nO2WvU4UURTHf402QGcDCzFKBIMxVHw8BFoLPgGCBfoCPAHqUkF4APmqxKWgk0cAJbTSAgEkcTe7mzHH/G9yMpmZnYExWvhPJjvn3HPvf87nXfiPfxADwDywCxwB13rsvQbMAf1lElaAFaAJRB2eNrAB3L8t6XPgSoc2gI/AC2AY6NJj79Naa8jW9jy7KelreRDJiwc59jwEtpz3lprCnraBFrDg9E+Ad8Chy/GhdLYW8FZ720U8r7jwBtK7wLIOS8uvrVVlG8hNfwn05iFec+ENpHvS/QTeA+MuxxPAB6Aumz1Hvi3dSp6WaalIQk6Xtfk78DRj7yhwIlvz3DCos5qKZCrmtdEqFOWtJU8DqfXqptJxJa8eOfK69oxIt6EzX2UR12Rk7YGKJtJvID1LyO+Z86gq3ZLkl5J3soiPZTQk+avkMcmbkj+JqKIDTbcumwnJB5KHJduES0Wo5p6Y3B2TK7G6MN2F5B43RJLkGxFfSi51JmeF2trHt8dO2eS1lOKyPkUfdOqKKg4bOOcdLpL9JOK5lHaqq1VQftcVdo/FHLdXlPLBv8PXVNPbwPftceLI43hTgDRKC/eqFu2WMdxxI7OuD5l0BUeO8EZ5iPtcNdugR7O3mnBJBHQ6OMpDjK6ycC0G8pDzJQ2HH3+COMzt8EdgWwM/DaUSG6bc0Gho4M8Aj2M5Lp3YcE99nPRnL6BIYUUUhPXvLPAZ+NYhx6USZ+GvEe8XIP1SJnFh/AIg2z1whiGA7AAAAABJRU5ErkJggg==" alt="rfid-sensor" width="18" height="18">
@@ -48,13 +51,15 @@
                 </a>
                 <ul class="ml-menu">
                 <li>
-                        <a href="{{ route('tags.index') }}">{{ __('Tags') }}</a>
-                    </li>    
+                    <a href="{{ route('tags.index') }}">{{ __('Tag list') }}</a>
+                </li>    
                 <li>
-                        <a href="{{ route('tags.create') }}">{{ __('Tags.create') }}</a>
-                    </li>
+                    <a href="{{ route('tags.create') }}">{{ __('Tag add') }}</a>
+                </li>
                     
                 </ul>
+            </li>
+            @endif
             <li class="header">ASSETS</li>
             <li>
                 <a href="{{ route('farms.index') }}">

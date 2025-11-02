@@ -27,21 +27,21 @@
           @endif
           <div class="row">
             <div class="mb-3 col-md-6">
-              <label class="form-label">{{ __('farme.recordNbr') }}</label>
+              <label class="form-label">{{ __('farm.recordNbr') }}</label>
               <input type="text" name="recordNbr" class="form-control border border-2 p-2 {{ $errors->has('recordNbr') ? ' is-invalid' : '' }}" value="{{ old('recordNbr') ?? '' }}" required>
               @error('recordNbr')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
-              <label class="form-label">{{ __('farme.name') }}</label>
+              <label class="form-label">{{ __('farm.name') }}</label>
               <input type="text" name="name" class="form-control border border-2 p-2" {{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ old('name') ?? '' }}" required>
               @error('name')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
-              <label class="form-label">{{ __('farme.owner') }}</label>
+              <label class="form-label">{{ __('farm.owner') }}</label>
               <select name="owner_id" class="form-control border border-2 p-2">
                 @foreach($owners as $key=>$owner)
                 <option value="{{ $key }}" class="border-2 p-2">
@@ -54,7 +54,7 @@
               @enderror
             </div>
             <div class="mb-3 col-md-6">
-              <label class="form-label">{{ __('farme.type') }}</label>
+              <label class="form-label">{{ __('farm.type') }}</label>
               <div class="col-md-12">
                 @foreach($animalTypes as $key=>$type)
                 <input type="checkbox" name="animal_types[]" id="{{ $type }}" class="filled-in chk-col-pink" value="{{ $key }}">
@@ -65,28 +65,28 @@
           </div>
           <div class="row">
             <div class="mb-3 col-md-6">
-              <label class="form-label">{{ __('farme.creationDt') }}</label>
+              <label class="form-label">{{ __('farm.creationDt') }}</label>
               <input type="date" name="creationDt" class="form-control border border-2 p-2" value="{{ old('creationDt') ?? '' }}">
               @error('creationDt')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
-              <label class="form-label">{{ __('farme.area') }}</label>
+              <label class="form-label">{{ __('farm.area') }}</label>
               <input type="number" step="0.01" min="0" name="area" class="form-control border border-2 p-2" value="{{ old('area') ?? '' }}">
               @error('area')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
-              <label class="form-label">{{ __('farme.address') }}</label>
+              <label class="form-label">{{ __('farm.address') }}</label>
               <input type="text" name="address" class="form-control border border-2 p-2" value="{{ old('address') ?? '' }}">
               @error('address')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-3">
-              <label class="form-label">{{ __('farme.wilaya') }}</label>
+              <label class="form-label">{{ __('farm.wilaya') }}</label>
               <select name="wilaya_id" class="form-control border border-2 p-2">
                 @foreach($wilayas as $key=>$wilaya)
                 <option value="{{ $key }}" class="border-2 p-2">
@@ -99,21 +99,21 @@
               @enderror
             </div>
             <div class="mb-3 col-md-3">
-              <label class="form-label">{{ __('farme.phone') }}</label>
-              <input type="tel" name="phone" pattern="[0][4-8][0-9]" placeholder="0xxxxxxxxx" class="form-control border border-2 p-2" value="{{ old('phone') ?? '' }}">
+              <label class="form-label">{{ __('farm.phone') }}</label>
+              <input type="tel" name="phone" pattern="^(0(?:5|6|7)\d{8})$" placeholder="0xxxxxxxxx" class="form-control border border-2 p-2" value="{{ old('phone') ?? '' }}">
               @error('phone')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
-              <label class="form-label">{{ __('farme.latitude') }}</label>
+              <label class="form-label">{{ __('farm.latitude') }}</label>
               <input type="text" name="y_lat" id="latitude"  class="form-control border border-2 p-2" value="{{ old('y_lat', request('y_lat')) }}" required>
               @error('y_lat')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
-              <label class="form-label">{{ __('farme.longitude') }}</label>
+              <label class="form-label">{{ __('farm.longitude') }}</label>
               <input type="text" name="x_lon" id="longitude" class="form-control border border-2 p-2" value="{{ old('x_lon', request('x_lon')) }}" required>
               @error('x_lon')
               <p class='text-danger inputerror'>{{ $message }} </p>
@@ -122,9 +122,9 @@
           </div>
           <div id="mapid"></div>
           <div class="row mb-0">
-            <div class="text-center mt-4">
-              <button type="submit" class="btn bg-gradient-dark">{{ __('app.save') }}</button>
-              <a href="{{ route('farms.index') }}" class="btn btn-link btn-warning">{{ __('app.cancel') }}</a>
+            <div class="col-md-12 text-end mt-4">
+              <button type="submit" class="btn bg-gradient-primary">{{ __('app.save') }}</button>
+              <a href="{{ route('farms.index') }}" class="btn btn-warning">{{ __('app.cancel') }}</a>
             </div>
           </div>
       </div>
@@ -135,7 +135,6 @@
   @endsection
   @push('scripts')
   <script>
-    //var mapCenter = [28.0289837, 1.6666663];
     
     var mapCenter = [{{ request('y_lat', config('leaflet.map_center_latitude')) }}, {{ request('x_lon', config('leaflet.map_center_longitude')) }}];
     var map = L.map('mapid').setView(mapCenter, {{ config('leaflet.zoom_level') }});

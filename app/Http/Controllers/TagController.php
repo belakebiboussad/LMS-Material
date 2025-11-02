@@ -15,9 +15,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags= Tag::all();
+        $tags= Tag::whereDoesntHave('owner')->get();
         return view('tags.index',compact('tags'));
-
     }
 
     /**
@@ -26,8 +25,7 @@ class TagController extends Controller
     public function create()
     {
         $animalTypes = AnimalType::all();
-        $types = TagType::cases();
-        return view('tags.create',compact('animalTypes','types'));
+        return view('tags.create',compact('animalTypes'));
     }
 
     /**
@@ -35,7 +33,14 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'eid' => 'required|string|unique:tags,eid',
+            'type' => 'required|in:'.implode(',', array_map(fn($case) => $case->value, TagType::cases())),
+            'animalType_id' => 'required|exists:animal_types,id',
+            'vis_id' => 'required|string|unique:tags,vis_id',
+        ]);
+        $tag = Tag::create($validated);
+        return redirect()->route('tags.index')->with('success', __('tag.created'));
     }
 
     /**

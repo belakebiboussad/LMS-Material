@@ -3,7 +3,15 @@
     "User": "Utilisateur",
     "farmer": "Eleveur",
     "guardian": "Gardien",
-    "veterinarian": "vetirinaire",
+    "vet": "vetirinaire",
     "User add": "Ajouter un Utilisateur",
-    "User list": "Liste des Utilisateur"
+    "User list": "Liste des Utilisateurs",
+    "Save": "Enregistrer",
+    "Tag add": "Ajouter un Tag",
+    "Tag list": "Liste des Tags",
+    "creation_at" : "Date création",
+    "type" : "Type",
+    "status" : "Statut"     
+
+
 }

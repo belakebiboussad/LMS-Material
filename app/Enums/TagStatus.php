@@ -2,9 +2,16 @@
 
 namespace App\Enums;
 
-enum TagStatus
+enum TagStatus :string
 {
-    public const ACTIVE ="Active";
-    public const INACTIVE="Inactive";
-    public const LOST ="Perdue";
+    case ACTIVE ="Active";
+    case INACTIVE="Inactive";
+    case LOST ="Perdue";
+     public function label(){
+        return match($this) {
+            self::ACTIVE =>'Active',
+            self::INACTIVE =>'Inactive',
+            self::LOST =>'Perdue',
+         };
+    }
 }

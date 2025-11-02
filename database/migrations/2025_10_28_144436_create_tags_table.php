@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('brand');
+            $table->string('brand')->nullable();
             $table->string('mac_address')->nullable();
             $table->integer('antenna_port')->nullable();
             $table->string('eid',64)->unique()->nullable(false);
-            $table->string('tagVis_id')->nullable();
+            $table->string('vis_id',20)->nullable();
             $table->string('type')->default(TagType::BIRTH) ;//naissance remplacement
             $table->unsignedTinyInteger('animalType_id');
             $table->bigInteger('owner_id')->nullable();

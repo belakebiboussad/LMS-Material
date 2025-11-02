@@ -23,7 +23,7 @@
                   <tr>
                     <th
                       class="text-uppercase text-secondary text-md font-weight-bolder opacity-7">
-                      numéro</th>
+                      {{ __('farme.recordNbr') }}</th>
                     <th
                       class="text-uppercase text-secondary text-md font-weight-bolder opacity-7">
                       nom</th>

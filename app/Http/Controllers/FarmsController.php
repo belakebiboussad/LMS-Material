@@ -58,7 +58,7 @@ class FarmsController extends Controller
             }
         }
 
-        return redirect()->route('assets.farms.index')->with('success', 'Farm created successfully.');
+        return redirect()->route('farms.index')->with('success', 'Farm created successfully.');
     }
     public function show(Farm $farm)
     {

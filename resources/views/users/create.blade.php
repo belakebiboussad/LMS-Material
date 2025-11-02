@@ -1,7 +1,7 @@
   @extends('layouts.app')
   @section('content')
   <div class="main-content position-relative bg-gray-100  h-100">
-    <form method='POST' action="{{ route('users.store') }}" novalidate>
+    <form method='POST' action="{{ route('users.store') }}">
       @csrf
       <div class="card card-plain h-100">
         <div class="card-header pb-0 p-3">
@@ -103,8 +103,11 @@
             </div>
           </div>
           <div class="row mb-0">
-            <div class="text-center mt-4">
+            <!-- <div class="text-center mt-4">
               <button type="submit" class="btn bg-gradient-dark">Enregistrer</button>
+            </div> -->
+             <div class="col-md-12 text-end">
+              <button type="submit" class="btn bg-gradient-primary">{{ __('Save') }}</button>
             </div>
           </div>
     </form>

@@ -2,15 +2,14 @@
 
 namespace App\Enums;
 
-enum TagType
+enum TagType: string
 {
-    public const BIRTH="naissance";
-    public const REMPLACEMENT="remplacement";
-    public static function values(): array
-    {
-        return [
-            self::BIRTH,
-            self::REMPLACEMENT,
-        ];
+    case BIRTH="naissance";
+    case REMPLACEMENT="remplacement";
+    public function label(){
+        return match($this) {
+             self::BIRTH =>'Naissance',
+             self::REMPLACEMENT =>'Remplacement',
+         };
     }
 }

@@ -1,4 +1,6 @@
 @extends('layouts.app')
+ @section('title', __('titles.users.index'))
+{{ __('Dashboard') }}
 @section('content')
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
     <div class="container-fluid py-4">
@@ -83,14 +85,32 @@
                                                 <i class="material-icons">edit</i>
                                                 <div class="ripple-container"></div>
                                             </a>
-                                            <form action="{{ route('users.destroy',$user) }}" method="POST" style="display:inline;">
+                                            <a rel="tooltip" class="btn btn-lg btn-info btn-link"
+                                                href="{{ route('users.show',$user) }}" data-original-title=""
+                                                title="">
+                                                <i class="material-icons">visibility</i>
+                                                <div class="ripple-container"></div>
+                                            </a>
+                                            <a href="{{ route('users.destroy', $user->id) }}" 
+                                                class="btn btn-lg btn-danger  btn-link font-weight-bold text-md"
+                                                data-toggle="tooltip" data-original-title="Delete user"
+                                                onclick="event.preventDefault(); if(confirm('{{ __('Are you sure you want to delete this user?') }}')){ document.getElementById('delete-form-{{ $user->id }}').submit(); }"
+                                                {{ Auth::id() === $user->id ? 'disabled' :''}} 
+                                                >
+                                                <i class="material-icons">close</i>
+                                            </a>
+                                             <form id="delete-form-{{ $user->id }}" action="{{ route('tags.destroy', $user->id) }}" method="POST" style="display: none;">
+                                                @csrf
+                                                @method('DELETE') 
+                                            </form>
+                                            <!-- <form action="{{ route('users.destroy',$user) }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-lg btn-danger btn-link" {{ Auth::id() === $user->id ? 'disabled' :''}}>
                                                     <i class="material-icons">close</i>
                                                 <div class="ripple-container"></div>
                                                 </button>
-                                            </form>
+                                            </form> -->
                                         </td>
                                     </tr>
                                     @endforeach

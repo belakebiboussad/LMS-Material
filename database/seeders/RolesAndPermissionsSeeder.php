@@ -14,9 +14,9 @@ class RolesAndPermissionsSeeder extends Seeder
      */
     public function run(): void
     {
-        Role::create(['name' => 'farmer']);
-        Role::create(['name' => 'guardian']);
-        Role::create(['name' => 'veterinarian']);
+        // Role::create(['name' => 'farmer']);
+        // Role::create(['name' => 'guardian']);
+        // Role::create(['name' => 'vet']);
         $permissionNames = [
             'animals.create',
             'animals.update',
@@ -53,7 +53,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'treatments.view',
             'treatments.delete',
         ];
-        $roleNames = ['veterinarian']; // Example role names
+        $roleNames = ['vet']; // Example role names
         $permissions = Permission::whereIn('name', $permissionNames)->get();
         foreach ($roleNames as $roleName) {
             $role = Role::findByName($roleName);
