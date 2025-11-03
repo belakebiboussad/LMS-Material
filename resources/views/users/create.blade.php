@@ -19,42 +19,56 @@
           @endif
           <div class="row">
             <div class="mb-3 col-md-6">
-              <label class="form-label">Nom</label>
-              <input type="text" name="name" class="form-control border border-2 p-2" value='{{ old('name') ? : '' }}' required>
+              <label class="form-label">{{ __('user.prof_id') }}</label>
+              <input type="text" name="prof_id" class="form-control border border-2 p-2" value="{{ old('prof_id') ? : '' }}" required>
+              @error('prof_id')
+              <p class='text-danger inputerror'>{{ $message }} </p>
+              @enderror
+            </div>
+            <div class="mb-3 col-md-6">
+              <label class="form-label"><abbr title="">{{ __('user.NIN') }}</abbr></label>
+              <input type="text" name="NIN" class="form-control border border-2 p-2" value="{{ old('NIN') ? : '' }}" required>
+              @error('NIN')
+              <p class='text-danger inputerror'>{{ $message }} </p>
+              @enderror
+            </div>
+            <div class="mb-3 col-md-6">
+              <label class="form-label">{{ __('user.name') }}</label>
+              <input type="text" name="name" class="form-control border border-2 p-2" value="{{ old('name') ? : '' }}" required>
               @error('name')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
-              <label class="form-label">Prenom</label>
-              <input type="text" name="lastName" class="form-control border border-2 p-2" value='{{ old('username') ? : '' }}' required>
+              <label class="form-label">{{ __('user.lastName') }}</label>
+              <input type="text" name="lastName" class="form-control border border-2 p-2" value="{{ old('username') ? : '' }}" required>
               @error('lastName')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
-              <label class="form-label">Né(e) le</label>
-              <input type="date" name="birthDate" class="form-control border border-2 p-2" value='{{ old('birthDate') ? : '' }}'>
+              <label class="form-label">{{ __('user.birthDate') }}</label>
+              <input type="date" name="birthDate" class="form-control border border-2 p-2" value="{{ old('birthDate') ? : '' }}">
               @error('birthDate')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
-              <label class="form-label">Email</label>
-              <input type="email" name="email" class="form-control border border-2 p-2" value='{{ old('email') ?: '' }}'>
+              <label class="form-label">{{ __('user.email') }}</label>
+              <input type="email" name="email" class="form-control border border-2 p-2" value="{{ old('email') ?: '' }}">
               @error('email')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
-              <label class="form-label">Addresse</label>
-              <input type="text" name="address" class="form-control border border-2 p-2" value='{{ old('address') ?: '' }}'>
+              <label class="form-label">{{ __('user.address') }}</label>
+              <input type="text" name="address" class="form-control border border-2 p-2" value="{{ old('address') ?: '' }}">
               @error('address')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
-              <label class="form-label">Commune</label>
+              <label class="form-label">{{ __('user.commune_id') }}</label>
               <select type="text" name="commune_id" class="form-control border border-2 p-2">
                 @foreach($cities as $city)
                 <option value="{{ $city->id }}" class="border-2 p-2">{{ $city->name }}</option>
@@ -78,14 +92,14 @@
         <div class="card-body p-3">
           <div class="row">
             <div class="mb-3 col-md-4">
-              <label class="form-label">Username</label>
+              <label class="form-label">{{ __('user.username') }}</label>
               <input type="text" name="username" class="form-control border border-2 p-2" value='{{ old('username') ?: '' }}'>
               @error('username')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-4">
-              <label for="role" class="ms-0">Role</label>
+              <label for="role" class="ms-0">{{ __('user.role') }}</label>
               <select class="form-control border border-2 p-2" title="Role" name="role">
                 @foreach($roles as $role)
                 <option value="{{ $role->name }}" class="border-2 p-2">
@@ -95,7 +109,7 @@
               </select>
             </div>
             <div class="mb-3 col-md-4">
-              <label class="form-label">Mot de passe</label>
+              <label class="form-label">{{ __('user.password') }}</label>
               <input type="password" name="password" class="form-control border border-2 p-2" value=''>
               @error('password')
               <p class='text-danger inputerror'>{{ $message }} </p>
@@ -103,10 +117,7 @@
             </div>
           </div>
           <div class="row mb-0">
-            <!-- <div class="text-center mt-4">
-              <button type="submit" class="btn bg-gradient-dark">Enregistrer</button>
-            </div> -->
-             <div class="col-md-12 text-end">
+             <div class="col-md-12 text-center">
               <button type="submit" class="btn bg-gradient-primary">{{ __('Save') }}</button>
             </div>
           </div>

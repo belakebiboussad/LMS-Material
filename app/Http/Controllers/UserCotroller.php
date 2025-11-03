@@ -30,8 +30,9 @@ class UserCotroller extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'prof_id' => 'required|string|size:15|unique:users,prof_id',
+            'NIN' => 'required|string|size:20|unique:users,NIN',
             'name' => 'required|string|max:255',
-
             'lastName' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email',
             'commune_id' => 'required|string|max:255',
@@ -55,14 +56,14 @@ class UserCotroller extends Controller
     }
     public function update(UpdateUserRequest  $request, User $user)
     {
-        if ($request->input('role') === 'admin') {
-            $adminUsers = User::whereHas('roles', function ($query) {
-                $query->where('name', 'admin');
-            })->get();
-            if ($adminUsers->isNotEmpty()) {
-                return back()->withErrors(['status' => 'Only one admin user is allowed.']);
-            }
-        }
+        // if ($request->input('role') === 'admin') {
+        //     $adminUsers = User::whereHas('roles', function ($query) {
+        //         $query->where('name', 'admin');
+        //     })->get();
+        //     if ($adminUsers->isNotEmpty()) {
+        //         return back()->withErrors(['status' => 'Only one admin user is allowed.']);
+        //     }
+        // }
         $user->update($request->all());
         $user->assignRole($request->input('role'));
         return redirect()->route('users.index')->with('success', 'utilisateur mis à jour avec succès');
