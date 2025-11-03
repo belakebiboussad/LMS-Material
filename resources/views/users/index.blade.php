@@ -49,12 +49,9 @@
                                     @foreach($users as $user)
                                     <tr>
                                         <td>
-
                                             <div class="align-middle text-center">
-
                                                 <span class="text-secondary">{{ $user->name }}</span>
                                             </div>
-
                                         </td>
                                         <td>
                                             <div class="align-middle text-center">

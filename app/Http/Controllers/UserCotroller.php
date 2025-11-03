@@ -56,14 +56,14 @@ class UserCotroller extends Controller
     }
     public function update(UpdateUserRequest  $request, User $user)
     {
-        // if ($request->input('role') === 'admin') {
-        //     $adminUsers = User::whereHas('roles', function ($query) {
-        //         $query->where('name', 'admin');
-        //     })->get();
-        //     if ($adminUsers->isNotEmpty()) {
-        //         return back()->withErrors(['status' => 'Only one admin user is allowed.']);
-        //     }
-        // }
+        if ($request->input('role') === 'admin') {
+            $adminUsers = User::whereHas('roles', function ($query) {
+                $query->where('name', 'admin');
+            })->get();
+
+            if (! $adminUsers->contains($user) || ($adminUsers->count() > 1))
+                return back()->withErrors(['status' => 'Only one admin user is allowed.']);
+        }
         $user->update($request->all());
         $user->assignRole($request->input('role'));
         return redirect()->route('users.index')->with('success', 'utilisateur mis à jour avec succès');

@@ -153,9 +153,22 @@
 @section('js')
 <script>
 function  fct() {
-    //alert($("#owner_id").val());
-    var boxes = $('input[name=tags]:checked');
-    alert(boxes.length);
+    var tagsIDs = $('input[name=tags]:checked');
+    $.ajax({
+    type: 'POST',
+    url: "{{ route('tags.assign') }}",
+   
+    data: {
+        "ids": tagsIDs,
+        "owner_id": $("#owner_id").val()
+      },
+    traditional: true, // Crucial for sending arrays as individual parameters
+    success: function(response) {
+        console.log('Success:', response);
+    },
+    error: function(xhr, status, error) {
+        console.error('Error:', error);
+    }
 
    $('#myModal').modal('hide');
 

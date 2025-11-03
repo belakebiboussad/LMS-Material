@@ -25,8 +25,9 @@ require __DIR__ . '/auth.php';
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth','role:admin'])->group(function () {
     Route::resource('users', UserCotroller::class);
+    Route::post('tags/assign', [TagController::class, 'assign'])->name('tags.assign');
 });
 Route::middleware('auth')->group(function () {
     Route::resource('farms', FarmsController::class);

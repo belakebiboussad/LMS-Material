@@ -102,7 +102,7 @@
             </div>
             <div class="mb-3 col-md-6">
               <label for="role" class="ms-0">{{ __('user.role') }}</label>
-              <select class="form-control border border-2 p-2" title="Role" name="role">
+              <select class="form-control border border-2 p-2" title="Role" name="role" {{ ($user->hasRole('admin')) ? 'disabled' : '' }}>
                 @foreach($roles as $key=>$role)
                 <option value="{{ $role->name }}" @if($user->roles->pluck('name')->contains($role->name)) selected @endif>
                   {{ __(  $role->name) }}

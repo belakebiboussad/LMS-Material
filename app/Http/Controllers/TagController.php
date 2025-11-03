@@ -67,7 +67,10 @@ class TagController extends Controller
     {
         //
     }
-
+    public function assign(Request $request)
+    {
+        return $request->owner_id;
+    }
     /**
      * Remove the specified resource from storage.
      */
