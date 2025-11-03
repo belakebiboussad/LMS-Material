@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\TagStatus;
+use App\Models\User;
 use App\Enums\TagType;
 use App\Models\AnimalType;
 use App\Models\Tag;
@@ -16,7 +16,8 @@ class TagController extends Controller
     public function index()
     {
         $tags= Tag::whereDoesntHave('owner')->get();
-        return view('tags.index',compact('tags'));
+        $owners = User::role(['farmer', 'guardian'])->get();
+        return view('tags.index',compact('tags','owners'));
     }
 
     /**

@@ -79,38 +79,28 @@
                                             <span class="text-secondary text-sm">{{ $user->created_at->format('H:i:s d/m/Y') }}</span>
                                         </td>
                                         <td class="align-middle">
-                                            <a rel="tooltip" class="btn btn-lg btn-success btn-link"
-                                                href="{{ route('users.edit',$user) }}" data-original-title=""
-                                                title="">
-                                                <i class="material-icons">edit</i>
-                                                <div class="ripple-container"></div>
-                                            </a>
-                                            <a rel="tooltip" class="btn btn-lg btn-info btn-link"
+                                              <a rel="tooltip" class="btn btn-lg btn-info btn-link"
                                                 href="{{ route('users.show',$user) }}" data-original-title=""
                                                 title="">
                                                 <i class="material-icons">visibility</i>
                                                 <div class="ripple-container"></div>
                                             </a>
+                                            <a rel="tooltip" class="btn btn-lg btn-success btn-link"
+                                                href="{{ route('users.edit',$user) }}" data-original-title=""
+                                                title="">
+                                                <i class="material-icons">edit</i>                            
+                                            </a>
                                             <a href="{{ route('users.destroy', $user->id) }}" 
-                                                class="btn btn-lg btn-danger  btn-link font-weight-bold text-md"
+                                                class="btn btn-lg btn-danger btn-link font-weight-bold text-md"
                                                 data-toggle="tooltip" data-original-title="Delete user"
-                                                onclick="event.preventDefault(); if(confirm('{{ __('Are you sure you want to delete this user?') }}')){ document.getElementById('delete-form-{{ $user->id }}').submit(); }"
-                                                {{ Auth::id() === $user->id ? 'disabled' :''}} 
-                                                >
-                                                <i class="material-icons">close</i>
+                                                onclick="event.preventDefault(); if(confirm('{{ ('Are you sure you want to delete this user?') }}')){ document.getElementById('delete-form-{{ $user->id }}').submit(); }"
+                                                {{ Auth::id() === $user->id ? 'disabled' :''}} >
+                                                <i class="material-icons">delete</i>
                                             </a>
                                              <form id="delete-form-{{ $user->id }}" action="{{ route('tags.destroy', $user->id) }}" method="POST" style="display: none;">
                                                 @csrf
                                                 @method('DELETE') 
                                             </form>
-                                            <!-- <form action="{{ route('users.destroy',$user) }}" method="POST" style="display:inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-lg btn-danger btn-link" {{ Auth::id() === $user->id ? 'disabled' :''}}>
-                                                    <i class="material-icons">close</i>
-                                                <div class="ripple-container"></div>
-                                                </button>
-                                            </form> -->
                                         </td>
                                     </tr>
                                     @endforeach

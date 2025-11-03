@@ -1,13 +1,14 @@
 <?php
 return [
   // Labels
-  'eid'          => 'EID',
+  'eid'           => 'EID',
   'type'          => 'Type',
   'animalType_id' => "Type d'animal",
   'brand'         => 'Marque',
-  'mac_address'  => 'Adresse MAC',
-  'antenna_port' => "Port de l'antenne",
-  'vis_id'       => 'ID Visuel',
+  'mac_address'   => 'Adresse MAC',
+  'antenna_port'  => "Port de l'antenne",
+  'vis_id'        => 'ID Visuel',
+  'owner_id'      => 'Propriétaire', 
   // Types
   'birth'        => 'Naissance',
   'replacement'  => 'Remplacement',

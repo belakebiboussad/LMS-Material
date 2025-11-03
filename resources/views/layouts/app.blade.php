@@ -62,6 +62,7 @@
     </section>
 
     @include('partials.script')
+     @yield('js')
     @stack('scripts')
 </body>
 

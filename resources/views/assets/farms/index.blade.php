@@ -88,13 +88,12 @@
                         href="{{ route('farms.edit',$farm) }}" data-original-title=""
                         title="">
                         <i class="material-icons">edit</i>
-                        <div class="ripple-container"></div>
                       </a>
                       <form action="{{ route('farms.destroy',$farm) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-link">
-                          <i class="material-icons" style="font-size: 14px;">close</i>
+                          <i class="material-icons" style="font-size: 14px;">delete</i>
                         </button>
                       </form>
                       <div class="ripple-container"></div>

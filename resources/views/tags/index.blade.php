@@ -11,8 +11,8 @@
             </div>
           </div>
           <div class="me-3 my-3 text-end">
-            <button class="btn btn-primary mb-0" onclick="window.print();"><i
-                class="material-icons">receipt_long</i>&nbsp;&nbsp;
+            <button type="button" id="attributionBtn" class="btn btn-primary mb-0" data-toggle="modal" data-target="#myModal">
+                <i class="material-icons">receipt_long</i>&nbsp;&nbsp;
               {{ __('Associe') }}
             </button>
             <a class="btn bg-gradient-dark mb-0" href="{{ route('tags.create') }}"><i
@@ -56,7 +56,7 @@
                       <div class="mt-2 d-flex">
                         <h6 class="mb-0"></h6>
                         <div class="form-check form-switch ps-0 ms-auto my-auto">
-                          <input class="form-check-input mt-0 ms-auto" type="checkbox" onclick="">
+                          <input id="tag-{{ $tag->id }}" name="tags" class="form-check-input mt-0 ms-auto" type="checkbox" onclick="">
                         </div>
                        
                       </div>
@@ -93,16 +93,16 @@
                     </td>
                     <td class="align-middle">
                       <a href="{{ route('tags.show', $tag->id) }}"
-                        class="text-secondary font-weight-bold text-md"
+                        class="btn btn-lg btn-info btn-link"
                         data-toggle="tooltip" data-original-title="Edit tag">
                         <i class="material-icons">visibility</i>
                       </a>
                       <a href="{{ route('tags.edit', $tag->id) }}"
-                        class="text-secondary font-weight-bold text-md ms-3"
+                        class="btn btn-lg btn-success btn-link"
                         data-toggle="tooltip" data-original-title="Edit tag"><i class="material-icons">edit</i>
                       </a>
                       <a href="{{ route('tags.destroy', $tag->id) }}"
-                        class="text-danger font-weight-bold text-md ms-3"
+                        class="btn btn-lg btn-danger btn-link"
                         data-toggle="tooltip" data-original-title="Delete tag"
                         onclick="event.preventDefault(); if(confirm('{{ __('Are you sure you want to delete this tag?') }}')){ document.getElementById('delete-form-{{ $tag->id }}').submit(); }">
                         <i class="material-icons">delete</i>
@@ -122,5 +122,57 @@
       </div>
     </div>
   </div>
+  <x-modal id="myModal" name="myModal">
+    <x-slot name="header">
+        Attribuer des Tags RFID
+    </x-slot>
+    <p>This is the main content of the modal body.</p>
+    
+    <div class="row">
+        <div class="mb-3 col-md-12">
+            <label class="form-label">{{ __('tag.owner_id') }}</label>
+            <select id="owner_id" class="form-control border border-2 p-2 {{ $errors->has('owner_id') ? ' is-invalid' : '' }}" required>
+                <option value="">{{ __('Select owner') }}</option>
+                @foreach($owners as $owner)
+                <option value="{{ $owner->id }}" {{ old('owner_id') == $owner->id ? 'selected' : '' }}>{{ $owner->name }}</option>
+                @endforeach
+            </select>
+           
+        </div>
+    </div>
+    <x-slot name="footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">{{ __('Cancel') }}</button>
+        <button type="submit" class="btn bg-gradient-primary"  onclick="fct();">
+            <i class="material-icons">save</i>
+            {{ __('Save') }}</button>
+    </x-slot>
+</x-modal>
 </main>
+@endsection
+
+@section('js')
+<script>
+function  fct() {
+    //alert($("#owner_id").val());
+    var boxes = $('input[name=tags]:checked');
+    alert(boxes.length);
+
+   $('#myModal').modal('hide');
+
+};
+// Shorthand syntax
+$(function() {
+  $("#attributionBtn").prop("disabled", true);
+  $('input[type="checkbox"]').on('change', function() {
+  if ($(this).is(':checked')) {
+    $("#attributionBtn").prop("disabled", false);
+  } else {
+    var boxes = $('input[name=tags]:checked');
+    if(boxes.length == 0) 
+        $("#attributionBtn").prop("disabled", true);
+  }
+});
+});
+</script>
+
 @endsection
