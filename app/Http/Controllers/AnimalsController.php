@@ -17,11 +17,12 @@ class AnimalsController extends Controller
      public function create()
     {
         $animalTyps = AnimalType::pluck('name', 'id');
-        $farms = Farm::pluck('name', 'id');
+        $farms = auth()->user()->farms()->pluck('name', 'id');
+        $animalTypes = AnimalType::all()->pluck('name', 'id');
+        return view('assets.animals.create', compact('animalTypes', 'farms'));
 
-          
         // $wilayas = Wilaya::all()->pluck('name', 'id');
-        // $animalTypes = AnimalType::all()->pluck('name', 'id');
-        // return view('assets.farms.create', compact('owners', 'wilayas', 'animalTypes'));
+        
+        //  return view('assets.farms.create', compact('owners', 'wilayas', 'animalTypes'));
     }
 }

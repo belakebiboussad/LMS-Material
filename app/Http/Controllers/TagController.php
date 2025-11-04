@@ -7,6 +7,8 @@ use App\Enums\TagType;
 use App\Models\AnimalType;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Validation\Rule;
 
 class TagController extends Controller
 {
@@ -69,7 +71,13 @@ class TagController extends Controller
     }
     public function assign(Request $request)
     {
-        return $request->owner_id;
+        $request->validate([
+            'owner_id' => 'required|exists:users,id',
+            'tagIds' => 'required|array',
+            'tagIds.*' => 'exists:tags,id',
+        ]);
+        Tag::whereIn('id', $request->tagIds)->update(['owner_id' => $request->owner_id]);
+        return response()->json(['message' => __('tag.assigned')], 200);
     }
     /**
      * Remove the specified resource from storage.

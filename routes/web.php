@@ -32,6 +32,7 @@ Route::middleware(['auth','role:admin'])->group(function () {
 Route::middleware('auth')->group(function () {
     Route::resource('farms', FarmsController::class);
 });
+Route::get('tags/assign', [TagController::class, 'assign'])->name('tags.assign');
 Route::middleware('auth')->group(function () {
     Route::resource('tags', TagController::class);
 });

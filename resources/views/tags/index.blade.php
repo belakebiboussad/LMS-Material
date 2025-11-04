@@ -12,7 +12,7 @@
           </div>
           <div class="me-3 my-3 text-end">
             <button type="button" id="attributionBtn" class="btn btn-primary mb-0" data-toggle="modal" data-target="#myModal">
-                <i class="material-icons">receipt_long</i>&nbsp;&nbsp;
+              <i class="material-icons">receipt_long</i>&nbsp;&nbsp;
               {{ __('Associe') }}
             </button>
             <a class="btn bg-gradient-dark mb-0" href="{{ route('tags.create') }}"><i
@@ -51,14 +51,14 @@
                 </thead>
                 <tbody>
                   @foreach($tags as $tag)
-                  <tr>
+                  <tr id="{{ $tag->id }}">
                     <td>
                       <div class="mt-2 d-flex">
                         <h6 class="mb-0"></h6>
                         <div class="form-check form-switch ps-0 ms-auto my-auto">
-                          <input id="tag-{{ $tag->id }}" name="tags" class="form-check-input mt-0 ms-auto" type="checkbox" onclick="">
+                          <input id="tag-{{ $tag->id }}" name="tags[]" class="form-check-input mt-0 ms-auto" type="checkbox" value="{{ $tag->id }}" aria-label="Select tag">
                         </div>
-                       
+
                       </div>
                     </td>
                     <td>
@@ -124,68 +124,77 @@
   </div>
   <x-modal id="myModal" name="myModal">
     <x-slot name="header">
-        Attribuer des Tags RFID
+      Attribuer des Tags RFID
     </x-slot>
     <p>This is the main content of the modal body.</p>
-    
+
     <div class="row">
-        <div class="mb-3 col-md-12">
-            <label class="form-label">{{ __('tag.owner_id') }}</label>
-            <select id="owner_id" class="form-control border border-2 p-2 {{ $errors->has('owner_id') ? ' is-invalid' : '' }}" required>
-                <option value="">{{ __('Select owner') }}</option>
-                @foreach($owners as $owner)
-                <option value="{{ $owner->id }}" {{ old('owner_id') == $owner->id ? 'selected' : '' }}>{{ $owner->name }}</option>
-                @endforeach
-            </select>
-           
-        </div>
+      <div class="mb-3 col-md-12">
+        <label class="form-label">{{ __('tag.owner_id') }}</label>
+        <select id="owner_id" class="form-control border border-2 p-2 {{ $errors->has('owner_id') ? ' is-invalid' : '' }}" required>
+          <option value="">{{ __('Select owner') }}</option>
+          @foreach($owners as $owner)
+          <option value="{{ $owner->id }}" {{ old('owner_id') == $owner->id ? 'selected' : '' }}>{{ $owner->name }}</option>
+          @endforeach
+        </select>
+
+      </div>
     </div>
     <x-slot name="footer">
-        <button type="button" class="btn btn-warning" data-dismiss="modal">{{ __('Cancel') }}</button>
-        <button type="submit" class="btn bg-gradient-primary"  onclick="fct();">
-            <i class="material-icons">save</i>
-            {{ __('Save') }}</button>
+      <button type="button" class="btn btn-warning" data-dismiss="modal">{{ __('Cancel') }}</button>
+      <button type="submit" class="btn bg-gradient-primary" onclick="fct();">
+        <i class="material-icons">save</i>
+        {{ __('Save') }}</button>
     </x-slot>
-</x-modal>
+  </x-modal>
 </main>
 @endsection
 
 @section('js')
 <script>
-function  fct() {
-    var tagsIDs = $('input[name=tags]:checked');
-    $.ajax({
-    type: 'POST',
-    url: "{{ route('tags.assign') }}",
-   
-    data: {
-        "ids": tagsIDs,
-        "owner_id": $("#owner_id").val()
-      },
-    traditional: true, // Crucial for sending arrays as individual parameters
-    success: function(response) {
-        console.log('Success:', response);
-    },
-    error: function(xhr, status, error) {
-        console.error('Error:', error);
+  function fct() {
+    var selectedIds = [];
+    $('input[name="tags[]"]:checked').each(function() {
+      selectedIds.push($(this).val());
+    });
+    if (selectedIds.length > 0) {
+      $.ajax({
+        url: "{{ route('tags.assign') }}", // Replace with your actual route name
+        type: 'POST', // Or 'GET', depending on your route
+        dataType: 'json', // Expecting JSON response
+        data: {
+          tagIds: selectedIds, // Send the array as a parameter
+          owner_id: $("#owner_id").val(),
+          _token: '{{ csrf_token() }}' // Include CSRF token for POST requests
+        },
+        success: function(response) {
+            $.each(selectedIds, function(index, value) {
+                $('#' + value).remove();
+            });
+          $('#myModal').modal('hide');
+        },
+        error: function(xhr, status, error) {
+          console.error('Error:', error);
+        }
+      });
+    } else {
+      console.log('No IDs selected.');
     }
-
-   $('#myModal').modal('hide');
-
-};
-// Shorthand syntax
-$(function() {
-  $("#attributionBtn").prop("disabled", true);
-  $('input[type="checkbox"]').on('change', function() {
-  if ($(this).is(':checked')) {
-    $("#attributionBtn").prop("disabled", false);
-  } else {
-    var boxes = $('input[name=tags]:checked');
-    if(boxes.length == 0) 
-        $("#attributionBtn").prop("disabled", true);
   }
-});
-});
+    
+  // Shorthand syntax
+  $(function() {
+    $("#attributionBtn").prop("disabled", true);
+    $('input[type="checkbox"]').on('change', function() {
+      if ($(this).is(':checked')) {
+        $("#attributionBtn").prop("disabled", false);
+      } else {
+        var boxes = $('input[name=tags]:checked');
+        if (boxes.length == 0)
+          $("#attributionBtn").prop("disabled", true);
+      }
+    });
+  });
 </script>
 
 @endsection

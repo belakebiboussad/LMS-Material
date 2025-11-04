@@ -7,6 +7,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>@yield('title') | {{ config('app.name') }}</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/favicon/favicon.ico') }}">
+     <meta name="csrf-token" content="{{ csrf_token() }}">
     @include('partials.head')
     @yield('css')
 </head>

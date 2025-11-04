@@ -19,21 +19,15 @@ class FarmsController extends Controller
     }
     public function create()
     {
-        $owners = User::whereHas('roles', function ($query) {
-            $query->whereIn('name', ['farmer', 'guardian']);
-        })->pluck('name', 'id');
         $wilayas = Wilaya::all()->pluck('name', 'id');
         $animalTypes = AnimalType::all()->pluck('name', 'id');
-        return view('assets.farms.create', compact('owners', 'wilayas', 'animalTypes'));
+        return view('assets.farms.create', compact('wilayas', 'animalTypes'));
     }
     public function edit(Farm $farm)
     {
-        $owners = User::whereHas('roles', function ($query) {
-            $query->whereIn('name', ['farmer', 'guardian']);
-        })->pluck('name', 'id');
         $wilayas = Wilaya::all()->pluck('name', 'id');
         $animalTypes = AnimalType::all()->pluck('name', 'id');
-        return view('assets.farms.edit', compact('farm', 'owners', 'wilayas', 'animalTypes'));
+        return view('assets.farms.edit', compact('farm','wilayas', 'animalTypes'));
     }
     public function store(FarmRequest $request)
     {

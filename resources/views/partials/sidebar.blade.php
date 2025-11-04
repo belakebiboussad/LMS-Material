@@ -60,6 +60,7 @@
                 </ul>
             </li>
             @endif
+            @if(Auth::user()->hasRole(['farmer', 'guardien']))
             <li class="header">ASSETS</li>
             <li>
                 <a href="{{ route('farms.index') }}">
@@ -75,6 +76,7 @@
                     <span>Animals</span>
                 </a>
             </li>
+            @endif
             <li class="header">LABELS</li>
         </ul>
     </div>

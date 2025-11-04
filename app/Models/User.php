@@ -48,6 +48,11 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
+    protected $appends = ['fullname'];
+    public function getFullNameAttribute()
+    {
+         return $this->name." ".$this->lastName ;
+    }
     protected function casts(): array
     {
         return [
@@ -56,4 +61,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function farms()
+    {
+        return $this->hasMany(Farm::class, 'owner_id');
+    }       
 }

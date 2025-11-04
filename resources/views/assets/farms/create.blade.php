@@ -43,11 +43,9 @@
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('farm.owner') }}</label>
               <select name="owner_id" class="form-control border border-2 p-2">
-                @foreach($owners as $key=>$owner)
-                <option value="{{ $key }}" class="border-2 p-2">
-                  {{ $owner }}
+                <option value="{{ auth()->id() }}" class="border-2 p-2">
+                  {{ auth()->user()->name }}
                 </option>
-                @endforeach
               </select>
               @error('owner_id')
               <p class='text-danger inputerror'>{{ $message }}</p>
@@ -122,7 +120,7 @@
           </div>
           <div id="mapid"></div>
           <div class="row mb-0">
-            <div class="col-md-12 text-end mt-4">
+            <div class="col-md-12 text-center mt-4">
               <button type="submit" class="btn bg-gradient-primary">{{ __('app.save') }}</button>
               <a href="{{ route('farms.index') }}" class="btn btn-warning">{{ __('app.cancel') }}</a>
             </div>

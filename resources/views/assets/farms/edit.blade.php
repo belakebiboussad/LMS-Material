@@ -1,5 +1,5 @@
   @extends('layouts.app')
-  @section('title', __('farme.edit'))
+  @section('title', __('farm.edit'))
   @section('css')
   <style>
     #mapid {
@@ -13,7 +13,7 @@
       <div class="card-header pb-0 p-3">
         <div class="row">
           <div class="col-md-8 d-flex align-items-center">
-            <h6 class="mb-3">{{ __('farme.edit') }}</h6>
+            <h6 class="mb-3">{{ __('farm.edit') }}</h6>
           </div>
         </div>
       </div>
@@ -28,34 +28,32 @@
           @endif
           <div class="row">
             <div class="mb-3 col-md-6">
-              <label class="form-label">{{ __('farme.recordNbr') }}</label>
+              <label class="form-label">{{ __('farm.recordNbr') }}</label>
               <input type="text" name="recordNbr" class="form-control border border-2 p-2 {{ $errors->has('recordNbr') ? ' is-invalid' : '' }}" value="{{  old('recordNbr', $farm->recordNbr) }}" required>
               @error('recordNbr')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
-              <label class="form-label">{{ __('farme.name') }}</label>
+              <label class="form-label">{{ __('farm.name') }}</label>
               <input type="text" name="name" class="form-control border border-2 p-2 {{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ old('name', $farm->name) }}" required>
               @error('name')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
-              <label class="form-label">{{ __('farme.owner') }}</label>
+              <label class="form-label">{{ __('farm.owner') }}</label>
               <select name="owner_id" class="form-control border border-2 p-2">
-                @foreach($owners as $key=>$owner)
-                <option value="{{ $key }}" class="border-2 p-2">
-                  {{ $owner }}
+                <option value="{{ $farm->owner_id }}" class="border-2 p-2">
+                  {{ $farm->owner->fullname }}
                 </option>
-                @endforeach
               </select>
               @error('owner_id')
               <p class='text-danger inputerror'>{{ $message }}</p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
-              <label class="form-label">{{ __('farme.type') }}</label>
+              <label class="form-label">{{ __('farm.type') }}</label>
               <div class="col-md-12">
                 @foreach($animalTypes as $key=>$type)
                 <input type="checkbox" name="animal_types[]" id="{{ $type }}" class="filled-in chk-col-pink" value="{{ $key }}">
@@ -66,28 +64,28 @@
           </div>
           <div class="row">
             <div class="mb-3 col-md-6">
-              <label class="form-label">{{ __('farme.creationDt') }}</label>
+              <label class="form-label">{{ __('farm.creationDt') }}</label>
               <input type="date" name="creationDt" class="form-control border border-2 p-2" value="{{ old('creationDt', $farm->creationDt) }}">
               @error('creationDt')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
-              <label class="form-label">{{ __('farme.area') }}</label>
+              <label class="form-label">{{ __('farm.area') }}</label>
               <input type="number" step="0.01" min="0" name="area" class="form-control border border-2 p-2" value="{{ old('area', $farm->area) }}">
               @error('area')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
-              <label class="form-label">{{ __('farme.address') }}</label>
+              <label class="form-label">{{ __('farm.address') }}</label>
               <input type="text" name="address" class="form-control border border-2 p-2" value="{{ old('address', $farm->address) }}">
               @error('address')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-3">
-              <label class="form-label">{{ __('farme.wilaya') }}</label>
+              <label class="form-label">{{ __('farm.wilaya') }}</label>
               <select name="wilaya_id" class="form-control border border-2 p-2">
                 @foreach($wilayas as $key=>$wilaya)
                 <option value="{{ $key }}" class="border-2 p-2">
@@ -100,21 +98,21 @@
               @enderror
             </div>
             <div class="mb-3 col-md-3">
-              <label class="form-label">{{ __('farme.phone') }}</label>
+              <label class="form-label">{{ __('farm.phone') }}</label>
               <input type="tel" name="phone" pattern="[0][4-8][0-9]8" placeholder="0xxxxxxxxx" class="form-control border border-2 p-2" value="{{ old('phone', $farm->phone) }}">
               @error('phone')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
-              <label class="form-label">{{ __('farme.latitude') }}</label>
+              <label class="form-label">{{ __('farm.latitude') }}</label>
               <input type="text" name="y_lat" id="latitude" class="form-control border border-2 p-2" value="{{ old('y_lat', $farm->y_lat) }}" required>
               @error('y_lat')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
-              <label class="form-label">{{ __('farme.longitude') }}</label>
+              <label class="form-label">{{ __('farm.longitude') }}</label>
               <input type="text" name="x_lon" id="longitude" class="form-control border border-2 p-2" value="{{ old('x_lon', $farm->x_lon) }}" required>
               @error('x_lon')
               <p class='text-danger inputerror'>{{ $message }} </p>
@@ -124,8 +122,8 @@
           <div id="mapid"></div>
           <div class="row mb-0">
             <div class="text-center mt-4">
-              <button type="submit" class="btn bg-gradient-dark">{{ __('app.save') }}</button>
-              <a href="{{ route('farms.index') }}" class="btn btn-link btn-warning">{{ __('app.cancel') }}</a>
+              <button type="submit" class="btn bg-gradient-primary">{{ __('app.save') }}</button>
+              <a href="{{ route('farms.index') }}" class="btn btn-warning">{{ __('Cancel') }}</a>
             </div>
           </div>
         </form>
