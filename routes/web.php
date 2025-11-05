@@ -26,8 +26,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::middleware(['auth','role:admin'])->group(function () {
-    Route::resource('users', UserCotroller::class);
     Route::post('tags/assign', [TagController::class, 'assign'])->name('tags.assign');
+    Route::resource('users', UserCotroller::class);
 });
 Route::middleware('auth')->group(function () {
     Route::resource('farms', FarmsController::class);
@@ -38,5 +38,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    Route::get('/getBreeds/{id}',[AnimalsController::class,'getBreedsAndRFID'])->name('animals.getBreeds')    ;
     Route::resource('animals', AnimalsController::class);
 });

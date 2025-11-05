@@ -60,11 +60,7 @@ return [
     'send_password_reset_link' => 'Envoyer le lien de réinitialisation du mot de passe',
     'verify_email' => 'Vérifiez votre adresse e-mail',
     'verification_link_sent' => 'Un nouveau lien de vérification a été envoyé à votre
-    'adresse e-mail.',
-    'check_your_email' => 'Avant de continuer, veuillez vérifier votre e-mail pour
-    'un lien de vérification.',
-    'if_you_did_not_receive_the_email' => 'Si vous n\'avez pas
-    'reçu l\'e-mail',
+  adresse e-mail.',
     'click_here_to_request_another' => 'cliquez ici pour en demander un autre', 
     'dashboard_welcome' => 'Bienvenue sur le tableau de bord',
     'you_are_logged_in' => 'Vous êtes connecté !',
@@ -234,11 +230,5 @@ return [
     'close'      => 'Fermer',
     'change_password_success' => 'Mot de passe changé avec succès.',
     'change_password_failed' => 'Échec du changement de mot de passe.',
-    
-
-    
-    
-
-
-    
+  
   ];

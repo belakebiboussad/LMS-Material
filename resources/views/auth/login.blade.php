@@ -35,8 +35,13 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-8 p-t-5">
-                            <input type="checkbox" name="rememberme" id="rememberme" class="filled-in chk-col-pink" {{ old('remember') ? 'checked' : '' }}>
-                            <label for="rememberme">{{ __('auth.Remember_Me') }}</label>
+                            {{-- <input type="checkbox" name="rememberme" id="rememberme" class="filled-in chk-col-pink" {{-- old('remember') ? 'checked' : '' --}}>
+                            <label for="rememberme">{{ __('auth.Remember_Me') }}</label> --}}
+                            <div class="form-check form-switch d-flex align-items-center mb-3">
+                            <input class="form-check-input" type="checkbox" id="rememberMe">
+                                <label class="form-check-label mb-0 ms-2" for="rememberMe">Remember
+                                            me</label>
+                            </div>
                         </div>
                         <div class="col-xs-4">
                             <button class="btn btn-block bg-pink waves-effect" type="submit">{{ __('Login') }}</button>

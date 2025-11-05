@@ -60,16 +60,6 @@ class BreedSeeder extends Seeder
                 'production_id'=>1
             ],
             [
-                "name" => "Montbéliarde",
-                "animal_type_id"=>2,
-                'production_id'=>1
-            ],
-            [
-                "name" => "Tarentaise",
-                "animal_type_id"=>2,
-                'production_id'=>1
-            ],
-            [
                 "name" => "Charolaise",
                 "animal_type_id"=>1,
                 'production_id'=>2
@@ -86,7 +76,7 @@ class BreedSeeder extends Seeder
             ],
             [
                 "name" => "Autre",
-                "animal_type_id"=>2,
+                "animal_type_id"=>1,
                 'production_id'=>3
             ],
             [
@@ -163,8 +153,6 @@ class BreedSeeder extends Seeder
                 "name" => "Saanen",
                 "animal_type_id"=>3,
                 'production_id'=>1
-                
-
             ],
             [
                 "name" => "Autre",

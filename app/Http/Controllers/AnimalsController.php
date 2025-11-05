@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Farm;
 use App\Models\Animal;
 use App\Models\AnimalType;
+use App\Models\Tag;
+use App\Enums\TagType;
+use App\Models\Breed;
+use Illuminate\Http\Request;
+use Illuminate\JsonSchema\Types\Type;
 
 class AnimalsController extends Controller
 {
@@ -20,9 +24,27 @@ class AnimalsController extends Controller
         $farms = auth()->user()->farms()->pluck('name', 'id');
         $animalTypes = AnimalType::all()->pluck('name', 'id');
         return view('assets.animals.create', compact('animalTypes', 'farms'));
-
-        // $wilayas = Wilaya::all()->pluck('name', 'id');
-        
-        //  return view('assets.farms.create', compact('owners', 'wilayas', 'animalTypes'));
+    }
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'rfid_id' => 'required|exists:tags,id',
+            'animalType_id' => 'required|exists:animal_types,id',
+            'weight' => 'nullable|numeric',
+            'dob' => 'required|date',
+            'sexe' => 'required','in:male,female',
+            'breed_id' => 'nullable|exists:breeds,id',
+            'is_seek' => 'boolean',
+            'farm_id' => 'required|exists:farms,id',
+        ]);
+        Animal::create($validated);
+        return redirect()->route('animals.index')->with('success', __('animal.created'));
+    }    
+    public function getBreedsAndRFID($id)
+    {
+        $breeds = Breed::where('animal_type_id', $id)->get()->pluck('name', 'id'); 
+        $rfidTags = Tag::where('owner_id', auth()->id())->where('type', TagType::BIRTH)
+                        ->get()->pluck('eid', 'id');
+        return response()->json([ 'breed'=> $breeds, 'rfids'=> $rfidTags ], 200);
     }
 }
