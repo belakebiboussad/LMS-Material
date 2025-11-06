@@ -14,9 +14,9 @@
         <form method='POST' action="{{ route('tags.store') }}">
           @csrf
           @if (session('errors'))
-          <div class="alert alert-warning" role="alert">
-            {{ session('errors') }}
-          </div>
+          @foreach (session('errors')->all() as $error)
+          <div class="alert alert-danger">{{ $error }}</div>
+          @endforeach
           @endif
           <div class="row">
             <div class="mb-3 col-md-6">
@@ -26,12 +26,12 @@
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
-                <div class="mb-3 col-md-6">
-              <label class="form-label">{{ __('tag.vis_id') }}</label> 
+            <div class="mb-3 col-md-6">
+              <label class="form-label">{{ __('tag.vis_id') }}</label>
               <input type="text" name="vis_id" class="form-control border border-2 p-2 {{ $errors->has('vis_id') ? ' is-invalid' : '' }}" value="{{ old('vis_id') ?? '' }}" required>
-                @error('vis_id')
-                <p class='text-danger inputerror'>{{ $message }} </p> 
-                @enderror
+              @error('vis_id')
+              <p class='text-danger inputerror'>{{ $message }} </p>
+              @enderror
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('tag.animalType_id') }}</label>
@@ -50,16 +50,16 @@
               <select name="type" class="form-control border border-2 p-2 {{ $errors->has('type') ? ' is-invalid' : '' }}" required>
                 <option value="">{{ __('Select type') }}</option>
                 @foreach(\App\Enums\TagType::cases() as $type)
-                  <option value="{{ $type->value }}" {{ old('type') == $type->value ? 'selected' : '' }}>{{ $type->label() }}</option>
-                @endforeach 
-              </select>   
+                <option value="{{ $type->value }}" {{ old('type') == $type->value ? 'selected' : '' }}>{{ $type->label() }}</option>
+                @endforeach
+              </select>
               @error('type')
-              <p class='text-danger inputerror'>{{ $message }} </p> 
-                @enderror     
+              <p class='text-danger inputerror'>{{ $message }} </p>
+              @enderror
             </div>
           </div>
           <div class="row mb-0">
-            <div class="col-md-12 text-end">
+            <div class="col-md-12 text-center">
               <button type="submit" class="btn bg-gradient-primary">{{ __('Save') }}</button>
               <a href="{{ route('tags.index') }}" class="btn btn-warning">{{ __('Cancel') }}</a>
             </div>

@@ -15,7 +15,7 @@ return [
   // Actions
   'index'          => 'Liste des tags',
   'create'         => 'Ajouter un Tag',
-  'created'        => 'Une nouvelle Tag à été crée.',
+  'created'        => 'un nouveau Tag à été crée avec succée.',
   'show'           => 'Voir Détail de la Tag',
   'edit'           => 'Modifier le Tag',
   'update'         => 'Métre à jour le Tag',

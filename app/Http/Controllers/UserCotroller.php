@@ -46,7 +46,7 @@ class UserCotroller extends Controller
                 $query->where('name', 'admin');
             })->get();
             if ($adminUsers->isNotEmpty()) {
-                return back()->withInput()->withErrors(['errors' => 'Only one admin user is allowed.']);
+                return back()->withInput()->withErrors(['errors' => __('admin')]);
             }
         }
         $user = User::create($request->all());
@@ -71,6 +71,6 @@ class UserCotroller extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('users.index')->with('success', 'utilisateur supprimé avec succès');
+        return redirect()->route('users.index')->with('success',  __('user.deleated'));
     }
 }

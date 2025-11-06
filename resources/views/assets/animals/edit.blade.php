@@ -1,17 +1,17 @@
   @extends('layouts.app')
-  @section('title', __('animal.create'))
+  @section('title', __('animal.edit'))
   @section('content')
   <div class="main-content position-relative bg-gray-100  h-100">
     <div class="card card-plain h-100">
       <div class="card-header pb-0 p-3">
         <div class="row">
           <div class="col-md-8 d-flex align-items-center">
-            <h3 class="mb-3">{{ __('animal.create') }}</h3>
+            <h3 class="mb-3">{{ __('animal.edit') }}</h3>
           </div>
         </div>
       </div>
       <div class="card-body p-3">
-        <form method='POST' action="{{ route('animals.store') }}">
+        <form method='POST' action="{{ route('animals.update', $animal) }}">
           @csrf
           @if (session('errors'))
           <div class="alert alert-warning" role="alert">
@@ -24,7 +24,7 @@
               <select name="farm_id" class="form-control border border-2 p-2 {{ $errors->has('farm_id') ? ' is-invalid' : '' }}" required>
                 <option value="">{{ __('Select farm') }}</option>
                 @foreach($farms as $id=>$farm)
-                <option value="{{ $id }}" {{ old('farm_id') == $id ? 'selected' : '' }}>{{ $farm }}</option>
+                <option value="{{ $id }}" {{ $id == $animal->farm_id ? 'selected' : '' }}>{{ $farm }}</option>
                 @endforeach
               </select>
             </div>
@@ -33,14 +33,17 @@
               <select id="animalType_id" name="animalType_id" class="form-control border border-2 p-2 {{ $errors->has('animalType_id') ? ' is-invalid' : '' }}" required>
                 <option value="">{{ __('Select type') }}</option>
                 @foreach($animalTypes as $id => $type)
-                <option value="{{ $id }}" {{ old('animalType_id') == $type ? 'selected' : '' }}>{{ $type }}</option>
+                <option value="{{ $id }}" {{ $animal->animalType_id == $id ? 'selected' : '' }}>{{ $type }}</option>
                 @endforeach
               </select>
             </div>
             <div class="mb-3 col-md-6">
-              <label class="form-label">{{ __('animal.breed_id') }}</label>
+              <label class="form-label">{{ __('animal.breed_id') }} </label>
               <select id="breed_id" name="breed_id" class="form-control border border-2 p-2 {{ $errors->has('breed_id') ? ' is-invalid' : '' }}" required>
                 <option value="">{{ __('Select name') }}</option>
+                @foreach($animal->animalType->breeds as  $breed)
+                <option value="{{ $breed->id }}" {{ $animal->breed_id == $breed->id ? 'selected' : '' }}>{{ $breed->name }}</option>
+                @endforeach
               </select>
               @error('breed_id')
               <p class='text-danger inputerror'>{{ $message }} </p>
@@ -48,7 +51,7 @@
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('animal.dob') }}</label>
-              <input type="date" name="dob" class="form-control border border-2 p-2 {{ $errors->has('dob') ? ' is-invalid' : '' }}" value="{{ old('dob') ?? '' }}" required>
+          <input type="date" name="dob" class="form-control border border-2 p-2 {{ $errors->has('dob') ? ' is-invalid' : '' }}" value="{{ $animal->dob->format('Y-m-d') }}" required>
             </div>
             <div class="mb-3  col-md-6">
               <label class="form-label">{{ __('animal.sexe') }}</label>
@@ -63,12 +66,13 @@
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('animal.weight') }}</label>
-              <input type="number" step="0.01" name="weight" class="form-control border border-2 p-2 {{ $errors->has('weight') ? ' is-invalid' : '' }}" value="{{ old('weight') ?? '' }}">
+              <input type="number" step="0.01" name="weight" class="form-control border border-2 p-2 {{ $errors->has('weight') ? ' is-invalid' : '' }}" value="{{ old('weight', $animal->weight) }}">
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label>">{{ __('animal.eid') }}</label>
               <select id="rfid_id" name="eid" class="form-control border border-2 p-2 {{ $errors->has('eid') ? ' is-invalid' : '' }}" required>
                 <option value="">{{ __('Select RFID Tag') }}</option>
+                <option value="{{ $animal->rfidTag->id }}" selected> {{ $animal->rfidTag->eid }}</option>
               </select>
               @error('eid')
               <p class='text-danger inputerror'>{{ $message }} </p>

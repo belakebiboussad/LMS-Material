@@ -89,6 +89,7 @@
                         title="">
                         <i class="material-icons">edit</i>
                       </a>
+                      
                       <form action="{{ route('farms.destroy',$farm) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')

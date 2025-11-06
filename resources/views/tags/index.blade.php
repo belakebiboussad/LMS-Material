@@ -4,6 +4,11 @@
   <div class="container-fluid py-4">
     <div class="row">
       <div class="col-12">
+        @if(session('success'))
+        <div class="alert alert-success">
+          {{ session('success') }}
+        </div>
+        @endif
         <div class="card my-4">
           <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
             <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
@@ -168,9 +173,9 @@
           _token: '{{ csrf_token() }}' // Include CSRF token for POST requests
         },
         success: function(response) {
-            $.each(selectedIds, function(index, value) {
-                $('#' + value).remove();
-            });
+          $.each(selectedIds, function(index, value) {
+            $('#' + value).remove();
+          });
           $('#myModal').modal('hide');
         },
         error: function(xhr, status, error) {
@@ -181,7 +186,7 @@
       console.log('No IDs selected.');
     }
   }
-    
+
   // Shorthand syntax
   $(function() {
     $("#attributionBtn").prop("disabled", true);

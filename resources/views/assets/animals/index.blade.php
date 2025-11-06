@@ -23,31 +23,104 @@
                   <tr>
                     <th
                       class="text-uppercase text-secondary text-lg font-weight-bolder opacity-7">
-                      ID</th>
+                      {{ __('animal.eid') }}</th>
                     <th
                       class="text-uppercase text-secondary text-lg font-weight-bolder opacity-7">
-                      Type</th>
+                      {{ __('animal.animalType') }}</th>
                     <th
                       class="text-uppercase text-secondary text-lg font-weight-bolder opacity-7 ps-2">
-                      Race</th>
+                       {{ __('animal.breed_id') }}</th>
+                    <th class="text-uppercase text-secondary text-lg font-weight-bolder opacity-7 ps-2">
+                     Sexe</th> 
+
                     <th
                       class="text-center text-uppercase text-secondary text-lg font-weight-bolder opacity-7">
-                      Age
+                      {{ __('animal.age') }}
                     </th>
                     <th
                       class="text-center text-uppercase text-secondary text-smfont-weight-bolder opacity-7">
-                      Est seine?</th>
+                      {{ __('animal.is_seek') }}</th>
                     <th
                       class="text-center text-uppercase text-secondary text-lg font-weight-bolder opacity-7">
-                      Ferme</th>
+                      {{ __('animal.farm_id') }}</th>
                     <th
                       class="text-center text-uppercase text-secondary text-lg font-weight-bolder opacity-7">
-                      Date création</th>
+                      {{ __('creation_at') }}</th>
                     <th class="text-secondary opacity-7"></th>
                   </tr>
                 </thead>
                 <tbody>
-          
+                  @foreach($animals as $animal)
+                  <tr>
+                    <td class="align-middle">
+                      <div class="d-flex px-2 py-1">
+                        <span class="text-md">{{ $animal->rfidTag->eid }}</span>
+                      </div>
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-lg">{{ $animal->animalType->name }}</span>
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-lg">{{ $animal->breed->name }}</span>
+                    </td>
+                     <td class="align-middle text-center">
+                      <span class="text-lg">{{ $animal->sexe }}</span>
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-lg">{{ $animal->age }}</span>
+                    </td>
+                    <td class="align-middle text-center text-md">
+                      @if($animal->is_seek)
+                      <span class="badge badge-sm bg-gradient-danger">{{ __('app.yes') }}</span>
+                      @else
+                      <span class="badge badge-sm bg-gradient-success">{{ __('app.no') }}</span>
+                      @endif
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-lg mb-0">{{ $animal->farm->name }}</span>
+                    </td>
+                    <td class="align-middle text-center">
+                      <span class="text-lg mb-0">{{ $animal->created_at->format('d/m/Y') }}</span>
+                    </td>
+                    <td class="align-middle">
+                      <a rel="tooltip" class="btn btn-info btn-link"
+                        href="{{ route('animals.show',$animal) }}" data-original-title=""
+                        title="">
+                        <i class="material-icons">visibility</i>
+                        <div class="ripple-container"></div>
+                      </a>
+                      <a rel="tooltip" class="btn btn-success btn-link  font-weight-bold"
+                        href="{{ route('animals.edit',$animal) }}" data-original-title=""
+                        title="">
+                        <i class="material-icons">edit</i>
+                      </a>
+                      <a href="{{ route('animals.destroy', $animal->id) }}"
+                        class="btn btn-danger btn-link font-weight-bold"
+                        data-toggle="tooltip" data-original-title="Delete user"
+                        onclick="event.preventDefault(); if(confirm('{{ ('Are you sure you want to delete this user?') }}')){ document.getElementById('delete-form-{{ $animal->id }}').submit(); }"
+                        {{ Auth::id() === $animal->id ? 'disabled' :''}}>
+                        <i class="material-icons">delete</i>
+                      </a>
+                      <form id="delete-form-{{ $animal->id }}" action="{{ route('animals.destroy', $animal->id) }}" method="POST" style="display: none;">
+                        @csrf
+                        @method('DELETE')
+                      </form>
+                      <a href="{{ route('animals.movements.index', $animal->id) }}" class="text-secondary font-weight-bold text-xs"
+                        data-toggle="tooltip" data-original-title="{{ __('Movements') }}">
+                        {{ __('Movements') }}
+                      </a>
+                      {{-- <a href="{{ route('animals.treatments', $animal->id) }}" class="text-secondary font-weight-bold text-xs mx-3"
+                      data-toggle="tooltip" data-original-title="{{ __('Treatments') }}">
+                      {{ __('Treatments') }}
+                      </a>
+                      <a href="{{ route('animals.vaccinations', $animal->id) }}" class="text-secondary font-weight-bold text-xs"
+                        data-toggle="tooltip" data-original-title="{{ __('Vaccinations') }}">
+                        {{ __('Vaccinations') }}
+                      </a>
+                      --}}
+                    </td>
+                  </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>

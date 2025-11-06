@@ -3405,13 +3405,13 @@ section.content {
     padding: 5px 20px !important; }
 
 /* Checkbox & Radio ============================ */
-[type="checkbox"] + label {
+/* [type="checkbox"] + label {
   padding-left: 26px;
   height: 25px;
   line-height: 21px;
   font-size: 13px;
   font-weight: normal; }
-
+*/
 [type="checkbox"]:checked + label:before {
   top: -4px;
   left: -2px;
@@ -3596,7 +3596,7 @@ section.content {
 
 [type="checkbox"].filled-in:checked.chk-col-white + label:after {
   border: 2px solid #ffffff;
-  background-color: #ffffff; }
+  background-color: #ffffff; } 
 
 [type="radio"]:not(:checked) + label {
   padding-left: 26px;

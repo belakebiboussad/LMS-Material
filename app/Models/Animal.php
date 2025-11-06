@@ -4,11 +4,11 @@ namespace App\Models;
 
 use App\Enums\Sexe;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Casts\Attribute;
 class Animal extends Model
 {
        protected $fillable = [
-        'rfid_id',
+        'eid',
         'animalType_id',
         'color_id',
         'weight',
@@ -21,13 +21,35 @@ class Animal extends Model
         'farm_id',
     ];
      protected $casts = [
-        'birthDate' => 'datetime',
+        'dob' => 'datetime',
         'dethDate' => 'datetime',
-        'sexe' => Sexe::class, // Cast 'sexe' to Sexe enum
+        'sexe' => Sexe::class,
         'is_castred' => 'boolean',
         'is_seek' => 'boolean', 
-        'rfid_id' => 'string',
-        'animalType_id' => AnimalType::class,
     ];
+    protected $appends = ['age'];
+    public function getAgeAttribute()
+    {
+        if (!$this->dob) {
+            return null;
+        }
+        return \Carbon\Carbon::parse($this->dob)->diff(\Carbon\Carbon::now())->format('%y ans, %m mois');
+    }       
+    public function rfidTag()
+    {
+        return $this->belongsTo(Tag::class, 'eid', 'id');
+    }
+    public function animalType()
+    {
+        return $this->belongsTo(AnimalType::class, 'animalType_id');        
+    }
+    public function breed()
+    {
+        return $this->belongsTo(Breed::class, 'breed_id');        
+    }
+    public function farm()
+    {
+        return $this->belongsTo(Farm::class, 'farm_id');    
+    }
     
 }

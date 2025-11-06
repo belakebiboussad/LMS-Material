@@ -5,11 +5,11 @@ namespace App\Enums;
 enum Sexe: string
 {
     case MALE = 'male';
-    case FEMAL = 'féminin';
+    case FEMALE = 'femelle';
     public function label(){
         return match($this) {
-            self::MALE =>'Male',
-            self::FEMAL =>'Féminin',
+            self::MALE =>'Mâle',
+            self::FEMALE =>'Femelle',
         };
     }
 }

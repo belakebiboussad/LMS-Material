@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserCotroller;
 use App\Http\Controllers\AnimalsController;
 use App\Http\Controllers\TagController;
-
+use App\Http\Controllers\MovementController;
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -40,4 +40,8 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/getBreeds/{id}',[AnimalsController::class,'getBreedsAndRFID'])->name('animals.getBreeds')    ;
     Route::resource('animals', AnimalsController::class);
+});
+Route::middleware('auth')->group(function () {
+    Route::get('/animals/{id}/movements',[MovementController::class,'index'])->name('animals.movements.index');
+    Route::resource('animals.movements', MovementController::class);
 });

@@ -1,5 +1,5 @@
 @extends('layouts.app')
- @section('title', __('titles.users.index'))
+@section('title', __('titles.users.index'))
 {{ __('Dashboard') }}
 @section('content')
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
@@ -24,24 +24,23 @@
                                     <tr>
                                         <th
                                             class="text-uppercase text-secondary text-md font-weight-bolder opacity-7">
-                                            nom</th>
+                                            {{ __('user.name')}}</th>
                                         <th
                                             class="text-uppercase text-secondary text-md font-weight-bolder opacity-7 ps-2">
-                                            username</th>
+                                            {{ __('user.username') }}</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">
-                                            EMAIL</th>
+                                            {{ __('user.email') }}</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">
-                                            ROLE</th>
+                                           {{ __('user.role') }}</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">
-                                            Status
+                                              {{ __('user.status') }}
                                         </th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">
-                                            Date création
-                                        </th>
+                                            {{ __('creation_at') }}</th>
                                         <th class="text-secondary opacity-7"></th>
                                     </tr>
                                 </thead>
@@ -73,10 +72,10 @@
                                             @endif
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-secondary text-sm">{{ $user->created_at->format('H:i:s d/m/Y') }}</span>
+                                            <span class="text-secondary text-lg">{{ $user->created_at->format('H:i:s d/m/Y') }}</span>
                                         </td>
                                         <td class="align-middle">
-                                              <a rel="tooltip" class="btn btn-lg btn-info btn-link"
+                                            <a rel="tooltip" class="btn btn-lg btn-info btn-link"
                                                 href="{{ route('users.show',$user) }}" data-original-title=""
                                                 title="">
                                                 <i class="material-icons">visibility</i>
@@ -85,18 +84,18 @@
                                             <a rel="tooltip" class="btn btn-lg btn-success btn-link"
                                                 href="{{ route('users.edit',$user) }}" data-original-title=""
                                                 title="">
-                                                <i class="material-icons">edit</i>                            
+                                                <i class="material-icons">edit</i>
                                             </a>
-                                            <a href="{{ route('users.destroy', $user->id) }}" 
+                                            <a href="{{ route('users.destroy', $user) }}"
                                                 class="btn btn-lg btn-danger btn-link font-weight-bold text-md"
                                                 data-toggle="tooltip" data-original-title="Delete user"
                                                 onclick="event.preventDefault(); if(confirm('{{ ('Are you sure you want to delete this user?') }}')){ document.getElementById('delete-form-{{ $user->id }}').submit(); }"
-                                                {{ Auth::id() === $user->id ? 'disabled' :''}} >
+                                                {{ Auth::id() === $user->id ? 'disabled' :''}}>
                                                 <i class="material-icons">delete</i>
                                             </a>
-                                             <form id="delete-form-{{ $user->id }}" action="{{ route('tags.destroy', $user->id) }}" method="POST" style="display: none;">
+                                            <form id="delete-form-{{ $user->id }}" action="{{ route('users.destroy', $user->id) }}" method="POST" style="display: none;">
                                                 @csrf
-                                                @method('DELETE') 
+                                                @method('DELETE')
                                             </form>
                                         </td>
                                     </tr>

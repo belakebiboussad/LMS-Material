@@ -18,4 +18,8 @@ class AnimalType extends Model
         'name',
         'description',
     ];
+    public function breeds()
+    {
+        return $this->hasMany(Breed::class, 'animal_type_id');
+    }
 }
