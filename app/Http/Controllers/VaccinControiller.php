@@ -1,19 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Animal;
-use App\Models\Farm;
+
 use Illuminate\Http\Request;
 
-class MovementController extends Controller
+class VaccinControiller extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Animal $animal)
+    public function index()
     {
-        $movements= $animal->movements();
-        return view('movements.index', compact('movements')); 
+        //
     }
 
     /**
@@ -21,8 +19,7 @@ class MovementController extends Controller
      */
     public function create()
     {
-        $farms = Farm::all()->pluck('id','name');
-        return view('movements.create', compact('farms'));
+        //
     }
 
     /**

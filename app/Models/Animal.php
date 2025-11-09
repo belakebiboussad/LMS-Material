@@ -51,5 +51,7 @@ class Animal extends Model
     {
         return $this->belongsTo(Farm::class, 'farm_id');    
     }
-    
+    public function movements() {
+        return $this->hasMany(Movement::class,'animal_movement','animal_id', 'movement_id');
+    }
 }

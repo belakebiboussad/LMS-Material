@@ -51,7 +51,20 @@
               <p class='text-danger inputerror'>{{ $message }}</p>
               @enderror
             </div>
-            <div class="mb-3 col-md-6">
+            <div class="mb-3 col-md-3">
+              <label class="form-label">{{ __('farm.guardien_id') }}</label>
+              <select name="guardien_id" class="form-control border border-2 p-2">
+                <option value="" selected>{{ __('seclection')}}</option>  
+                @foreach($guardiens as $key =>$value)
+                <option value="{{ $key }}"> {{ $value}}</option>
+                @endforeach
+
+            </select>
+              @error('owner_id')
+              <p class='text-danger inputerror'>{{ $message }}</p>
+              @enderror
+            </div>
+            <div class="mb-3 col-md-3">
               <label class="form-label">{{ __('farm.type') }}</label>
               <div class="col-md-12">
                 @foreach($animalTypes as $key=>$type)

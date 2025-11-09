@@ -1,4 +1,5 @@
   @extends('layouts.app')
+  @section('title', __('user.create'))
   @section('content')
   <div class="main-content position-relative bg-gray-100  h-100">
     <form method='POST' action="{{ route('users.store') }}">
@@ -7,15 +8,15 @@
         <div class="card-header pb-0 p-3">
           <div class="row">
             <div class="col-md-8 d-flex align-items-center">
-              <h6 class="mb-3">Ajouter un {{ __('Farmer') }}</h6>
+              <h6 class="mb-3">{{ __('user.create') }}</h6>
             </div>
           </div>
         </div>
         <div class="card-body p-3">
           @if (session('errors'))
-          <div class="alert alert-warning" role="alert">
-            {{ session('errors') }}
-          </div>
+          @foreach (session('errors')->all() as $error)
+          <div class="alert alert-warning">{{ $error }}</div>
+          @endforeach
           @endif
           <div class="row">
             <div class="mb-3 col-md-6">

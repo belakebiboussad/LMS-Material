@@ -105,20 +105,21 @@
                         @csrf
                         @method('DELETE')
                       </form>
-                      <a href="{{ route('animals.movements.index', $animal->id) }}" class="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip" data-original-title="{{ __('Movements') }}">
-                        {{ __('Movements') }}
-                      </a>
-                      {{-- <a href="{{ route('animals.treatments', $animal->id) }}" class="text-secondary font-weight-bold text-xs mx-3"
-                      data-toggle="tooltip" data-original-title="{{ __('Treatments') }}">
-                      {{ __('Treatments') }}
-                      </a>
-                      <a href="{{ route('animals.vaccinations', $animal->id) }}" class="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip" data-original-title="{{ __('Vaccinations') }}">
-                        {{ __('Vaccinations') }}
-                      </a>
-                      --}}
-                    </td>
+                        <a href="{{ route('animals.movements.index', $animal->id) }}" class="btn btn-light btn-link font-weight-bold text-xs"
+                          data-toggle="tooltip" data-original-title="{{ __('Movements') }}">
+                          {{-- __('Movements') --}}
+                          <i class="material-icons">sync_alt</i>
+                        </a>
+                        {{-- <a href="{{ route('animals.treatments', $animal->id) }}" class="text-secondary font-weight-bold text-xs mx-3"
+                        data-toggle="tooltip" data-original-title="{{ __('Treatments') }}">
+                        {{ __('Treatments') }}
+                        </a>
+                        <a href="{{ route('animals.vaccinations', $animal->id) }}" class="text-secondary font-weight-bold text-xs"
+                          data-toggle="tooltip" data-original-title="{{ __('Vaccinations') }}">
+                          {{ __('Vaccinations') }}
+                        </a>
+                        --}}
+                      </td>
                   </tr>
                   @endforeach
                 </tbody>

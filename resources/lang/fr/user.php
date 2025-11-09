@@ -17,9 +17,9 @@ return [
   'status'     => 'statut',
 
     // Actions
-  'index'          => 'Liste des fermes',
+  'index'          => 'Liste des utilisateurs',
   'create'         => 'Ajouter un utilisateur',
-  'created'        => 'Une nouveau utilisateur à été crée avec succée.',
+  'created'        => 'Un nouveau utilisateur à été crée avec succée.',
   'show'           => 'Voir Détail de l\'utilisateur',
   'edit'           => 'Modifier l\'utilisateur',
   'update'         => 'Métre à jour l\'utilisateur',

@@ -2,16 +2,18 @@
     "Users": "Utilisateurs",
     "User": "Utilisateur",
     "farmer": "Eleveur",
-    "guardian": "Gardien",
+    "guardien": "Gardien",
     "vet": "vetirinaire",
-    "User add": "Ajouter un Utilisateur",
-    "User list": "Liste des Utilisateurs",
+    "Home": "Acceuil",
     "Save": "Enregistrer",
     "Tag add": "Ajouter un Tag",
     "Tag list": "Liste des Tags",
+    "Farmes" : "Fermes",
+    "Farme"    :"Ferme",
+    "Animals" : "Animaux",
+    "movement" : "mouvements",
     "Select owner": "Selectionner le propriètaire",
     "creation_at" : "Date création",
     "type" : "Type",
     "status" : "Statut"     
-
 }

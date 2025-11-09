@@ -30,37 +30,35 @@
             <li class="active">
                 <a href="index.html">
                     <i class="material-icons">home</i>
-                    <span>Home</span>
+                    <span>{{ __('Home') }}</span>
                 </a>
             </li>
-            @if(Auth::user()->hasRole(['admin', 'vet']))
             @if(Auth::user()->hasRole(['admin']))
             <li>
                 <a href="{{ route('users.index') }}">
                     <i class="material-icons">people</i>
-                    <span>
-                        {{ __('Users') }}
-                    </span>
-                </a><div class=""></div>
+                    <span>{{ __('Users') }}</span>
+                </a>
+                <div class=""></div>
             </li>
-            @endif
             <li>
                 <a href="#" class="menu-toggle">
                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAACNUlEQVR4nO2WvU4UURTHf402QGcDCzFKBIMxVHw8BFoLPgGCBfoCPAHqUkF4APmqxKWgk0cAJbTSAgEkcTe7mzHH/G9yMpmZnYExWvhPJjvn3HPvf87nXfiPfxADwDywCxwB13rsvQbMAf1lElaAFaAJRB2eNrAB3L8t6XPgSoc2gI/AC2AY6NJj79Naa8jW9jy7KelreRDJiwc59jwEtpz3lprCnraBFrDg9E+Ad8Chy/GhdLYW8FZ720U8r7jwBtK7wLIOS8uvrVVlG8hNfwn05iFec+ENpHvS/QTeA+MuxxPAB6Aumz1Hvi3dSp6WaalIQk6Xtfk78DRj7yhwIlvz3DCos5qKZCrmtdEqFOWtJU8DqfXqptJxJa8eOfK69oxIt6EzX2UR12Rk7YGKJtJvID1LyO+Z86gq3ZLkl5J3soiPZTQk+avkMcmbkj+JqKIDTbcumwnJB5KHJduES0Wo5p6Y3B2TK7G6MN2F5B43RJLkGxFfSi51JmeF2trHt8dO2eS1lOKyPkUfdOqKKg4bOOcdLpL9JOK5lHaqq1VQftcVdo/FHLdXlPLBv8PXVNPbwPftceLI43hTgDRKC/eqFu2WMdxxI7OuD5l0BUeO8EZ5iPtcNdugR7O3mnBJBHQ6OMpDjK6ycC0G8pDzJQ2HH3+COMzt8EdgWwM/DaUSG6bc0Gho4M8Aj2M5Lp3YcE99nPRnL6BIYUUUhPXvLPAZ+NYhx6USZ+GvEe8XIP1SJnFh/AIg2z1whiGA7AAAAABJRU5ErkJggg==" alt="rfid-sensor" width="18" height="18">
                     <span>Tags</span>
                 </a>
                 <ul class="ml-menu">
-                <li>
-                    <a href="{{ route('tags.index') }}">{{ __('Tag list') }}</a>
-                </li>    
-                <li>
-                    <a href="{{ route('tags.create') }}">{{ __('Tag add') }}</a>
-                </li>
-                    
+                    <li>
+                        <a href="{{ route('tags.index') }}">{{ __('Tag list') }}</a>
+                    </li>
+                    @can('tags.create')
+                    <li>
+                        <a href="{{ route('tags.create') }}">{{ __('Tag add') }}</a>
+                    </li>
+                    @endcan
                 </ul>
             </li>
             @endif
-            @if(Auth::user()->hasRole(['farmer', 'guardien']))
+            @if(Auth::user()->hasRole(['farmer']))
             <li class="header">ASSETS</li>
             <li>
                 <a href="{{ route('farms.index') }}">
@@ -68,16 +66,22 @@
                     <span>{{ __('Farmes') }}</span>
                 </a>
             </li>
-
+            @endif
+            @if(Auth::user()->hasRole(['farmer','guardien','vet']))
             <li>
                 <a href="{{ route('animals.index') }}">
                     <i class="material-icons">pets</i>
-                    <i class="fa fa-cow"></i>
-                    <span>Animals</span>
+                    <span>{{ __('Animals') }}</span>
                 </a>
             </li>
             @endif
-            <li class="header">LABELS</li>
+            <li>
+                <a href="{{ route('movements.index') }}">
+                    <i class="material-icons">pets</i>
+                    <span>{{ __('movements') }}</span>
+                </a>
+            </li>
+
         </ul>
     </div>
     <!-- #Menu -->

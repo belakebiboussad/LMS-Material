@@ -15,7 +15,7 @@ class RolesAndPermissionsSeeder extends Seeder
     public function run(): void
     {
         // Role::create(['name' => 'farmer']);
-        // Role::create(['name' => 'guardian']);
+        // Role::create(['name' => 'guardien']);
         // Role::create(['name' => 'vet']);
         $permissionNames = [
             'animals.create',
@@ -34,7 +34,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'tags.update',
             'tags.view',
         ];
-        $roleNames = ['farmer', 'guardian']; // Example role names
+        $roleNames = ['farmer', 'guardien']; // Example role names
         $permissions = Permission::whereIn('name', $permissionNames)->get();
         foreach ($roleNames as $roleName) {
             $role = Role::findByName($roleName);

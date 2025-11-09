@@ -15,7 +15,7 @@
           @csrf
           @if (session('errors'))
           @foreach (session('errors')->all() as $error)
-          <div class="alert alert-danger">{{ $error }}</div>
+          <div class="alert alert-warning">{{ $error }}</div>
           @endforeach
           @endif
           <div class="row">

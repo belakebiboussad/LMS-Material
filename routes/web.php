@@ -42,6 +42,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('animals', AnimalsController::class);
 });
 Route::middleware('auth')->group(function () {
-    Route::get('/animals/{id}/movements',[MovementController::class,'index'])->name('animals.movements.index');
-    Route::resource('animals.movements', MovementController::class);
+    Route::get('/animals/{animal}/movements',[MovementController::class,'index'])->name('animals.movements.index');
+    Route::resource('movements', MovementController::class);
+});
+Route::middleware('auth')->group(function () {
+    Route::get('/animals/{id}/vaccins',[MovementController::class,'index'])->name('animals.vaccins.index');
+    Route::resource('animals.vaccins', MovementController::class);
 });

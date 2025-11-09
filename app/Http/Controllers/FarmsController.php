@@ -20,8 +20,9 @@ class FarmsController extends Controller
     public function create()
     {
         $wilayas = Wilaya::all()->pluck('name', 'id');
+        $guardiens = User::role('guardien')->pluck('name','id');
         $animalTypes = AnimalType::all()->pluck('name', 'id');
-        return view('assets.farms.create', compact('wilayas', 'animalTypes'));
+        return view('assets.farms.create', compact('wilayas', 'animalTypes','guardiens'));
     }
     public function edit(Farm $farm)
     {

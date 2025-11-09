@@ -19,6 +19,7 @@ class Farm extends Model
         'name',
         'creationDt',
         'owner_id',
+        'guardien_id',
         'area',
         'address',
         'wilaya_id',//'position',

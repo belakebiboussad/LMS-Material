@@ -46,13 +46,13 @@ class UserCotroller extends Controller
                 $query->where('name', 'admin');
             })->get();
             if ($adminUsers->isNotEmpty()) {
-                return back()->withInput()->withErrors(['errors' => __('admin')]);
+                return back()->withInput()->withErrors(['errors' => __('user.admin')]);
             }
         }
         $user = User::create($request->all());
         $role = $request->input('role');
         $user->assignRole($role);
-        return redirect()->route('users.index')->with('success', 'utilisateur créé avec succès');
+        return redirect()->route('users.index')->with('success', __('user.updated'));
     }
     public function update(UpdateUserRequest  $request, User $user)
     {
@@ -66,11 +66,12 @@ class UserCotroller extends Controller
         }
         $user->update($request->all());
         $user->assignRole($request->input('role'));
-        return redirect()->route('users.index')->with('success', 'utilisateur mis à jour avec succès');
+        // 'utilisateur mis à jour avec succès'
+        return redirect()->route('users.index')->with('success',  __('user.updated'));
     }
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('users.index')->with('success',  __('user.deleated'));
+        return redirect()->route('users.index')->with('success',  __('user.deleted'));
     }
 }

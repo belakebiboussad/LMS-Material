@@ -16,9 +16,10 @@ return [
   'farm_id'    => 'Ferme',
   'eid'        => 'Tag RFID',
   // Actions
-  'index' => 'Liste des animaux',
-  'create'         => 'Ajouter un Animal',
-  'edit'           => 'Modifier l\'Animal',
+  'index'      => 'Liste des animaux',
+  'create'     => 'Ajouter un Animal',
+  'edit'       => 'Modifier l\'Animal',
+ 
 
   // 'created'        => 'Une nouvelle Ferme à été crée.',
   // 'show'           => 'Voir Détail de la Ferme',
