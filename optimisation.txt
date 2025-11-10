@@ -1,0 +1,14 @@
+https://www.creative-tim.com/product/material-dashboard-laravel
+//
+blade utiliser old dans select
+///////
+@role('editor', $teamId)
+@endrole
+////
+ajouter  confirm password in add user
+   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label {{ $errors->has('password_confirmation') ? 'is-invalid' :'' }}">
+                          {!! Form::password('password_confirmation', array('id' => 'password_confirmation', 'class' => 'mdl-textfield__input')) !!}
+                          {!! Form::label('password_confirmation', 'Confirm Password', array('class' => 'mdl-textfield__label')); !!}
+                        <span class="mdl-textfield__error">Must match password</span>
+                      </div>
+  /////////

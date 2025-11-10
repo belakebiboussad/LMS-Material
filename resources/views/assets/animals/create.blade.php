@@ -67,7 +67,7 @@
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label>">{{ __('animal.eid') }}</label>
-              <select id="rfid_id" name="eid" class="form-control border border-2 p-2 {{ $errors->has('eid') ? ' is-invalid' : '' }}" required>
+              <select id="rfid_id" name="eid" class="form-control border border-2 p-2 {{ $errors->has('eid') ? ' is-invalid' : '' }}">
                 <option value="">{{ __('Select RFID Tag') }}</option>
               </select>
               @error('eid')

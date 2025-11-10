@@ -36,7 +36,7 @@ class AnimalsController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'eid' => 'required|exists:tags,id',
+            'eid' => 'nullable|exists:tags,id',
             'animalType_id' => 'required|exists:animal_types,id',
             'weight' => 'nullable|numeric',
             'dob' => 'required|date',

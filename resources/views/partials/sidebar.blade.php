@@ -11,6 +11,9 @@
                 <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                 <ul class="dropdown-menu pull-right">
                     <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
+                    {{-- <li {{ Request::is('profile/'.Auth::user()->name, 'profile/'.Auth::user()->name . '/edit') ? 'class=active' : null }}>
+                                {!! HTML::link(url('/profile/'.Auth::user()->name), trans('titles.profile')) !!}
+                            </li> --}}
                     <li role="seperator" class="divider"></li>
                     <li>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -33,7 +36,7 @@
                     <span>{{ __('Home') }}</span>
                 </a>
             </li>
-            @if(Auth::user()->hasRole(['admin']))
+             @role('admin')
             <li>
                 <a href="{{ route('users.index') }}">
                     <i class="material-icons">people</i>
@@ -57,8 +60,8 @@
                     @endcan
                 </ul>
             </li>
-            @endif
-            @if(Auth::user()->hasRole(['farmer']))
+            @endrole
+            @role('farmer')
             <li class="header">ASSETS</li>
             <li>
                 <a href="{{ route('farms.index') }}">
@@ -66,22 +69,21 @@
                     <span>{{ __('Farmes') }}</span>
                 </a>
             </li>
-            @endif
-            @if(Auth::user()->hasRole(['farmer','guardien','vet']))
+            @endrole
+            @role('farmer|guardien|vet')
             <li>
                 <a href="{{ route('animals.index') }}">
                     <i class="material-icons">pets</i>
                     <span>{{ __('Animals') }}</span>
                 </a>
             </li>
-            @endif
             <li>
                 <a href="{{ route('movements.index') }}">
                     <i class="material-icons">pets</i>
                     <span>{{ __('movements') }}</span>
                 </a>
             </li>
-
+            @endrole    
         </ul>
     </div>
     <!-- #Menu -->

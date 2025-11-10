@@ -59,6 +59,8 @@
 
     <section class="content">
         <div class="container-fluid">
+            {{-- <nav class="breadcrumb"><ul itemscope itemtype="https://schema.org/BreadcrumbList">
+                        @yield('breadcrumbs')</ul>    </nav> --}}
             @yield('content')
         </div>
     </section>

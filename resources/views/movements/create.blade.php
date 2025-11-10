@@ -19,16 +19,17 @@
           @endforeach
           @endif
           <div class="row">
-             <div class="mb-3 col-md-6">
+            <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('movement.sfarm_id')}}</label>
               <select type="text" name="sfarm_id" class="form-control border border-2 p-2" required>
               </select>
               @error('sfarm_id')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
+            </div>
           </div>
         </div>
       </div>
     </form>
   </div>
-    @endsection
+  @endsection
