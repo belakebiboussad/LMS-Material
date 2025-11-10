@@ -52,11 +52,23 @@
               <p class='text-danger inputerror'>{{ $message }}</p>
               @enderror
             </div>
-            <div class="mb-3 col-md-6">
+             <div class="mb-3 col-md-3">
+              <label class="form-label">{{ __('farm.guardien_id') }}</label>
+              <select name="guardien_id" class="form-control border border-2 p-2">
+                <option value="" >{{ __('selection')}}</option>  
+                @foreach($guardiens as $key =>$value)
+                <option value="{{ $key }}" {{ $farm->guardien_id == $key  ? 'selected' : '' }}> {{ $value}}</option>
+                @endforeach
+              </select>
+              @error('guardien_id')
+              <p class='text-danger inputerror'>{{ $message }}</p>
+              @enderror
+            </div>
+            <div class="mb-3 col-md-3">
               <label class="form-label">{{ __('farm.type') }}</label>
               <div class="col-md-12">
                 @foreach($animalTypes as $key=>$type)
-                <input type="checkbox" name="animal_types[]" id="{{ $type }}" class="filled-in chk-col-pink" value="{{ $key }}">
+                <input type="checkbox" name="animal_types[]" id="{{ $type }}" class="form-check-input chk-col-pink" value="{{ $key }}">
                 <label for="{{ $type }}">{{ ucfirst($type) }}</label>
                 @endforeach
               </div>

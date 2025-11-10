@@ -54,7 +54,7 @@
                   <tr>
                     <td class="align-middle">
                       <div class="d-flex px-2 py-1">
-                        <span class="text-md">{{ $animal->rfidTag->eid }}</span>
+                        <span class="text-md">{{ $animal->rfidTag->eid ?? '' }}</span>
                       </div>
                     </td>
                     <td class="align-middle text-center">

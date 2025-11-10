@@ -24,9 +24,11 @@ class FarmRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'recordNbr' => 'required|string|max:10|unique:farms,recordNbr,',
+            'recordNbr' => 'required|digits:10|unique:farms,recordNbr,',
             'name' => 'required|string|max:255',
             'owner_id' => 'required|exists:users,id',
+            'owner_id' => 'required|exists:users,id',
+            'guardieb_id' => 'nullable|exists:users,id',
             'creationDt' => 'required|date',
             'animal_types' => 'required',
             /* 'x_lon' => ['required', new LongitudeRule],'y_lat' => ['required', new LatitudeRule],*/

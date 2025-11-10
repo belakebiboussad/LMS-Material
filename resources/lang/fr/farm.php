@@ -25,7 +25,7 @@ return [
   'updated'        => 'la ferme à été mis à jour.',
   'delete'         => 'Supprimmer la Ferme',
   'delete_confirm' => 'Are you sure to delete this Ferme',
-  'deleted'        => 'Ferme been deleted.',
+  'deleted'        => 'la Ferme à été supprimé avec succée.',
   'undeleted'      => 'Ferme deleted.',
   'undeleteable'   => 'Fermea cannot be deleted.',
 ];

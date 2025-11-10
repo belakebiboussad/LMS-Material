@@ -15,5 +15,6 @@
     "Select owner": "Selectionner le propriètaire",
     "creation_at" : "Date création",
     "type" : "Type",
-    "status" : "Statut"     
+    "status" : "Statut",
+    "selection" : "Sellectionner ..."
 }

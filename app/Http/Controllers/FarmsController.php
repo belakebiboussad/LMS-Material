@@ -20,15 +20,16 @@ class FarmsController extends Controller
     public function create()
     {
         $wilayas = Wilaya::all()->pluck('name', 'id');
-        $guardiens = User::role('guardien')->pluck('name','id');
+        $guardiens = User::role('guardien')->doesntHave('guardedFarm')->pluck('name','id');
         $animalTypes = AnimalType::all()->pluck('name', 'id');
         return view('assets.farms.create', compact('wilayas', 'animalTypes','guardiens'));
     }
     public function edit(Farm $farm)
     {
         $wilayas = Wilaya::all()->pluck('name', 'id');
+        $guardiens = User::role('guardien')->pluck('name','id');
         $animalTypes = AnimalType::all()->pluck('name', 'id');
-        return view('assets.farms.edit', compact('farm','wilayas', 'animalTypes'));
+        return view('assets.farms.edit', compact('farm','wilayas', 'animalTypes','guardiens'));
     }
     public function store(FarmRequest $request)
     {
@@ -44,7 +45,8 @@ class FarmsController extends Controller
             'x_lon',
             'y_lat',
             'wilaya_id',
-            'owner_id'
+            'owner_id',
+            'guardien_id'
         ]));
 
         if (isset($validated['animal_types'])) {
@@ -73,7 +75,8 @@ class FarmsController extends Controller
             'x_lon',
             'y_lat',
             'wilaya_id',
-            'owner_id'
+            'owner_id',
+            'guardien_id'
         ]));
 
         $farm->animalTypes()->detach();
@@ -88,6 +91,6 @@ class FarmsController extends Controller
     public function destroy(Farm $farm)
     {
         $farm->delete();
-        return redirect()->route('farms.index')->with('success', 'Farm deleted successfully.');
+        return redirect()->route('farms.index')->with('success', __('farm.deleted'));
     }
 }

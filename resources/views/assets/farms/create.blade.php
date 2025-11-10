@@ -20,10 +20,10 @@
       <div class="card-body p-3">
         <form method='POST' action="{{ route('farms.store') }}">
           @csrf
-          @if (session('errors'))
-          <div class="alert alert-warning" role="alert">
-            {{ session('errors') }}
-          </div>
+            @if (session('errors'))
+          @foreach (session('errors')->all() as $error)
+          <div class="alert alert-warning">{{ $error }}</div>
+          @endforeach
           @endif
           <div class="row">
             <div class="mb-3 col-md-6">
@@ -54,13 +54,12 @@
             <div class="mb-3 col-md-3">
               <label class="form-label">{{ __('farm.guardien_id') }}</label>
               <select name="guardien_id" class="form-control border border-2 p-2">
-                <option value="" selected>{{ __('seclection')}}</option>  
+                <option value="" selected>{{ __('selection')}}</option>  
                 @foreach($guardiens as $key =>$value)
-                <option value="{{ $key }}"> {{ $value}}</option>
+                <option value="{{ $key }}" > {{ $value}}</option>
                 @endforeach
-
-            </select>
-              @error('owner_id')
+              </select>
+              @error('guardien_id')
               <p class='text-danger inputerror'>{{ $message }}</p>
               @enderror
             </div>
@@ -68,7 +67,7 @@
               <label class="form-label">{{ __('farm.type') }}</label>
               <div class="col-md-12">
                 @foreach($animalTypes as $key=>$type)
-                <input type="checkbox" name="animal_types[]" id="{{ $type }}" class="filled-in chk-col-pink" value="{{ $key }}">
+                <input type="checkbox" name="animal_types[]" id="{{ $type }}" class="form-check-input chk-col-pink" value="{{ $key }}">
                 <label for="{{ $type }}">{{ ucfirst($type) }}</label>
                 @endforeach
               </div>

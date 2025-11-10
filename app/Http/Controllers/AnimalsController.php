@@ -45,7 +45,8 @@ class AnimalsController extends Controller
             'is_seek' => 'boolean',
             'farm_id' => 'required|exists:farms,id',
         ]);
-        Tag::findOrFail($request->eid)->update(['status'=>TagStatus::ACTIVE]);
+        if(isset($request->eid))
+            Tag::findOrFail($request->eid)->update(['status'=>TagStatus::ACTIVE]);
         Animal::create($validated);
         return redirect()->route('animals.index')->with('success', __('animal.created'));
     }
