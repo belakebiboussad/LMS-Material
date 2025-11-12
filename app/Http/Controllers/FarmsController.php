@@ -12,8 +12,12 @@ use Illuminate\Http\Request;
 
 class FarmsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        if($request->ajax())
+        {
+            return Farm::all()->pluck('name','id');
+        }
         $farms = Farm::with(['owner', 'wilaya', 'animalTypes'])->get();
         return view('assets.farms.index', compact('farms'));
     }

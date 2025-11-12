@@ -154,7 +154,6 @@
   </x-modal>
 </main>
 @endsection
-
 @section('js')
 <script>
   function fct() {

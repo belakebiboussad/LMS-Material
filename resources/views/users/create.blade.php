@@ -109,22 +109,75 @@
                 @endforeach
               </select>
             </div>
-            <div class="mb-3 col-md-4">
+            <div class="mb-3 col-md-4" id="farSelectmDiv">
+              <label for="role" class="ms-0">{{ __('farm.name') }}</label>
+              <select class="form-control border border-2 p-2" title="Role" name="farm_id">
+              </select>
+            </div>
+            <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('user.password') }}</label>
               <input type="password" name="password" class="form-control border border-2 p-2" value=''>
               @error('password')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
+            <div class="mb-3 col-md-6">
+              <label class="form-label">{{ __('user.confpassword') }}</label>
+              <input type="password" name="confpassword" class="form-control border border-2 p-2" value="">
+              @error('password')
+              <p class='text-danger inputerror'>{{ $message }} </p>
+              @enderror
+            </div>
           </div>
           <div class="row mb-0">
-             <div class="col-md-12 text-center">
+            <div class="col-md-12 text-center">
               <button type="submit" class="btn bg-gradient-primary">{{ __('Save') }}
                 <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
               </button>
-               <a href="{{ route('tags.index') }}" class="btn btn-warning">{{ __('Cancel') }}</a>
+              <a href="{{ route('tags.index') }}" class="btn btn-warning">{{ __('Cancel') }}</a>
             </div>
           </div>
     </form>
   </div>
+  @endsection
+  @section('js')
+  <script>
+  function farmSelectFill() {
+        var url = "{{ route('farms.index') }}";
+        $.ajax({
+          url: url, // Replace with your server-side endpoint
+          type: "GET", // Or "POST" depending on your server
+          dataType: "json", // Expect JSON data
+          success: function(data) {
+            $('select[name="farm_id"]').empty();
+            // Add a default or placeholder option (optional)
+            $('select[name="farm_id"]').append($('<option>', {
+              value: '',
+              text: 'Selectionner ...'
+            }));
+            // Loop through the data and add options
+            $.each(data, function(index, name) {
+              $('select[name="farm_id"]').append($('<option>', {
+                value: index, // Assuming 'id' is the value
+                text:  name // Assuming 'name' is the display text
+              }));
+            });
+          },
+          error: function(xhr, status, error) {
+            console.error("AJAX Error:", status, error);
+          }
+        });  
+  }   
+  $(function() {
+     $('#farSelectmDiv').hide()
+    $('select[name="role"]').on('change', function() {
+        if($(this).val() === 'guardien') {
+          farmSelectFill();
+          $('#farSelectmDiv').show();
+        } else {
+           $('#farSelectmDiv').hide()
+        }
+    });
+  });
+  </script>
   @endsection

@@ -1,15 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Models\City;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\Farm;
 
 class UserCotroller extends Controller
 {
+    use AuthorizesRequests; // Use the trait here
     public function index()
     {
         return view('users.index', ['users' => User::all()]);
@@ -22,6 +24,7 @@ class UserCotroller extends Controller
     }
     public function edit(User $user)
     {
+        $this->authorize('users.update');
         $roles = Role::all();
         $cities = City::all();
         return view('users.edit', compact('roles', 'cities'))->with('user', $user);
@@ -38,6 +41,7 @@ class UserCotroller extends Controller
             'commune_id' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users,username',
             'role' => 'required|string|max:255',
+            'farm_id' => 'required_if:role,==,"guardien"',
             'password' => 'required|string|min:8',
         ]);
         if ($request->input('role') === 'admin') {

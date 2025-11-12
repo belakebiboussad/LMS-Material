@@ -111,7 +111,7 @@
             </div>
             <div class="mb-3 col-md-3">
               <label class="form-label">{{ __('farm.phone') }}</label>
-              <input type="tel" name="phone" pattern="[0][4-8][0-9]8" placeholder="0xxxxxxxxx" class="form-control border border-2 p-2" value="{{ old('phone', $farm->phone) }}">
+              <input type="tel" name="phone" pattern="^(0(?:5|6|7)\d{8})$" placeholder="0xxxxxxxxx" class="form-control border border-2 p-2" value="{{ old('phone', $farm->phone) }}">
               @error('phone')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror

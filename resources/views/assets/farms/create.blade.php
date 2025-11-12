@@ -145,7 +145,6 @@
   @endsection
   @push('scripts')
   <script>
-    
     var mapCenter = [{{ request('y_lat', config('leaflet.map_center_latitude')) }}, {{ request('x_lon', config('leaflet.map_center_longitude')) }}];
     var map = L.map('mapid').setView(mapCenter, {{ config('leaflet.zoom_level') }});
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

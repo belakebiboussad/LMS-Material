@@ -31,7 +31,7 @@ class FarmRequest extends FormRequest
             'guardieb_id' => 'nullable|exists:users,id',
             'creationDt' => 'required|date',
             'animal_types' => 'required',
-            /* 'x_lon' => ['required', new LongitudeRule],'y_lat' => ['required', new LatitudeRule],*/
+    /* 'x_lon' => ['required', new LongitudeRule],'y_lat' => ['required', new LatitudeRule],*/
             'y_lat'  => 'nullable|required_with:x_lon|max:15',
             'x_lon' => 'nullable|required_with:y_lat|max:15',
             'wilaya_id' => 'required|exists:wilayas,id',
