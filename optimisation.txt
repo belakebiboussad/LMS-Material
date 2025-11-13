@@ -1,7 +1,9 @@
 https://www.creative-tim.com/product/material-dashboard-laravel
 //
-blade utiliser old dans select
-///////
+1.blade utiliser old dans select
+2.ajouter (*) pour les chans obligatoires
+3.fichier cruds.php dans lang qui va remplacer les fichiers
+
 @role('editor', $teamId)
 @endrole
 ////
