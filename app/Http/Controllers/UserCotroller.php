@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use App\Models\City;
+use App\Models\Commune;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
@@ -19,14 +19,14 @@ class UserCotroller extends Controller
     public function create()
     {
         $roles = Role::all();
-        $cities = City::all();
+        $cities = Commune::all();
         return view('users.create', compact('roles', 'cities'));
     }
     public function edit(User $user)
     {
         $this->authorize('users.update');
         $roles = Role::all();
-        $cities = City::all();
+        $cities = Commune::all();
         return view('users.edit', compact('roles', 'cities'))->with('user', $user);
     }
     public function show(User $user) {}

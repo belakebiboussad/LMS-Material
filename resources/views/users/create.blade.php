@@ -103,7 +103,7 @@
               <label for="role" class="ms-0">{{ __('user.role') }}</label>
               <select class="form-control border border-2 p-2" title="Role" name="role">
                 @foreach($roles as $role)
-                <option value="{{ $role->name }}" class="border-2 p-2">
+                <option value="{{ $role->name }}" class="border-2 p-2"  "{{ old('role') == $role->name? 'selected' : '' }}"">
                   {{ __(  $role->name) }}
                 </option>
                 @endforeach
