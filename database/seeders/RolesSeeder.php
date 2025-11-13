@@ -14,13 +14,62 @@ class RolesSeeder extends Seeder
      */
     public function run(): void
     {
-        $role = new Role;
-        $role->name = 'admin';
-        $role->save();
-
+        $role =  Role::create(['name' => 'admin']);
+        Role::create(['name' => 'farmer']);
+        Role::create(['name' => 'guardien']);
+        Role::create(['name' => 'vet']);
+        // $role = new Role;  // $role->name = 'admin'; // $role->save();
         $permissions = Permission::get();
         foreach ($permissions as $key => $permission) {
             $role->givePermissionTo($permission->name);
+        }
+        $permissionNames = [
+            'animals.create',
+            'animals.update',
+            'animals.view',
+            'animals.delete',
+            'breeds.create',
+            'breeds.update',
+            'breeds.view',
+            'breeds.delete',
+            'farms.create',
+            'farms.update',
+            'farms.view',
+            'farms.delete',
+            'tags.create',
+            'tags.update',
+            'tags.view',
+            'movement.create',
+            'movement.update',
+            'movement.view',
+            'movement.delete',
+        ];
+        $roleNames = ['farmer', 'guardien']; // Example role names
+        $permissions = Permission::whereIn('name', $permissionNames)->get();
+        foreach ($roleNames as $roleName) {
+            $role = Role::findByName($roleName);
+            if ($role) {
+                $role->syncPermissions($permissions);
+            }
+        }
+
+        $permissionNames = [
+            'vaccinations.create',
+            'vaccinations.update',
+            'vaccinations.view',
+            'vaccinations.delete',
+            'treatments.create',
+            'treatments.update',
+            'treatments.view',
+            'treatments.delete',
+        ];
+        $roleNames = ['vet']; 
+        $permissions = Permission::whereIn('name', $permissionNames)->get();
+        foreach ($roleNames as $roleName) {
+            $role = Role::findByName($roleName);
+            if ($role) {
+                $role->syncPermissions($permissions);
+            }
         }
     }
 }

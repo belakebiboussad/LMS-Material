@@ -220,7 +220,7 @@ class DairatSeeder extends Seeder
             ],
             [
                 "name" => "Tizi Ouzou",
-                ""
+                "wilaya_id"=>15
             ],
 
             [
@@ -237,7 +237,7 @@ class DairatSeeder extends Seeder
             ],
             [
                 "name" => "Sétif",
-                ""
+                "wilaya_id"=> 19
             ],
             [
                 "name" => "Saida",
@@ -273,19 +273,19 @@ class DairatSeeder extends Seeder
             ],
             [
                 "name" => "M\'Sila",
-                ""
+                "wilaya_id"=> 28
             ],
             [
                 "name" => "Mascara",
-                ""
+                "wilaya_id"=> 29
             ],
             [
                 "name" => "Ouargla",
-                ""
+                "wilaya_id"
             ],
             [
                 "name" => "Oran",
-                ""
+                "wilaya_id"=> 30
             ],
             [
                 "name" => "El Bayadh",
@@ -403,10 +403,10 @@ class DairatSeeder extends Seeder
             ],
 
         ];
-        foreach ($$dairas as $key => $value) {
+        foreach ($dairas as $key => $value) {
             $d = new Daira();
             $d->name = $value['name'];
-            $d->wilaya_id = $value['daira_id'];
+            $d->wilaya_id = $value['wilaya_id'];
             $d->save();
         }
     }
