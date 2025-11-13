@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('animal_type_farms', function (Blueprint $table) {
-            Schema::rename('animal_type_farms', 'animal_type_farm');
+        Schema::create('animal_type_farm', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('animal_type_id');
+            $table->unsignedBigInteger('farm_id');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('animal_type_farms', function (Blueprint $table) {
-            Schema::rename('animal_type_farm', 'animal_type_farms');
-        });
+        Schema::dropIfExists('animal_type_farms');
     }
 };

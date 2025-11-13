@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('animals', function (Blueprint $table) {
             $table->id();
-            $table->string('eid', 64)->unique();//rfid id
+            $table->string('eid', 64)->unique()->nullable();//rfid id
             $table->unsignedTinyInteger('animalType_id');
             $table->unsignedInteger('color_id')->nullable();
             $table->double('weight',8,2)->nullable();
             $table->dateTime('dob')->nullable();
             $table->string('sexe');
             $table->unsignedBigInteger('breed_id');
-            $table->dateTime('dethDate');
+            $table->dateTime('dethDate')->nullable();
             $table->boolean('is_seek')->nullable();
             $table->boolean('is_castred')->nullable();
             $table->unsignedBigInteger('farm_id');

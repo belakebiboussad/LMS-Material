@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cities', function (Blueprint $table) {
+        Schema::create('communes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('daira_id');
-            $table->foreign('daira_id')->references('id')->on('dairas')->onDelete('cascade');
+            $table->string('arabic_name');
+            $table->string('post_code');
+            //$table->unsignedBigInteger('daira_id');
+            $table->foreignId('wilaya_id')->constrained()->onDelete('cascade');
+            $table->decimal('longitude', 9, 6);
+            $table->decimal('latitude', 9, 6);
             $table->timestamps();
         });
     }
@@ -25,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists('communes');
     }
 };

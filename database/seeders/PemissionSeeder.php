@@ -123,9 +123,20 @@ class PemissionSeeder extends Seeder
             [
                 "name" => "treatments.delete"
             ],
+            [
+                "name" => "movement.create"
+            ],
+            [
+                "name" => "movement.update"
+            ],
+            [
+                "name" => "movement.view"
+            ],
+            [
+                "name" => "movement.delete"
+            ],
 
         ];
-
         //iterate all permissions and store into the permission table
         foreach ($permissions as $key => $value) {
             $permission = new Permission;

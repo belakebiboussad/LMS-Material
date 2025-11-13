@@ -23,19 +23,25 @@ class DatabaseSeeder extends Seeder
 
         //     // Add any other seeder classes here
         // ]);
-        $user = User::factory()->create([
+       // wilayasSeeder::class,DairatSeeder::class, 
+        $this->call([
+            communeWseeder::class, 
+            PemissionSeeder::class,
+             RolesSeeder::class,
+             colorsSeeder::class,
+             AnimalTypeSeeder::class,
+             ProductionSeeder::class,
+             BreedSeeder::class,
+             
+       ]);
+
+       $user = User::factory()->create([
             'name' => 'admin',
             'lastName' => 'admin',
             'username' => 'admin',
             'email' => 'admin@example.com',
             'password' => Hash::make('password'),
         ]);
-        $user->assignRole('Admin');
-        this->call([
-             PemissionSeeder::class,
-             RolesSeeder::class,
-             RolesAndPermissionsSeeder::class,
-
-       ]);
+        $user->assignRole('admin');
     }
 }
