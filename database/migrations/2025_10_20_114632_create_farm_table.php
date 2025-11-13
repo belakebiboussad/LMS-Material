@@ -14,10 +14,15 @@ return new class extends Migration
     {
         Schema::create('farms', function (Blueprint $table) {
             $table->id();
+            $table->char('recordNbr',10);
             $table->string('name', 255)->nulable();
+            $table->decimal('area', 10, 2)->unsigned();
             $table->integer('owner_id')->length(18)->nullable();
             $table->decimal('y_lat', 10, 8);
             $table->decimal('x_lon', 11, 8);
+            $table->string('address',100);
+            $table->string('phone',10);
+            $table->date('creationDt');            
             $table->timestamps();
         });
         DB::statement('ALTER TABLE farms ADD COLUMN farmPosition POINT');
