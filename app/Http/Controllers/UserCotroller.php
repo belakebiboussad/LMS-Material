@@ -27,7 +27,9 @@ class UserCotroller extends Controller
         $this->authorize('users.update');
         $roles = Role::all();
         $cities = Commune::all();
-        return view('users.edit', compact('roles', 'cities'))->with('user', $user);
+        $farms = Farm::all()->pluck('name','id');
+        dd($user);
+        return view('users.edit', compact('roles', 'cities','farms'))->with('user', $user);
     }
     public function show(User $user) {}
     public function store(Request $request)

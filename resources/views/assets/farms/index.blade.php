@@ -51,20 +51,16 @@
                 <tbody>
                   @foreach ($farms as $farm)
                   <tr>
-                     <td>
-                      <div class="text-sm mb-0">
-                        <p> {{ $farm->recordNbr }}</p>
-                      </div>
+                      <td class="align-middle">
+                        <span class="text-secondary text-sm"> {{ $farm->recordNbr }}</span>
+                      </td>
+                    <td class="align-middle">
+                        <span> {{ $farm->name }}</span>
                     </td>
-                    <td>
-                      <div class="text-sm mb-0">
-                        <p> {{ $farm->name }}</p>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-sm mb-0">
+                    <td class="align-middle">
+                      <span class="text-secondary text-md">
                         {{ $farm->owner->name }}
-                      </p>
+                      </span>
                     </td>
                     <td class="align-middle text-center text-sm">
                       <span

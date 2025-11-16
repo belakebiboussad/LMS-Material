@@ -15,10 +15,8 @@ class FarmsController extends Controller
     public function index(Request $request)
     {
         if($request->ajax())
-        {
             return Farm::all()->pluck('name','id');
-        }
-        $farms = Farm::with(['owner', 'wilaya', 'animalTypes'])->get();
+        $farms =auth()->user()->farms;
         return view('assets.farms.index', compact('farms'));
     }
     public function create()

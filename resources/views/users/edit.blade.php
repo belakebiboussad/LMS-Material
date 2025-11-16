@@ -113,6 +113,9 @@
             <div class="mb-3 col-md-4" id="farSelectmDiv">
               <label for="role" class="ms-0">{{ __('farm.name') }}</label>
               <select class="form-control border border-2 p-2" title="Role" name="farm_id">
+              @foreach ($farms as $key=>$value )
+                <option value="{{ $key }}" {{ ($key == $user->farm_id) ? 'selected' : '' }}>{{ $value }}</option>      
+              @endforeach
               </select>
             </div>
           </div> 
