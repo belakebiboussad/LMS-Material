@@ -27,8 +27,6 @@ class UserCotroller extends Controller
         $this->authorize('users.update');
         $roles = Role::all();
         $cities = Commune::all();
-        $farms = Farm::all()->pluck('name','id');
-        dd($user);
         return view('users.edit', compact('roles', 'cities','farms'))->with('user', $user);
     }
     public function show(User $user) {}
@@ -43,7 +41,7 @@ class UserCotroller extends Controller
             'commune_id' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users,username',
             'role' => 'required|string|max:255',
-            'farm_id' => 'required_if:role,==,"guardien"',
+            //'farm_id' => 'required_if:role,==,"guardien"',
             'password' => 'required|string|min:8',
         ]);
         if ($request->input('role') === 'admin') {

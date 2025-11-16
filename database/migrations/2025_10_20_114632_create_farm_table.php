@@ -21,13 +21,10 @@ return new class extends Migration
             $table->decimal('y_lat', 13, 11)->nullable();
             $table->decimal('x_lon', 14, 11)->nullable();
             $table->string('address',100)->nulable();
-             $table->unsignedTinyInteger('wilaya_id')->nullable();
+            $table->unsignedTinyInteger('wilaya_id')->nullable();
             $table->string('phone',10)->nulable();
-            //$table->integer("guardien_id")->nullable();
-             $table->foreignId('guardien_id')->nullable()->constrained('users','id')->onUpdate('cascade')->onDelete('cascade');
-            $table->date('creationDt');            
-            //$table->foreign('guardien_id')->references('id')->on('users')->contrained()->onupdate('cascade')->ondelete('cascade');
-            
+            $table->foreignId('guardien_id')->nullable()->constrained('users','id')->onUpdate('cascade')->onDelete('cascade');
+            $table->date('creationDt');         
             $table->timestamps();
         });
     }
