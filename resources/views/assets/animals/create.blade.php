@@ -22,7 +22,7 @@
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('animal.farm_id') }}</label>
               <select name="farm_id" class="form-control border border-2 p-2 {{ $errors->has('farm_id') ? ' is-invalid' : '' }}" required>
-                <option value="">{{ __('Select farm') }}</option>
+                <option value="" selected disabled>{{ __('selection') }}</option>
                 @foreach($farms as $id=>$farm)
                 <option value="{{ $id }}" {{ old('farm_id') == $id ? 'selected' : '' }}>{{ $farm }}</option>
                 @endforeach
@@ -31,10 +31,7 @@
             <div class="mb-3 col-md-6">
               <label class="form-label  ">{{ __('animal.animalType') }}</label>
               <select id="animalType_id" name="animalType_id" class="form-control border border-2 p-2 {{ $errors->has('animalType_id') ? ' is-invalid' : '' }}" required>
-                <option value="">{{ __('Select type') }}</option>
-                @foreach($animalTypes as $id => $type)
-                <option value="{{ $id }}" {{ old('animalType_id') == $type ? 'selected' : '' }}>{{ $type }}</option>
-                @endforeach
+                <option value="">{{ __('selection') }}</option>
               </select>
             </div>
             <div class="mb-3 col-md-6">
@@ -58,7 +55,7 @@
                 @endforeach
               </select>
               @error('sexe')
-              <p class='text-danger inputerror'>{{ $message }} </p> 
+              <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
@@ -76,7 +73,7 @@
             </div>
             <div class="mb-3 col-md-6">
               <div class="form-check form-switch mt-5">
-                 <input type="checkbox" name="is_seek" class="form-check-input {{ $errors->has('is_seek') ? ' is-invalid' : '' }}" {{ old('is_seek') ? 'checked' : '' }} />
+                <input type="checkbox" name="is_seek" class="form-check-input {{ $errors->has('is_seek') ? ' is-invalid' : '' }}" {{ old('is_seek') ? 'checked' : '' }} />
                 <label class="form-check-label">{{ __('animal.is_seek') }}</label>
               </div>
             </div>
@@ -95,7 +92,41 @@
   @endsection
   @section('js')
   <script>
+    function animalTypeSelectFill() {
+      var selectedFam =  $('select[name="farm_id"]').val();
+      var url = "{{ route('farm.animalTypes',['id' => 'selectedFam']) }}";
+      alert(url);
+      $.ajax({
+        url: url, // Replace with your server-side endpoint
+        type: "GET", // Or "POST" depending on your server
+        dataType: "json", // Expect JSON data
+        success: function(data) {
+          alert(data);
+          /*
+          $('select[name="farm_id"]').empty();
+          // Add a default or placeholder option (optional)
+          $('select[name=" $('select[name="role"]')"]').append($('<option>', {
+            value: '',
+            text: 'Selectionner ...'
+          }));
+          // Loop through the data and add options
+          $.each(data, function(index, name) {
+            $('select[name="farm_id"]').append($('<option>', {
+              value: index, // Assuming 'id' is the value
+              text:  name // Assuming 'name' is the display text
+            }));
+          });
+          */
+        },
+        error: function(xhr, status, error) {
+          console.error("AJAX Error:", status, error);
+        }
+      });
+    }
     $(document).ready(function() {
+      $('select[name="farm_id"]').on('change', function() {
+        animalTypeSelectFill();
+      });
       $('#animalType_id').on('change', function() {
         var selectedValue = $(this).val();
         var url = "{{ route('animals.getBreeds', ['id' => 'selectedValue']) }}";
@@ -117,14 +148,14 @@
             $.each(data.breed, function(index, name) {
               $('#breed_id').append($('<option>', {
                 value: index, // Assuming 'id' is the value
-                text:  name // Assuming 'name' is the display text
+                text: name // Assuming 'name' is the display text
               }));
             });
             $('#rfid_id').empty();
             $('#rfid_id').append($('<option>', {
               value: '',
               text: 'Selectionner ...'
-            }));    
+            }));
             $.each(data.rfids, function(id, eid) {
               $('#rfid_id').append($('<option>', {
                 value: id, // Assuming 'id' is the value
@@ -136,7 +167,6 @@
             console.error("AJAX Error:", status, error);
           }
         });
-
       });
     });
   </script>

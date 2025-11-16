@@ -22,11 +22,8 @@ class AnimalsController extends Controller
      public function create()
     {
         $animalTyps = AnimalType::pluck('name', 'id');
-        //$farms = auth()->user()->farms()->pluck('name', 'id');
         $farms = (auth()->user()->hasRole('farmer')) ?  auth()->user()->farms()->pluck('name', 'id') : auth()->user()->guardedFarm()->pluck('name', 'id');
-       // dd($farms);
-        $animalTypes = AnimalType::all()->pluck('name', 'id');
-        return view('assets.animals.create', compact('animalTypes', 'farms'));
+        return view('assets.animals.create', compact('farms'));
     }
     public function edit(Animal $animal)
     {

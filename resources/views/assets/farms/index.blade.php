@@ -29,7 +29,7 @@
                       nom</th>
                     <th
                       class="text-uppercase text-secondary text-md font-weight-bolder opacity-7 ps-2">
-                      Propriaitaire</th>
+                      {{ __('farme.type')}}</th>
                     <th
                       class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">
                       Wilaya
@@ -59,7 +59,9 @@
                     </td>
                     <td class="align-middle">
                       <span class="text-secondary text-md">
-                        {{ $farm->owner->name }}
+                        @foreach($farm->animalTypes as $value)
+                        <span class="badge">{{ $value->name }}</span>
+                        @endforeach
                       </span>
                     </td>
                     <td class="align-middle text-center text-sm">
@@ -85,7 +87,6 @@
                         title="">
                         <i class="material-icons">edit</i>
                       </a>
-                      
                       <form action="{{ route('farms.destroy',$farm) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')

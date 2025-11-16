@@ -13,6 +13,7 @@ return [
   'email'      => 'Email',
   'username'   => 'Nom utilisateur',
   'password'   => 'Mot de passe',
+  'password_confirmation'   => 'Confirm Password',
   'role'       => 'Rôle',
   'status'     => 'statut',
 
@@ -24,7 +25,7 @@ return [
   'edit'           => 'Modifier l\'utilisateur',
   'update'         => 'Métre à jour l\'utilisateur',
   'updated'        => 'l\'utilisateur à été mis à jour avec succée.',
-  'delete'         => 'Supprimmer l\'utilisateur',
+  'delete'         => 'Supprimmer l\'utilisateur avec succée.',
   'delete_confirm' => 'Êtes-vous sûr de vouloir supprimer l\'utilisateur',
   'deleted'        => 'Utilisateur supprimé.',
   'undeleteable'   => 'Utilisateur peut pas étre supprimé.',

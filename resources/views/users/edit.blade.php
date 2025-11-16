@@ -93,14 +93,14 @@
         </div>
         <div class="card-body p-3">
           <div class="row">
-            <div class="mb-3 col-md-4">
+            <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('user.username') }}</label>
               <input type="text" name="username" class="form-control border border-2 p-2" value="{{ old('username', $user->username) }}">
               @error('username')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
-            <div class="mb-3 col-md-4">
+            <div class="mb-3 col-md-6">
               <label for="role" class="ms-0">{{ __('user.role') }}</label>
               <select class="form-control border border-2 p-2" title="Role" name="role" {{ ($user->hasRole('admin')) ? 'disabled' : '' }}>
                 @foreach($roles as $key=>$role)
@@ -108,14 +108,6 @@
                   {{ __(  $role->name) }}
                 </option>
                 @endforeach
-              </select>
-            </div>
-            <div class="mb-3 col-md-4" id="farSelectmDiv">
-              <label for="role" class="ms-0">{{ __('farm.name') }}</label>
-              <select class="form-control border border-2 p-2" title="Role" name="farm_id">
-              @foreach ($farms as $key=>$value )
-                <option value="{{ $key }}" {{ ($key == $user->farm_id) ? 'selected' : '' }}>{{ $value }}</option>      
-              @endforeach
               </select>
             </div>
           </div> 

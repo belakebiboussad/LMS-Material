@@ -14,8 +14,6 @@ class FarmsController extends Controller
 {
     public function index(Request $request)
     {
-        if($request->ajax())
-            return Farm::all()->pluck('name','id');
         $farms =auth()->user()->farms;
         return view('assets.farms.index', compact('farms'));
     }
@@ -89,6 +87,9 @@ class FarmsController extends Controller
         }
 
         return redirect()->route('farms.index')->with('success', 'Farm updated successfully.');
+    }
+    public function getFarmAnimalType(Farm $farm) {
+        return $farm->animalTypes()->pluck('name','id');
     }
     public function destroy(Farm $farm)
     {

@@ -103,7 +103,7 @@
               <label for="role" class="ms-0">{{ __('user.role') }}</label>
               <select class="form-control border border-2 p-2" title="Role" name="role">
                 @foreach($roles as $role)
-                <option value="{{ $role->name }}" class="border-2 p-2"  "{{ old('role') == $role->name? 'selected' : '' }}"">
+                <option value="{{ $role->name }}" class="border-2 p-2" {{ (old('role') == $role->name) ? 'selected' : '' }}>
                   {{ __(  $role->name) }}
                 </option>
                 @endforeach
@@ -118,8 +118,8 @@
               @enderror
             </div>
             <div class="mb-3 col-md-3">
-              <label class="form-label">{{ __('user.confpassword') }}</label>
-              <input type="password" name="confpassword" class="form-control border border-2 p-2" value="">
+              <label class="form-label">{{ __('user.password_confirmation') }}</label>
+              <input type="password" name="password_confirmation" class="form-control border border-2 p-2" value="">
               @error('password')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
@@ -136,44 +136,4 @@
     </form>
   </div>
   @endsection
-  @section('js')
-  <script>
-  function farmSelectFill() {
-        var url = "{{ route('farms.index') }}";
-        $.ajax({
-          url: url, // Replace with your server-side endpoint
-          type: "GET", // Or "POST" depending on your server
-          dataType: "json", // Expect JSON data
-          success: function(data) {
-            $('select[name="farm_id"]').empty();
-            // Add a default or placeholder option (optional)
-            $('select[name="farm_id"]').append($('<option>', {
-              value: '',
-              text: 'Selectionner ...'
-            }));
-            // Loop through the data and add options
-            $.each(data, function(index, name) {
-              $('select[name="farm_id"]').append($('<option>', {
-                value: index, // Assuming 'id' is the value
-                text:  name // Assuming 'name' is the display text
-              }));
-            });
-          },
-          error: function(xhr, status, error) {
-            console.error("AJAX Error:", status, error);
-          }
-        });  
-  }   
-  $(function() {
-     $('#farSelectmDiv').hide()
-    $('select[name="role"]').on('change', function() {
-        if($(this).val() === 'guardien') {
-          farmSelectFill();
-          $('#farSelectmDiv').show();
-        } else {
-           $('#farSelectmDiv').hide()
-        }
-    });
-  });
-  </script>
-  @endsection
+ 

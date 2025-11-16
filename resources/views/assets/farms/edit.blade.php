@@ -68,7 +68,7 @@
               <label class="form-label">{{ __('farm.type') }}</label>
               <div class="col-md-12">
                 @foreach($animalTypes as $key=>$type)
-                <input type="checkbox" name="animal_types[]" id="{{ $type }}" class="form-check-input chk-col-pink" value="{{ $key }}">
+                <input type="checkbox" name="animal_types[]" id="{{ $type }}" class="form-check-input chk-col-pink" value="{{ $key }}" {{ $farm->animalTypes->pluck('id')->contains($key) ? 'checked' : '' }}>
                 <label for="{{ $type }}">{{ ucfirst($type) }}</label>
                 @endforeach
               </div>
