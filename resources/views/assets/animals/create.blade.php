@@ -45,7 +45,7 @@
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('animal.dob') }}</label>
-              <input type="date" name="dob" class="form-control border border-2 p-2 {{ $errors->has('dob') ? ' is-invalid' : '' }}" value="{{ old('dob') ?? '' }}" required>
+              <input type="date" name="dob" class="form-control border border-2 p-2 {{ $errors->has('dob') ? ' is-invalid' : '' }}" value="{{ old('dob') ?? '' }}">
             </div>
             <div class="mb-3  col-md-6">
               <label class="form-label">{{ __('animal.sexe') }}</label>
@@ -93,30 +93,28 @@
   @section('js')
   <script>
     function animalTypeSelectFill() {
-      var selectedFam =  $('select[name="farm_id"]').val();
-      var url = "{{ route('farm.animalTypes',['id' => 'selectedFam']) }}";
-      alert(url);
+      var url = "{{ route('farm.animalTypes', ['id' => ':id']) }}";
+      var url = url.replace(':id',  $('select[name="farm_id"]').val());
       $.ajax({
         url: url, // Replace with your server-side endpoint
         type: "GET", // Or "POST" depending on your server
         dataType: "json", // Expect JSON data
         success: function(data) {
-          alert(data);
-          /*
-          $('select[name="farm_id"]').empty();
+          $('select[name="animalType_id"]').empty();
           // Add a default or placeholder option (optional)
-          $('select[name=" $('select[name="role"]')"]').append($('<option>', {
+           $('select[name="animalType_id"]').append($('<option>', {
             value: '',
-            text: 'Selectionner ...'
+            text: 'Selectionner ...',
+            disabled: true,
+            selected :true
           }));
           // Loop through the data and add options
-          $.each(data, function(index, name) {
-            $('select[name="farm_id"]').append($('<option>', {
-              value: index, // Assuming 'id' is the value
-              text:  name // Assuming 'name' is the display text
+          $.each(data, function(key, type) {
+            $('select[name="animalType_id"]').append($('<option>', {
+              value: type['id'], // Assuming 'id' is the value
+              text:  type['name'] // Assuming 'name' is the display text
             }));
           });
-          */
         },
         error: function(xhr, status, error) {
           console.error("AJAX Error:", status, error);

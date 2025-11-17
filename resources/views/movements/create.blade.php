@@ -19,9 +19,25 @@
           @endforeach
           @endif
           <div class="row">
-            <div class="mb-3 col-md-6">
+            <div class="mb-3 col-md-4">
               <label class="form-label">{{ __('movement.sfarm_id')}}</label>
+              <select type="text" name="sfarm_id" class="form-control border border-2 p-2">
+                @if (empty($animal))
+                <option value={{ $animal->farm_id }} selected disabled>{{ $animal->farm->name}}</option> 
+                @else
+                @foreach(auth()->user()->farms as $farm)
+                <option value="{{  $farm->id }}"> {{ $farm->name }} </option>  
+                @endforeach
+                @endif
+              </select>
+              @error('sfarm_id')
+              <p class='text-danger inputerror'>{{ $message }} </p>
+              @enderror
+            </div>
+            <div class="mb-3 col-md-4">
+              <label class="form-label">{{ __('movement.dfarm_id')}}</label>
               <select type="text" name="sfarm_id" class="form-control border border-2 p-2" required>
+            
               </select>
               @error('sfarm_id')
               <p class='text-danger inputerror'>{{ $message }} </p>

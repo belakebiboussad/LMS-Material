@@ -19,8 +19,11 @@
                         <div class="form-line">
                             <x-input-label for="email" :value="__('auth.Email_Address')" /><br>
                             <input class="mdl-textfield__input @error('email') is-invalid @enderror" type="text" id="email" name="email" value="admin@example.com" required autocomplete="off" autofocus />
-                            <x-input-error :message="$errors->get('email') class=" mt-2" />
-                            <x-input-error :message="$errors->get('username') class=" mt-2" />
+                            @error('email')
+                             <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
                     <div class="input-group">
@@ -37,6 +40,9 @@
                         <div class="form-check form-switch d-flex  col-xs-8 p-t-5">
                             <input type="checkbox" name="rememberme" id="rememberme" class="form-check-input chk-col-pink" {{ old('remember') ? 'checked' : '' }}>
                              <label class="form-check-label mb-0 ms-2" for="rememberme">{{ __('auth.Remember_Me') }}</label>   
+                              @error('password')
+                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
                         </div>
                         
                         <div class="col-xs-4">

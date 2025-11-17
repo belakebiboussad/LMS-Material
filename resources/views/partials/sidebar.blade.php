@@ -1,4 +1,4 @@
-<aside id="leftsidebar" class="sidebar">
+<aside id="sidenav-main" class="sidebar navbar navbar-vertical navbar-expand-xs border-0">
     <!-- User Info -->
     <div class="user-info">
         <div class="image">
@@ -78,10 +78,22 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('movements.index') }}">
+                <a href="#" class="menu-toggle">
                     <i class="material-icons">pets</i>
                     <span>{{ __('movements') }}</span>
                 </a>
+                <ul class="ml-menu">
+                   <li>
+                    <a href="{{ route('movements.index') }}">{{ __('movement.index') }}</a>
+                    </li>  
+                    @foreach (\App\Enums\Transaction::cases() as $transaction)
+                        <li>
+                            <a href="{{ route('movements.create') }}">
+                                {{ $transaction->label() }}
+                            </a>   
+                        </li>
+                    @endforeach  
+                </ul>
             </li>
             @endrole    
         </ul>

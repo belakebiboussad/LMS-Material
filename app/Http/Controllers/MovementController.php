@@ -19,10 +19,10 @@ class MovementController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Animal $animal)
     {
         $farms = Farm::all()->pluck('id','name');
-        return view('movements.create', compact('farms'));
+        return view('movements.create', compact('farms', 'animal'));
     }
 
     /**

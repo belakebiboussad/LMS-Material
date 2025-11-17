@@ -38,7 +38,7 @@ class AnimalsController extends Controller
             'eid' => 'nullable|exists:tags,id',
             'animalType_id' => 'required|exists:animal_types,id',
             'weight' => 'nullable|numeric',
-            'dob' => 'required|date',
+            'dob' => 'nullable|date',
             'sexe' => 'required','in:male,female',
             'breed_id' => 'nullable|exists:breeds,id',
             'is_seek' => 'boolean',

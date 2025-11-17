@@ -26,6 +26,7 @@ class FarmsController extends Controller
     }
     public function edit(Farm $farm)
     {
+         dd($farm->animalTypes);
         $wilayas = Wilaya::all()->pluck('name', 'id');
         $guardiens = User::role('guardien')->pluck('name','id');
         $animalTypes = AnimalType::all()->pluck('name', 'id');
@@ -88,8 +89,9 @@ class FarmsController extends Controller
 
         return redirect()->route('farms.index')->with('success', 'Farm updated successfully.');
     }
-    public function getFarmAnimalType(Farm $farm) {
-        return $farm->animalTypes()->pluck('name','id');
+    public function getFarmAnimalType( $id) {
+        $animalTypes = (Farm::FindOrFail($id))->animalTypes()->select('animal_types.id', 'animal_types.name')->get();
+        return response()->json($animalTypes);
     }
     public function destroy(Farm $farm)
     {

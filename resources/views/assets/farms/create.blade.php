@@ -1,5 +1,5 @@
   @extends('layouts.app')
-  @section('title', __('farme.create'))
+  @section('title', __('farm.create'))
   @section('css')
   <style>
     #mapid {

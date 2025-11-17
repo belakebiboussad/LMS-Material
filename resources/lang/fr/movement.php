@@ -2,7 +2,7 @@
 
 return [
   //attributs
-  'sfarm_id'  => 'Ferme Départ',
+  'sfarm_id'  => 'Ferme de départ',
   'dfarm_id'  => 'Ferme Déstination',
   'depDate'   => 'Date départ',
   'arrivDate' => 'Date d\'arrivée',

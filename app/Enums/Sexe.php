@@ -5,7 +5,7 @@ namespace App\Enums;
 enum Sexe: string
 {
     case MALE = 'male';
-    case FEMALE = 'femelle';
+    case FEMALE = 'female';
     public function label(){
         return match($this) {
             self::MALE =>'Mâle',

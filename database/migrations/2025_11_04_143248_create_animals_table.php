@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+use App\Enums\Sexe;
 return new class extends Migration
 {
     /**
@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedInteger('color_id')->nullable();
             $table->double('weight',8,2)->nullable();
             $table->dateTime('dob')->nullable();
-            $table->string('sexe');
+            $table->string('sexe',10)->default(Sexe::MALE->value);
             $table->unsignedBigInteger('breed_id');
             $table->dateTime('dethDate')->nullable();
             $table->boolean('is_seek')->nullable();

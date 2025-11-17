@@ -32,7 +32,7 @@
     <script src="{{ asset('theme/plugins/flot-charts/jquery.flot.time.js') }}"></script>
     <!-- Sparkline Chart Plugin Js -->
     <script src="{{ asset('theme/plugins/jquery-sparkline/jquery.sparkline.js') }}"></script>
-
+    <script src="{{ asset('assets') }}/js/plugins/perfect-scrollbar.min.js"></script>
     <!-- Custom Js -->
     <script src="{{ asset('theme/js/admin.js') }}"></script>
     
@@ -41,3 +41,5 @@
     <!-- Demo Js -->
     <script src="{{ asset('theme/js/demo.js') }}"></script>
     <script src="{{ asset('js/leaflet.js') }}"></script>
+    
+    <script src="{{ asset('theme/js/material-dashboard.js') }}"></script>
