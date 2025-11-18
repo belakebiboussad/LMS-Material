@@ -167,7 +167,7 @@ function sidebarType(a) {
     a.classList.remove('active');
   }
 
-  var sidebar = document.querySelector('.sidenav');
+  var sidebar = document.querySelector('.sidebar');
 
   for (var i = 0; i < colors.length; i++) {
     sidebar.classList.remove(colors[i]);
