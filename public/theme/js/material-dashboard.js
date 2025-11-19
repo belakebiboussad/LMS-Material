@@ -200,7 +200,7 @@ function sidebarType(a) {
   }
 
   // Remove logo-white/logo-dark
-
+/*
   if ((color == 'bg-transparent' || color == 'bg-white') && bodyWhite) {
     var navbarBrand = document.querySelector('.navbar-brand-img');
     var navbarBrandImg = navbarBrand.src;
@@ -217,7 +217,7 @@ function sidebarType(a) {
       navbarBrand.src = navbarBrandImgNew;
     }
   }
-
+*/
   if (color == 'bg-white' && bodyDark) {
     var navbarBrand = document.querySelector('.navbar-brand-img');
     var navbarBrandImg = navbarBrand.src;

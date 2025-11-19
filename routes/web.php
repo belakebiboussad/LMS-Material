@@ -7,6 +7,7 @@ use App\Http\Controllers\UserCotroller;
 use App\Http\Controllers\AnimalsController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\MovementController;
+use App\Enums\Transaction;
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -45,6 +46,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     //Route::get('/animals/{animal}/movements',[MovementController::class,'create'])->name('animals.movements.create');
     Route::get('/movements/{animal}/create', [MovementController::class, 'create'])->name('animal.movements.create');
+    Route::get('/movements/{transaction}', [MovementController::class, 'creation'])->name('movement.create');
     Route::resource('movements', MovementController::class);
 });
 Route::middleware('auth')->group(function () {

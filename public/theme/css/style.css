@@ -7452,7 +7452,7 @@ fieldset[disabled] .form-control {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   font-family: "Roboto", sans-serif;
-  background: #fdfdfd;
+   background: #fdfdfd;
   width: 300px;
   overflow: hidden;
   display: inline-block;
@@ -7464,32 +7464,42 @@ fieldset[disabled] .form-control {
   -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   -ms-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 11 !important; }
+  z-index: 11 !important; 
+ }
   .sidebar .legal {
+    
     position: absolute;
     bottom: 0;
     width: 100%;
     border-top: 1px solid #eee;
     padding: 15px;
-    overflow: hidden; }
+    overflow: hidden;
+    
+   }
     .sidebar .legal .copyright {
       font-size: 13px;
       white-space: nowrap;
       -ms-text-overflow: ellipsis;
       -o-text-overflow: ellipsis;
       text-overflow: ellipsis;
-      overflow: hidden; }
-      .sidebar .legal .copyright a {
+      overflow: hidden; 
+    }
+    .sidebar .legal .copyright a {
         font-weight: bold;
         text-decoration: none; }
-    .sidebar .legal .version {
+     .sidebar .legal .copyright div {
+      font-weight: bold;
       white-space: nowrap;
       -ms-text-overflow: ellipsis;
       -o-text-overflow: ellipsis;
       text-overflow: ellipsis;
       overflow: hidden;
       margin-top: 5px;
-      font-size: 13px; }
+      font-size: 13px;  
+      }
+/* .sidebar .legal .version {white-space: nowrap;-ms-text-overflow: ellipsis;
+      -o-text-overflow: ellipsis;text-overflow: ellipsis;overflow: hidden; margin-top: 5px;
+      font-size: 13px;}*/
   .sidebar .user-info {
     padding: 13px 15px 12px 15px;
     white-space: nowrap;

@@ -1,11 +1,11 @@
-<aside id="sidenav-main" class="sidebar navbar navbar-vertical navbar-expand-xs border-0"  id="sidenav-main">
+<aside id="sidenav-main" class="sidebar navbar navbar-vertical navbar-expand-xs border-0 fixed-start ms-1 bg-white"  id="sidenav-main">
     <!-- User Info -->
     <div class="user-info">
         <div class="image">
             <img src="{{ asset('theme/images/user.png') }}" width="48" height="48" alt="User" />
         </div>
         <div class="info-container">
-            <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome, {{ Auth::user()->name ?? ''}}!</div>
+            <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ __('app.welcome') }}, {{ Auth::user()->name ?? ''}}!</div>
             <div class="email">{{ Auth::user()->email ?? ''}}</div>
             <div class="btn-group user-helper-dropdown">
                 <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
@@ -88,7 +88,7 @@
                     </li>  
                     @foreach (\App\Enums\Transaction::cases() as $transaction)
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('movements.create') }}">
+                            <a class="nav-link" href="{{ route('movement.create',$transaction->value) }}">
                               <h5> {{ $transaction->label() }}</h5>
                             </a>   
                         </li>
@@ -102,11 +102,14 @@
     <!-- Footer -->
     <div class="legal">
         <div class="copyright">
-            &copy; 2025 <a href="javascript:void(0);">{{ config('app.name') }}</a>.
+            <div>
+                <a href="javascript:void(0);">&copy; 2025 {{ config('app.name') }}</a>.
+            </div>
+            <div> 
+            <a><b>Version: </b> 0.0.1</a>
+            </div>
         </div>
-        <div class="version">
-            <b>Version: </b> 0.0.1
-        </div>
+{{-- <div class="version"> <b>Version: </b> 0.0.1 </div> --}}
     </div>
     <!-- #Footer -->
 </aside>

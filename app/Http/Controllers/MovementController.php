@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Enums\Transaction;
 use App\Models\Animal;
 use App\Models\Farm;
 use Illuminate\Http\Request;
-
 class MovementController extends Controller
 {
     /**
@@ -19,10 +20,29 @@ class MovementController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Animal $animal)
-    {
+    public function create() {
+        //Animal $animal     
         $farms = Farm::all()->pluck('id','name');
         return view('movements.create', compact('farms', 'animal'));
+    }
+    public function creation( $transaction)
+     {
+        switch($transaction) {
+              case 'sell':
+                $view = 'movements.create';
+                break;
+            case 'buy':
+                $view = 'movements.buy';
+                break;
+            case 'interne':
+                $view = 'movements.interne';
+                break;
+            default:
+                $view = 'errors.500';
+
+        }
+        return view($view);
+
     }
 
     /**
