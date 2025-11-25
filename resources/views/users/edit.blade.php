@@ -29,7 +29,7 @@
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label"><abbr title="">{{ __('user.NIN') }}</abbr></label>
-              <input type="text" name="NIN" class="form-control border border-2 p-2" value="{{ old('NIN', $user->NIN) }}" required>
+              <input type="text" name="NIN" class="form-control nin border border-2 p-2" value="{{ old('NIN', $user->NIN) }}" required>
               @error('NIN')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
@@ -55,13 +55,6 @@
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
-            <div class="mb-3 col-md-6">
-              <label class="form-label">{{ __('user.email') }}</label>
-              <input type="email" name="email" class="form-control border border-2 p-2" value="{{ old('email', $user->email) }}">
-              @error('email')
-              <p class='text-danger inputerror'>{{ $message }} </p>
-              @enderror
-            </div>
             <div class=" mb-3 col-md-6">
               <label class="form-label">{{ __('user.address') }}</label>
               <input type="text" name="address" class="form-control border border-2 p-2" value="{{ old('address', $user->address) }}">
@@ -77,6 +70,20 @@
                 @endforeach
               </select>
               @error('commune_id')
+              <p class='text-danger inputerror'>{{ $message }} </p>
+              @enderror
+            </div>
+            <div class="mb-3 col-md-3">
+              <label class="form-label">{{ __('user.phone') }}</label>
+              <input type="tel" name="phone" class="form-control phone border border-2 p-2" value="{{ old('phone', $user->phone)  }}">
+              @error('phone')
+              <p class='text-danger inputerror'>{{ $message }} </p>
+              @enderror
+            </div>
+            <div class="mb-3 col-md-3">
+              <label class="form-label">{{ __('user.email') }}</label>
+              <input type="email" name="email" class="form-control border border-2 p-2" value="{{ old('email', $user->email) }}">
+              @error('email')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>

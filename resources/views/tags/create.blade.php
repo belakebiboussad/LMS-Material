@@ -21,14 +21,14 @@
           <div class="row">
             <div class="mb-3 col-md-6">
               <label class="form-label"><abbr title="RFID">{{ __('tag.eid') }}</abbr></label>
-              <input type="text" name="eid" class="form-control border border-2 p-2 {{ $errors->has('eid') ? ' is-invalid' : '' }}" value="{{ old('eid') ?? '' }}" required>
+              <input type="text" name="eid" class="form-control border eid border-2 p-2 {{ $errors->has('eid') ? ' is-invalid' : '' }}" value="{{ old('eid') ?? '' }}" required>
               @error('eid')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('tag.vis_id') }}</label>
-              <input type="text" name="vis_id" class="form-control border border-2 p-2 {{ $errors->has('vis_id') ? ' is-invalid' : '' }}" value="{{ old('vis_id') ?? '' }}" required>
+              <input type="text" name="vis_id" class="form-control vid border border-2 p-2 {{ $errors->has('vis_id') ? ' is-invalid' : '' }}" value="{{ old('vis_id') ?? '' }}" required>
               @error('vis_id')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror

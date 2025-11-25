@@ -28,7 +28,7 @@
           <div class="row">
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('farm.recordNbr') }}</label>
-              <input type="text" name="recordNbr" class="form-control border border-2 p-2 {{ $errors->has('recordNbr') ? ' is-invalid' : '' }}" value="{{ old('recordNbr') ?? '' }}" required>
+              <input type="text" name="recordNbr" class="form-control border phone border-2 p-2 {{ $errors->has('recordNbr') ? ' is-invalid' : '' }}" value="{{ old('recordNbr') ?? '' }}" required>
               @error('recordNbr')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
@@ -110,8 +110,8 @@
             </div>
             <div class="mb-3 col-md-3">
               <label class="form-label">{{ __('farm.phone') }}</label>
-              <input type="tel" name="phone" pattern="^(0(?:5|6|7)\d{8})$" placeholder="0xxxxxxxxx" class="form-control border border-2 p-2" value="{{ old('phone') ?? '' }}">
-              @error('phone')
+               <input type="tel" name="phone" pattern="^(0(?:5|6|7)\d{8})$" placeholder="0xxxxxxxxx" class="form-control phone border border-2 p-2" value="{{ old('phone') ?? '' }}">
+               @error('phone') 
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>

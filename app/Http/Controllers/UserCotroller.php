@@ -33,7 +33,7 @@ class UserCotroller extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'prof_id' => 'required|string|size:15|unique:users,prof_id',
+            'prof_id' => 'required|string|size:16|unique:users,prof_id',
             'NIN' => 'required|string|size:20|unique:users,NIN',
             'name' => 'required|string|max:255',
             'lastName' => 'required|string|max:255',

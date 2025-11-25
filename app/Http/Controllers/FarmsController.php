@@ -26,7 +26,6 @@ class FarmsController extends Controller
     }
     public function edit(Farm $farm)
     {
-         dd($farm->animalTypes);
         $wilayas = Wilaya::all()->pluck('name', 'id');
         $guardiens = User::role('guardien')->pluck('name','id');
         $animalTypes = AnimalType::all()->pluck('name', 'id');

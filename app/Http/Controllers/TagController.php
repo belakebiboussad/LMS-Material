@@ -37,7 +37,7 @@ class TagController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'eid' => 'required|string|unique:tags,eid',
+            'eid' => 'required|string|size:15|unique:tags,eid',
             'type' => 'required|in:'.implode(',', array_map(fn($case) => $case->value, TagType::cases())),
             'animalType_id' => 'required|exists:animal_types,id',
             'vis_id' => 'required|string|unique:tags,vis_id',

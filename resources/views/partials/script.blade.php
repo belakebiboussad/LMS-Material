@@ -42,5 +42,6 @@
     <!-- Demo Js -->
     <script src="{{ asset('theme/js/demo.js') }}"></script>
     <script src="{{ asset('js/leaflet.js') }}"></script>
-    
     <script src="{{ asset('theme/js/material-dashboard.js') }}"></script>
+    <script src="{{ asset('js/mask/jquery.inputmask.min.js') }}"></script>
+     <script src="{{ asset('js/app.js') }}"></script>
