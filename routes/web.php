@@ -7,6 +7,7 @@ use App\Http\Controllers\UserCotroller;
 use App\Http\Controllers\AnimalsController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\MovementController;
+use App\Http\Controllers\ProfilesController;
 use App\Enums\Transaction;
 Route::get('/', function () {
     return view('auth.login');
@@ -52,4 +53,52 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/animals/{id}/vaccins',[MovementController::class,'index'])->name('animals.vaccins.index');
     Route::resource('animals.vaccins', MovementController::class);
+});
+
+// Registered, activated, and is current user routes.
+Route::group(['middleware' => ['auth','currentUser']], function () {
+    // User Profile and Account Routes
+    Route::resource(
+        'profile',
+        ProfilesController::class,
+        [
+            'only' => [
+                'account',
+                'show',
+                'edit',
+                'update',
+                'create',
+            ],
+        ]
+    );
+    // Route::put('profile/{username}/updateUserAccount', [
+    //     'as'   => '{username}',
+    //     'uses' => 'ProfilesController@updateUserAccount',
+    // ]);
+    // Route::put('profile/{username}/updateUserPassword', [
+    //     'as'   => '{username}',
+    //     'uses' => 'ProfilesController@updateUserPassword',
+    // ]);
+    // Route::delete('profile/{username}/deleteUserAccount', [
+    //     'as'   => '{username}',
+    //     'uses' => 'ProfilesController@deleteUserAccount',
+    // ]);
+
+    // // Route for user profile background image
+    // Route::get('account', [
+    //     'as'   	=> '{username}',
+    //     'uses' 	=> 'ProfilesController@account',
+    // ]);
+
+    // // Update User Profile Ajax Route
+    // Route::post('profile/{username}/updateAjax', [
+    //     'as'   => '{username}',
+    //     'uses' => 'ProfilesController@update',
+    // ]);
+
+    // // Route to upload user avatar.
+    // Route::post('avatar/upload', ['as' => 'avatar.upload', 'uses' => 'ProfilesController@upload']);
+
+    // // Route to uplaod user background image
+    // Route::post('background/upload', ['as' => 'background.upload', 'uses' => 'ProfilesController@uploadBackground']);
 });

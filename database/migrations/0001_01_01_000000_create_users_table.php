@@ -25,8 +25,9 @@ return new class extends Migration
             $table->string('username',100)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->tinyInteger(1)->default(1)->comment('1=Active, 0=Inactive')->name('status');
+            $table->tinyInteger('status')->default(1)->comment('1=Active, 0=Inactive');
             $table->rememberToken();
+
             $table->timestamps();
         });
 

@@ -10,10 +10,10 @@
             <div class="btn-group user-helper-dropdown">
                 <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                 <ul class="dropdown-menu pull-right">
-                    <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
-                    {{-- <li {{ Request::is('profile/'.Auth::user()->name, 'profile/'.Auth::user()->name . '/edit') ? 'class=active' : null }}>
-                                {!! HTML::link(url('/profile/'.Auth::user()->name), trans('titles.profile')) !!}
-                            </li> --}}
+                    <li  {{ Request::is('profile/'.Auth::user()->username, 'profile/'.Auth::user()->username . '/edit') ? 'class=active' : null }}>
+                        <a href="{{ route('profile.show',Auth::user()->username) }}">
+                            <i class="material-icons">person</i>Profile
+                    </li>
                     <li role="seperator" class="divider"></li>
                     <li>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

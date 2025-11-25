@@ -14,3 +14,7 @@ ajouter  confirm password in add user
                         <span class="mdl-textfield__error">Must match password</span>
                       </div>
   /////////
+  <i class="fa-fw fas fa-users nav-icon"></i>
+<i class="nav-icon fas fa-fw fa-key"></i>
+<i class="fa-fw fas fa-unlock-alt nav-icon"> </i>
+  https://github.com/jeremykenedy/laravel-material-design?tab=readme-ov-file#features
