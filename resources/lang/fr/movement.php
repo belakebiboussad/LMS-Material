@@ -7,7 +7,7 @@ return [
   'depDate'   => 'Date départ',
   'arrivDate' => 'Date d\'arrivée',
   // Actions
-  'index'          => 'Liste des mouvements',
+  'index'          => 'Liste mouvements',
   'create'         => 'Ajouter une mouvement',
   'created'        => 'Une nouveau mouvement à été crée.',
   'show'           => 'Voir Détail du mouvement',
@@ -19,4 +19,5 @@ return [
   'deleted'        => 'Mouvement been deleted.',
   'undeleted'      => 'Mouvement deleted.',
   'undeleteable'   => 'Mouvement cannot be deleted.',
+  'movement.animals' => 'Animaux'
 ];

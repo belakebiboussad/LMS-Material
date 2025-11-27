@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Movement extends Model
 {
     protected $fillable = [
-        'sferm_id',
+        'sfarm_id',
+        'buyer_id',
         'dfarm_id',
         'type',
         'depDate',

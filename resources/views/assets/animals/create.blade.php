@@ -92,9 +92,9 @@
   @endsection
   @section('js')
   <script>
-    function animalTypeSelectFill() {
+    function animalTypeSelectFill(farmId) {
       var url = "{{ route('farm.animalTypes', ['id' => ':id']) }}";
-      var url = url.replace(':id',  $('select[name="farm_id"]').val());
+      var url = url.replace(':id',  farmId);
       $.ajax({
         url: url, // Replace with your server-side endpoint
         type: "GET", // Or "POST" depending on your server
@@ -123,7 +123,7 @@
     }
     $(document).ready(function() {
       $('select[name="farm_id"]').on('change', function() {
-        animalTypeSelectFill();
+        animalTypeSelectFill($(this).val());
       });
       $('#animalType_id').on('change', function() {
         var selectedValue = $(this).val();

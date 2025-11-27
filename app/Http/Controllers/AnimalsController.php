@@ -16,6 +16,9 @@ class AnimalsController extends Controller
 {
      public function index()
     {
+        if(request()->ajax()) {
+            return request()->all();
+        }
         $animals = Animal::all();
         return view('assets.animals.index', compact('animals'));
     }

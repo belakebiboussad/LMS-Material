@@ -19,26 +19,42 @@
           @endforeach
           @endif
           <div class="row">
-            <div class="mb-3 col-md-4">
+            <div class="mb-3 col-md-3">
               <label class="form-label">{{ __('movement.sfarm_id')}}</label>
               <select type="text" name="sfarm_id" class="form-control border border-2 p-2">
-                @if (empty($animal))
-                <option value={{ $animal->farm_id }} selected disabled>{{ $animal->farm->name}}</option> 
+                @isset($animal)
+                <option value={{ $animal->farm_id }} selected disabled>{{ $animal->farm->name}}</option>
                 @else
+                <option value="" selected disabled>{{ __('selection') }}</option>
                 @foreach(auth()->user()->farms as $farm)
-                <option value="{{  $farm->id }}"> {{ $farm->name }} </option>  
+                <option value="{{  $farm->id }}"> {{ $farm->name }} </option>
                 @endforeach
-                @endif
+                @endisset
               </select>
               @error('sfarm_id')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
-            <div class="mb-3 col-md-4">
-              <label class="form-label">{{ __('movement.dfarm_id')}}</label>
-              <select type="text" name="sfarm_id" class="form-control border border-2 p-2" required>
-            
+            <div class="mb-3 col-md-3">
+              <label class="form-label">{{ __('movement.animals')}}</label>
+              <select type="text" name="animals" class="form-control border border-2 p-2">
+
               </select>
+              @error('sfarm_id')
+              <p class='text-danger inputerror'>{{ $message }} </p>
+              @enderror
+            </div>
+            <div class="mb-3 col-md-3">
+              <label class="form-label">{{ __('movement.buyer')}}</label>
+              <select type="text" name="sfarm_id" class="form-control border border-2 p-2" required></select>
+              @error('sfarm_id')
+              <p class='text-danger inputerror'>{{ $message }} </p>
+              @enderror
+             </div>
+            </div>
+            <div class="mb-3 col-md-3">
+              <label class="form-label">{{ __('movement.dfarm_id')}}</label>
+              <select type="text" name="sfarm_id" class="form-control border border-2 p-2" required></select>
               @error('sfarm_id')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
@@ -48,4 +64,39 @@
       </div>
     </form>
   </div>
+  @endsection
+  @section('js')
+  <script>
+    function animalsSelectFill(farmId) {
+      var url = "{{ route('animals.index', ['id' => ':id']) }}";
+      var url = url.replace(':id', farmId);
+      $.ajax({
+            url: url, // Replace with your server-side endpoint
+            type: "GET", // Or "POST" depending on your server
+            dataType: "json", // Expect JSON data
+            success: function(data) {
+              $('select[name="animals"]').empty();
+              // Add a default or placeholder option (optional)
+              $('select[name="animals"]').append($('<option>', {
+                value: '',
+                text: 'Selectionner ...',
+                disabled: true,
+                selected: true
+              }));
+              // Loop through the data and add options
+              $.each(data, function(key, type) {
+                 $('select[name="animals"]').append($('<option>', {
+                    value: type['id'], // Assuming 'id' is the value
+                    text:  type['eid'] // Assuming 'name' is the display text
+                  }));
+              });
+            },
+          });
+    }
+    $(document).ready(function() {
+      $('select[name="sfarm_id"]').on('change', function() {
+        animalsSelectFill($(this).val());
+      });
+    });
+  </script>
   @endsection

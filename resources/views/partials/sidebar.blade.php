@@ -84,12 +84,12 @@
                 </a>
                 <ul class="ml-menu">
                    <li class="nav-item">
-                    <a href="{{ route('movements.index') }}"> <h5>{{ __('movement.index') }}</h5></a>
+                    <a class="nav-link" href="{{ route('movements.index') }}">{{ __('movement.index') }}</a>
                     </li>  
                     @foreach (\App\Enums\Transaction::cases() as $transaction)
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('movement.create',$transaction->value) }}">
-                              <h5> {{ $transaction->label() }}</h5>
+                               {{ $transaction->label() }}
                             </a>   
                         </li>
                     @endforeach  
