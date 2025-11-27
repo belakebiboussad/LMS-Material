@@ -22,29 +22,29 @@
                 <thead>
                   <tr>
                     <th
-                      class="text-uppercase text-secondary text-lg font-weight-bolder opacity-7">
+                      class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
                       {{ __('animal.eid') }}</th>
                     <th
-                      class="text-uppercase text-secondary text-lg font-weight-bolder opacity-7">
+                      class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
                       {{ __('animal.animalType') }}</th>
                     <th
-                      class="text-uppercase text-secondary text-lg font-weight-bolder opacity-7 ps-2">
+                      class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">
                        {{ __('animal.breed_id') }}</th>
-                    <th class="text-uppercase text-secondary text-lg font-weight-bolder opacity-7 ps-2">
+                    <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">
                      Sexe</th> 
 
                     <th
-                      class="text-center text-uppercase text-secondary text-lg font-weight-bolder opacity-7">
+                      class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
                       {{ __('animal.age') }}
                     </th>
                     <th
-                      class="text-center text-uppercase text-secondary text-smfont-weight-bolder opacity-7">
+                      class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
                       {{ __('animal.is_seek') }}</th>
                     <th
-                      class="text-center text-uppercase text-secondary text-lg font-weight-bolder opacity-7">
+                      class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
                       {{ __('animal.farm_id') }}</th>
                     <th
-                      class="text-center text-uppercase text-secondary text-lg font-weight-bolder opacity-7">
+                      class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
                       {{ __('creation_at') }}</th>
                     <th class="text-secondary opacity-7"></th>
                   </tr>
@@ -58,16 +58,16 @@
                       </div>
                     </td>
                     <td class="align-middle text-center">
-                      <span class="text-lg">{{ $animal->animalType->name }}</span>
+                      <span class="text-xs">{{ $animal->animalType->name }}</span>
                     </td>
                     <td class="align-middle text-center">
-                      <span class="text-lg">{{ $animal->breed->name }}</span>
+                      <span class="text-xs">{{ $animal->breed->name }}</span>
                     </td>
                      <td class="align-middle text-center">
-                      <span class="text-lg">{{ $animal->sexe }}</span>
+                      <span class="text-xs">{{ $animal->sexe }}</span>
                     </td>
                     <td class="align-middle text-center">
-                      <span class="text-lg">{{ $animal->age }}</span>
+                      <span class="text-xs">{{ $animal->age }}</span>
                     </td>
                     <td class="align-middle text-center text-md">
                       @if($animal->is_seek)
@@ -77,10 +77,10 @@
                       @endif
                     </td>
                     <td class="align-middle text-center">
-                      <span class="text-lg mb-0">{{ $animal->farm->name }}</span>
+                      <span class="text-xs mb-0">{{ $animal->farm->name }}</span>
                     </td>
                     <td class="align-middle text-center">
-                      <span class="text-lg mb-0">{{ $animal->created_at->format('d/m/Y') }}</span>
+                      <span class="text-xs mb-0">{{ $animal->created_at->format('d/m/Y') }}</span>
                     </td>
                     <td class="align-middle">
                       <a rel="tooltip" class="btn btn-info btn-link"

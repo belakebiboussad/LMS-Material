@@ -3,9 +3,11 @@
 return [
   //attributs
   'sfarm_id'  => 'Ferme de départ',
+  'buyer_id' => 'Acheteur',
   'dfarm_id'  => 'Ferme Déstination',
   'depDate'   => 'Date départ',
   'arrivDate' => 'Date d\'arrivée',
+  'animals' => 'Animaux',
   // Actions
   'index'          => 'Liste mouvements',
   'create'         => 'Ajouter une mouvement',
@@ -19,5 +21,4 @@ return [
   'deleted'        => 'Mouvement been deleted.',
   'undeleted'      => 'Mouvement deleted.',
   'undeleteable'   => 'Mouvement cannot be deleted.',
-  'movement.animals' => 'Animaux'
 ];

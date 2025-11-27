@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Movement extends Model
 {
     protected $fillable = [
+        'seller_id',
         'sfarm_id',
         'buyer_id',
         'dfarm_id',

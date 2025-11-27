@@ -19,7 +19,7 @@
           @endforeach
           @endif
           <div class="row">
-            <div class="mb-3 col-md-3">
+            <div class="mb-3 col-lg-6">
               <label class="form-label">{{ __('movement.sfarm_id')}}</label>
               <select type="text" name="sfarm_id" class="form-control border border-2 p-2">
                 @isset($animal)
@@ -35,27 +35,27 @@
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
-            <div class="mb-3 col-md-3">
+            <div class="mb-3 col-lg-6">
               <label class="form-label">{{ __('movement.animals')}}</label>
               <select type="text" name="animals" class="form-control border border-2 p-2">
 
               </select>
-              @error('sfarm_id')
+              @error('animals')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
-            <div class="mb-3 col-md-3">
-              <label class="form-label">{{ __('movement.buyer')}}</label>
+            <div class="mb-3 col-lg-6">
+              <label class="form-label">{{ __('movement.buyer_id')}}</label>
               <select type="text" name="sfarm_id" class="form-control border border-2 p-2" required></select>
-              @error('sfarm_id')
+              @error('buyer_id')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
              </div>
             </div>
-            <div class="mb-3 col-md-3">
-              <label class="form-label">{{ __('movement.dfarm_id')}}</label>
+            <div class="mb-3 col-lg-6">
+             <label class="form-label">{{ __('movement.dfarm_id')}}</label>
               <select type="text" name="sfarm_id" class="form-control border border-2 p-2" required></select>
-              @error('sfarm_id')
+              @error('dfarm_id')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\AnimalStatus;
 use App\Enums\Sexe;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -11,14 +12,17 @@ class Animal extends Model
         'eid',
         'animalType_id',
         'color_id',
+        'farm_id',
         'weight',
         'dob',
         'sexe',
         'breed_id',
-        'dethDate',
+        'endDate',
         'is_castred',
         'is_seek',
-        'farm_id',
+        'status',//silled,daed,consume
+
+        
     ];
      protected $casts = [
         'dob' => 'datetime',
@@ -26,6 +30,7 @@ class Animal extends Model
         'sexe' => Sexe::class,
         'is_castred' => 'boolean',
         'is_seek' => 'boolean', 
+        'status' => AnimalStatus::class,
     ];
     protected $appends = ['age'];
     public function getAgeAttribute()

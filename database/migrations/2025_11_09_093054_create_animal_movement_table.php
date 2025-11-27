@@ -13,12 +13,16 @@ return new class extends Migration
     {
         Schema::create('movements', function (Blueprint $table) {
             $table->id();
+            $table->string('seller_id', 20)->nullable();
             $table->unsignedBigInteger('sfarm_id');
+            $table->string('buyer_id', 20);
             $table->unsignedBigInteger('dfarm_id')->nullable();
             $table->string('transaction',10)->default(Transaction::INTERNAL->value);
             $table->dateTime('depDate')->default(\Carbon\Carbon::now());
             $table->dateTime('arrivDate');
+             $table->foreign('seller_id')->references('NIN')->on('users')->contrained()->onupdate('cascade')->ondelete('cascade');
             $table->foreign('sfarm_id')->references('id')->on('farms')->contrained()->onupdate('cascade')->ondelete('cascade');
+             $table->foreign('buyer_id')->references('NIN')->on('users')->contrained()->onupdate('cascade')->ondelete('cascade');
             $table->foreign('dfarm_id')->references('id')->on('farms')->contrained()->onupdate('cascade')->ondelete('cascade');
             $table->timestamps();
         });

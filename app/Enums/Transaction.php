@@ -11,7 +11,7 @@ enum Transaction: string
         return match($this) {
             self::SELL =>'Vendre',
             self::BUY =>'Acheter',
-            self::INTERNAL =>'Interne',
+            self::INTERNAL =>'Transfert',
         };
     }
 }

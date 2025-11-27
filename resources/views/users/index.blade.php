@@ -29,23 +29,23 @@
                                 <thead>
                                     <tr>
                                         <th
-                                            class="text-uppercase text-secondary text-md font-weight-bolder opacity-7">
+                                            class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
                                             {{ __('user.name')}}</th>
                                         <th
-                                            class="text-uppercase text-secondary text-md font-weight-bolder opacity-7 ps-2">
+                                            class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">
                                             {{ __('user.username') }}</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
                                             {{ __('user.email') }}</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
                                            {{ __('user.role') }}</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
                                               {{ __('user.status') }}
                                         </th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
                                             {{ __('creation_at') }}</th>
                                         <th class="text-secondary opacity-7"></th>
                                     </tr>
@@ -55,7 +55,7 @@
                                     <tr>
                                         <td>
                                             <div class="align-middle text-center">
-                                                <span class="text-secondary">{{ $user->name }}</span>
+                                                <span class="text-secondary text-sm">{{ $user->name }}</span>
                                             </div>
                                         </td>
                                         <td>
@@ -68,32 +68,32 @@
                                             </p>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-secondary">{{ $user->roles->first()->name ?? '' }}</span>
+                                            <span class="text-secondary text-xs">{{ $user->roles->first()->name ?? '' }}</span>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             @if($user->status == 1)
-                                            <span class="badge badge-sm bg-gradient-success">Active</span>
+                                            <span class="badge badge-xs bg-gradient-success">Active</span>
                                             @else
-                                            <span class="badge badge-sm bg-gradient-danger">Inactive</span>
+                                            <span class="badge badge-xs bg-gradient-danger">Inactive</span>
                                             @endif
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-secondary text-lg">{{ $user->created_at->format('H:i:s d/m/Y') }}</span>
+                                            <span class="text-secondary text-sm">{{ $user->created_at->format('H:i:s d/m/Y') }}</span>
                                         </td>
                                         <td class="align-middle">
-                                            <a rel="tooltip" class="btn btn-lg btn-info btn-link"
+                                            <a rel="tooltip" class="btn btn-md btn-info btn-link"
                                                 href="{{ route('users.show',$user) }}" data-original-title=""
                                                 title="">
                                                 <i class="material-icons">visibility</i>
                                                 <div class="ripple-container"></div>
                                             </a>
-                                            <a rel="tooltip" class="btn btn-lg btn-success btn-link"
+                                            <a rel="tooltip" class="btn btn-md btn-success btn-link"
                                                 href="{{ route('users.edit',$user) }}" data-original-title=""
                                                 title="">
                                                 <i class="material-icons">edit</i>
                                             </a>
                                             <a href="{{ route('users.destroy', $user) }}"
-                                                class="btn btn-lg btn-danger btn-link font-weight-bold text-md"
+                                                class="btn btn-md btn-danger btn-link font-weight-bold text-xs"
                                                 data-toggle="tooltip" data-original-title="Delete user"
                                                 onclick="event.preventDefault(); if(confirm('{{ ('Are you sure you want to delete this user?') }}')){ document.getElementById('delete-form-{{ $user->id }}').submit(); }"
                                                 {{ Auth::id() === $user->id ? 'disabled' :''}}>

@@ -21,14 +21,14 @@
           <div class="row">
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('user.prof_id') }}</label>
-              <input type="text" name="prof_id" class="form-control border border-2 p-2" value="{{ old('prof_id') ? : '' }}" required>
+              <input type="text" name="prof_id" class="form-control pid border border-2 p-2" value="{{ old('prof_id') ? : '' }}" required>
               @error('prof_id')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label"><abbr title="">{{ __('user.NIN') }}</abbr></label>
-              <input type="text" id ="NIN" name="NIN" class="form-control border border-2 p-2" value="{{ old('NIN') ? : '' }}" required>
+              <input type="text" id ="NIN" name="NIN" class="form-control nin border border-2 p-2" value="{{ old('NIN') ? : '' }}" required>
               @error('NIN')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
