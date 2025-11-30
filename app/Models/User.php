@@ -69,5 +69,9 @@ class User extends Authenticatable
     public function guardedFarm()
     {
         return $this->hasOne(Farm::class, 'guardien_id');
-    }       
+    } 
+    public  function rfidTags()
+    {
+        return $this->hasMany(Tag::class, 'owner_id');
+    }
 }

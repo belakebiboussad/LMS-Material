@@ -175,6 +175,7 @@
           $.each(selectedIds, function(index, value) {
             $('#' + value).remove();
           });
+          $("#attributionBtn").prop("disabled", true);
           $('#myModal').modal('hide');
         },
         error: function(xhr, status, error) {

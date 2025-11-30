@@ -13,6 +13,7 @@
       <div class="card-body p-3">
         <form method='POST' action="{{ route('animals.update', $animal) }}">
           @csrf
+          @method('PUT')
           @if (session('errors'))
           <div class="alert alert-warning" role="alert">
             {{ session('errors') }}
@@ -70,9 +71,13 @@
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label>">{{ __('animal.eid') }}</label>
-              <select id="rfid_id" name="eid" class="form-control border border-2 p-2 {{ $errors->has('eid') ? ' is-invalid' : '' }}" required>
+              <select id="rfid_id" name="eid" class="form-control border border-2 p-2 {{ $errors->has('eid') ? ' is-invalid' : '' }}">
                 <option value="">{{ __('Select RFID Tag') }}</option>
-                <option value="{{ $animal->rfidTag->id }}" selected> {{ $animal->rfidTag->eid }}</option>
+                {{-- <option value="{{ $animal->rfidTag ? $animal->rfidTag->id :'' }}" selected> {{ $animal->rfidTag ? $animal->rfidTag->eid : '' }}</option> 
+                --}}
+                @foreach($tags as $id => $eid)
+                <option value="{{ $id }}" {{ $animal->rfidTag && $animal->rfidTag->id == $id ? 'selected' : '' }}>{{ $eid }}</option>
+                @endforeach 
               </select>
               @error('eid')
               <p class='text-danger inputerror'>{{ $message }} </p>

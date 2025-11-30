@@ -17,7 +17,7 @@ class AnimalsController extends Controller
      public function index()
     {
         if(request()->ajax()) {
-            return request()->all();
+            return request()->id ? Animal::where('farm_id', request()->id)->with('rfidTag')->get()->pluck('id','rfidTag.eid') : Animal::with('rfidTag')->get()->pluck('id', 'rfidTag.eid');
         }
         $animals = Animal::all();
         return view('assets.animals.index', compact('animals'));
@@ -33,7 +33,8 @@ class AnimalsController extends Controller
         $animalTyps = AnimalType::pluck('name', 'id');
         $farms = auth()->user()->farms()->pluck('name', 'id');
         $animalTypes = AnimalType::all()->pluck('name', 'id');
-        return view('assets.animals.edit', compact('animal','animalTypes', 'farms'));
+        $tags = $animal->farm->owner->rfidTags()->where('animalType_id', $animal->animalType_id)->where('status', TagStatus::INACTIVE)->get()->pluck('eid', 'id');
+        return view('assets.animals.edit', compact('animal','animalTypes', 'farms', 'tags'));
     }
     public function store(Request $request)
     {
@@ -55,9 +56,25 @@ class AnimalsController extends Controller
 
     public  function update(Animal $animal) 
     {
-
-    }
-
+        $validated = request()->validate([
+            'eid' => 'nullable|exists:tags,id',
+            'animalType_id' => 'required|exists:animal_types,id',
+            'weight' => 'nullable|numeric',
+            'dob' => 'nullable|date',
+            'sexe' => 'required','in:male,female',
+            'breed_id' => 'nullable|exists:breeds,id',
+            'is_seek' => 'boolean',
+            'farm_id' => 'required|exists:farms,id',
+        ]);
+        if(isset(request()->eid) && request()->eid != $animal->rfidTag?->id) {
+            if($animal->rfidTag) {
+                Tag::findOrFail($animal->rfidTag->id)->update(['status'=>TagStatus::INACTIVE]);
+            }
+            Tag::findOrFail(request()->eid)->update(['status'=>TagStatus::ACTIVE]);    
+        }
+        $animal->update($validated);
+        return redirect()->route('animals.index')->with('success', __('animal.updated'));
+    }   
     public function destroy( Animal $animal)
     {
         $animal->delete();
