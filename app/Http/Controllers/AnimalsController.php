@@ -19,7 +19,8 @@ class AnimalsController extends Controller
         if(request()->ajax()) {
             return request()->id ? Animal::where('farm_id', request()->id)->with('rfidTag')->get()->pluck('id','rfidTag.eid') : Animal::with('rfidTag')->get()->pluck('id', 'rfidTag.eid');
         }
-        $animals = Animal::all();
+        //$animals = Animal::all();
+        $animals = auth()->user()->hasRole('farmer') ? Animal::whereIn('farm_id', auth()->user()->farms->pluck('id'))->with('rfidTag','animalType','breed','farm')->get() : Animal::whereIn('farm_id', auth()->user()->guardedFarm->pluck('id'))->with('rfidTag','animalType','breed','farm')->get();
         return view('assets.animals.index', compact('animals'));
     }
      public function create()

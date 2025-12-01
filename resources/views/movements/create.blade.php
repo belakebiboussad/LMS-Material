@@ -46,7 +46,12 @@
           </div>
           <div class="mb-3 col-lg-6">
             <label class="form-label">{{ __('movement.animals')}}</label>
-            <select type="text" name="animals" class="form-control border border-2 p-2"> 
+            <select type="text" name="animals" class="form-control border border-2 p-2" multiple required>
+              @isset($animal)
+              <option value="{{ $animal->id }}" selected>{{ $animal->name }}</option>
+              @else
+              <option value="" selected disabled>{{ __('selection') }}</option>
+              @endisset
             </select>
             @error('animals')   
             <p class='text-danger inputerror'>{{ $message }} </p>   
