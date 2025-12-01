@@ -112,7 +112,6 @@
                       </form>
                         <a href="{{ route('animal.movements.create', $animal->id) }}" class="btn btn-light btn-link font-weight-bold text-xs"
                           data-toggle="tooltip" data-original-title="{{ __('Movements') }}">
-                          {{-- __('Movements') --}}
                           <i class="material-icons">sync_alt</i>
                         </a>
                         {{-- <a href="{{ route('animals.treatments', $animal->id) }}" class="text-secondary font-weight-bold text-xs mx-3"

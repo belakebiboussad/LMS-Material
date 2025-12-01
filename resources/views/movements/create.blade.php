@@ -45,13 +45,9 @@
             @enderror
           </div>
           <div class="mb-3 col-lg-6">
-            <label class="form-label">{{ __('movement.animals')}}</label>
-            <select type="text" name="animals" class="form-control border border-2 p-2" multiple required>
-              @isset($animal)
-              <option value="{{ $animal->id }}" selected>{{ $animal->name }}</option>
-              @else
-              <option value="" selected disabled>{{ __('selection') }}</option>
-              @endisset
+            <label class="form-label">{{ __('animals') }}</label>
+            <select type="text" name="animals[]" class="form-control border border-2 p-2" data-placeholder="{{__('animal.selects')}}" multiple="multiple" required>
+             
             </select>
             @error('animals')   
             <p class='text-danger inputerror'>{{ $message }} </p>   
@@ -60,6 +56,9 @@
           <div class="mb-3 col-lg-6">
             <label class="form-label">{{ __('movement.buyer_id')}}</label>
             <select type="text" name="buyer_id" class="form-control border border-2 p-2" required>
+                   @foreach($farmers as $key=>$farmer)
+              <option value=" {{ $key }}">{{ $farmer }} </option>
+              @endforeach
             </select>
             @error('buyer_id')   
             <p class='text-danger inputerror'>{{ $message }} </p>   
@@ -85,30 +84,25 @@
   @section('js')
   <script>
     function animalsSelectFill(farmId) {
-      //var url = "{{ route('animals.index', ['id' => ':id']) }}";
-      // var url = url.replace(':id', farmId);
       var url = '{{ route("animals.index", ":slug") }}'.replace(':slug', farmId);
       $.ajax({
             url: url, // Replace with your server-side endpoint
             type: "GET", // Or "POST" depending on your server
             dataType: "json", // Expect JSON data
             success: function(data) {
-             
+              alert(data);
+              /*
               // Clear existing options
-              $('select[name="animals"]').empty();
-              $('select[name="animals"]').append($('<option>', {
-                value: '',
-                text: 'Selectionner ...',
-                disabled: true,
-                selected: true
-              }));
+              var select = $('select[name="animals[]"]');
+              select.empty();
               // Loop through the data and add options
               $.each(data, function(eid, id) {
-                 $('select[name="animals"]').append($('<option>', {
+                select.append($('<option>', {
                    value: id, // Assuming 'id' is the value
                    text:  eid // Assuming 'name' is the display text
                  }));
               });
+              */
             },
             error: function(xhr, status, error) {
               alert("AJAX Error: " + status + error);
@@ -116,7 +110,16 @@
           });
     }
     $(document).ready(function() {
+      $('select[name="animals[]"]').select2({
+        placeholder: "{{ __('selection') }}",
+         allowClear: true
+      });
+      
+    
       $('select[name="sfarm_id"]').on('change', function() {
+        //  $('select[name="animals[]"]').select2({
+        //   multiple:true,
+        //  } );
         animalsSelectFill($(this).val());
       });
     });

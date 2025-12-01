@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\Transaction;
+use App\Models\User;
 use App\Models\Animal;
 use App\Models\Farm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+
 class MovementController extends Controller
 {
     /**
@@ -21,27 +23,29 @@ class MovementController extends Controller
      * Show the form for creating a new resource.
      */
     public function create() {
-        //Animal $animal     
+       
         $farms = Farm::all()->pluck('id','name');
-        return view('movements.create', compact('farms', 'animal'));
+        $farmers = User::Role('farmer')->pluck('name', 'id');
+        return view('movements.create', compact('farms','farmers'));
     }
     public function creation( $transaction)
      {
         switch($transaction) {
               case 'sell':
-                $view = 'movements.create';
+                //$view = 'movements.create';
+                redirect()->action([MovementController::class, 'create']);
                 break;
             case 'buy':
-                $view = 'movements.buy';
+                return view('movements.buy');
                 break;
             case 'interne':
-                $view = 'movements.interne';
+                return view('movements.interne');
                 break;
             default:
-                $view = 'errors.500';
+               // return view('errors.500');
 
         }
-        return view($view);
+        
 
     }
 

@@ -21,11 +21,10 @@ return [
   'edit'       => 'Modifier l\'Animal',
  
 
-  // 'created'        => 'Une nouvelle Ferme à été crée.',
-  // 'show'           => 'Voir Détail de la Ferme',
- 
-  // 'update'         => 'Métre à jour la Ferme',
-  // 'updated'        => 'la ferme à été mis à jour.',
+  'created'        => 'Une nouveau animal à été crée avec suucée.',
+  'show'           => 'Voir Détail de l\'animal',
+  'update'         => 'Métre à jour l\'animal',
+  'updated'        => 'l\'animalà été mis à jour.',
   // 'delete'         => 'Supprimmer Ferme',
   // 'delete_confirm' => 'Are you sure to delete this Outlet?',
   // 'deleted'        => 'Outlet has been deleted.',
@@ -33,5 +32,5 @@ return [
   // 'undeleteable'   => 'Outlet data cannot be deleted.',
   // 'Farmes'         => 'Fermes',
   // 'Farme'          => 'Ferme',
-
+  'selects' => 'Selectionner les Animaux'
 ];

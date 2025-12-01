@@ -46,8 +46,8 @@ Route::middleware('auth')->group(function () {
 });
 Route::middleware('auth')->group(function () {
     //Route::get('/animals/{animal}/movements',[MovementController::class,'create'])->name('animals.movements.create');
-    Route::get('/movements/{animal}/create', [MovementController::class, 'create'])->name('animal.movements.create');
-    Route::get('/movements/{transaction}', [MovementController::class, 'creation'])->name('movement.create');
+    //Route::get('/movements/{animal ?}/create', [MovementController::class, 'create'])->name('animal.movements.create');
+    // Route::get('/movements/{transaction}', [MovementController::class, 'creation'])->name('movement.create');
     Route::resource('movements', MovementController::class);
 });
 Route::middleware('auth')->group(function () {

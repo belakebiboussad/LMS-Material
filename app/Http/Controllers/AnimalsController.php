@@ -3,23 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Enums\TagStatus;
-use App\Models\Farm;
 use App\Models\Animal;
 use App\Models\AnimalType;
 use App\Models\Tag;
 use App\Enums\TagType;
 use App\Models\Breed;
 use Illuminate\Http\Request;
-use Illuminate\JsonSchema\Types\Type;
 
 class AnimalsController extends Controller
 {
      public function index()
     {
         if(request()->ajax()) {
-            return request()->id ? Animal::where('farm_id', request()->id)->with('rfidTag')->get()->pluck('id','rfidTag.eid') : Animal::with('rfidTag')->get()->pluck('id', 'rfidTag.eid');
+            
+            return response()->json(request()->id);
+            //return request()->id ? Animal::where('farm_id', request()->id)->with('rfidTag')->get()->pluck('id','rfidTag.eid') : Animal::with('rfidTag')->get()->pluck('id', 'rfidTag.eid');
+            //return Animal::where('farm_id', request()->id)->with('rfidTag')->get()->pluck('rfidTag.eid', 'id');
         }
-        //$animals = Animal::all();
         $animals = auth()->user()->hasRole('farmer') ? Animal::whereIn('farm_id', auth()->user()->farms->pluck('id'))->with('rfidTag','animalType','breed','farm')->get() : Animal::whereIn('farm_id', auth()->user()->guardedFarm->pluck('id'))->with('rfidTag','animalType','breed','farm')->get();
         return view('assets.animals.index', compact('animals'));
     }
@@ -85,7 +85,7 @@ class AnimalsController extends Controller
     public function getBreedsAndRFID($animalTypeId)
     {
         $breeds = Breed::where('animal_type_id', $animalTypeId)->get()->pluck('name', 'id'); 
-        $rfidTags = Tag::where('owner_id', auth()->id())->where('type', TagType::BIRTH)->where('animalType_id',$animalTypeId)->get()->pluck('eid', 'id');
+        $rfidTags = Tag::where('owner_id', auth()->id())->where('type', TagType::BIRTH)->where('animalType_id',$animalTypeId)->inactive()->get()->pluck('eid', 'id');
         return response()->json([ 'breed'=> $breeds, 'rfids'=> $rfidTags ], 200);
     }
 }

@@ -79,20 +79,19 @@
             </li>
             <li class="nav-item">
                 <a href="#" class="menu-toggle">
-                    <i class="material-icons">pets</i>
+                    <i class="material-icons">sync_alt</i>
                     <span>{{ __('movements') }}</span>
                 </a>
                 <ul class="ml-menu">
                    <li class="nav-item">
                     <a class="nav-link" href="{{ route('movements.index') }}">{{ __('movement.index') }}</a>
-                    </li>  
-                    @foreach (\App\Enums\Transaction::cases() as $transaction)
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('movement.create',$transaction->value) }}">
-                               {{ $transaction->label() }}
-                            </a>   
-                        </li>
-                    @endforeach  
+                    </li> 
+                    <li class="nav-item">
+                         <a class="nav-link" href="{{ route('movements.create') }}">
+                            {{ App\Enums\Transaction::SELL }}
+                         </a>   
+                    </li> 
+                 
                 </ul>
             </li>
             @endrole    

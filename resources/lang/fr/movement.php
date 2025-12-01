@@ -7,7 +7,6 @@ return [
   'dfarm_id'  => 'Ferme Déstination',
   'depDate'   => 'Date départ',
   'arrivDate' => 'Date d\'arrivée',
-  'animals' => 'Animaux',
   // Actions
   'index'          => 'Liste mouvements',
   'create'         => 'Ajouter une mouvement',

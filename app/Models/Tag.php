@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
+use App\Enums\TagStatus;
 use App\Enums\TagType;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
@@ -20,8 +23,13 @@ class Tag extends Model
    ];
    protected $casts = [
         'type' => TagType::class, // Direct enum casting
-        //'animalType_id' => animalType::class,
+         'status' => TagStatus::class   
     ];
+    #[Scope]
+    protected function inactive(Builder $q): Builder
+    {
+        return $q->where('status',TagStatus::INACTIVE);
+    }
     public function animalType(){
         return $this->belongsTo(AnimalType::class,'animalType_id');
     }
