@@ -12,9 +12,12 @@ use Illuminate\Http\Request;
 
 class FarmsController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $farms =auth()->user()->farms;
+        
+        if(request()->ajax())
+           return  Farm::where('owner_id', request()->id)->get()->pluck('name','id');
+        $farms =auth()->user()->farms;       
         return view('assets.farms.index', compact('farms'));
     }
     public function create()

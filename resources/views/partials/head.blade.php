@@ -14,6 +14,9 @@
     <link href="{{ asset('theme/css/style.css') }}" rel="stylesheet">
 
     <link href="{{ asset('theme/css/themes/all-themes.css') }}" rel="stylesheet" />
+    <link href="{{ asset('theme/css/themes/material-plugins.min.css') }}" rel="stylesheet">
+    
+
     <link href="{{ asset('theme/css/material.indigo-pink.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- <link href="{{ asset('theme/css/material-dashboard.css') }}" rel="stylesheet">-->

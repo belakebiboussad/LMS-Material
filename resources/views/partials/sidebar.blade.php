@@ -88,7 +88,7 @@
                     </li> 
                     <li class="nav-item">
                          <a class="nav-link" href="{{ route('movements.create') }}">
-                            {{ App\Enums\Transaction::SELL }}
+                            {{ App\Enums\Transaction::SELL->label() }}
                          </a>   
                     </li> 
                  
