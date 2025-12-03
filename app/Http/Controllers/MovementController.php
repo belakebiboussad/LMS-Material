@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Enums\Transaction;
 use App\Models\User;
 use App\Models\Animal;
 use App\Models\Farm;
+use App\Models\Movement;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
+
+use Auth;
 
 class MovementController extends Controller
 {
@@ -23,7 +25,6 @@ class MovementController extends Controller
      * Show the form for creating a new resource.
      */
     public function create() {
-       
         $farms = Farm::all()->pluck('id','name');
         $farmers = User::Role('farmer')->pluck('name', 'id');
         return view('movements.create', compact('farms','farmers'));
@@ -31,8 +32,7 @@ class MovementController extends Controller
     public function creation( $transaction)
      {
         switch($transaction) {
-              case 'sell':
-                //$view = 'movements.create';
+              case 'sell'://$view = 'movements.create';
                 redirect()->action([MovementController::class, 'create']);
                 break;
             case 'buy':
@@ -54,7 +54,16 @@ class MovementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'seller_id' => 'required|exists:users,id',
+            'sfarm_id' => 'nullable|exists:farms,id',
+            'type' =>'required|new Enum(Transaction::class',
+            'animals' => 'required|array|min:1',
+            'buyer_id' =>'required|exists:users,id'
+        ]);
+      
+        Movement::create($validated);
+        return redirect()->route('movements.index')->with('success', __('movement.created'));
     }
 
     /**

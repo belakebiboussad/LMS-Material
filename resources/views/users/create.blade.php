@@ -135,10 +135,8 @@
           </div>
           <div class="row mb-0">
             <div class="col-md-12 text-center">
-              <button type="submit" class="btn bg-gradient-primary">{{ __('Save') }}
-                <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
-              </button>
-              <a href="{{ route('tags.index') }}" class="btn btn-warning">{{ __('Cancel') }}</a>
+              <button type="submit" class="btn bg-gradient-primary">{{ __('Save') }}</button>
+              <a href="{{ route('users.index') }}" class="btn btn-warning">{{ __('Cancel') }}</a>
             </div>
           </div>
     </form>

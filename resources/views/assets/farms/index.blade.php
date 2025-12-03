@@ -23,13 +23,13 @@
                   <tr>
                     <th
                       class="text-uppercase text-secondary text-md font-weight-bolder opacity-7">
-                      {{ __('farme.recordNbr') }}</th>
+                      {{ __('farm.recordNbr') }}</th>
                     <th
                       class="text-uppercase text-secondary text-md font-weight-bolder opacity-7">
                       nom</th>
                     <th
                       class="text-uppercase text-secondary text-md font-weight-bolder opacity-7 ps-2">
-                      {{ __('farme.type')}}</th>
+                      {{ __('farm.type')}}</th>
                     <th
                       class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">
                       Wilaya
