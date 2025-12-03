@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Enums\Transaction;
 use App\Models\User;
 use App\Models\Animal;
 use App\Models\Farm;
