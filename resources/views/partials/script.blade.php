@@ -1,9 +1,10 @@
  <!-- Jquery Core Js -->
    <script src="{{ asset('theme/plugins/jquery/jquery.min.js')}}"></script>
 
-    <!-- Bootstrap Core Js -->
-    <script src="{{ asset('theme/plugins/bootstrap/js/bootstrap.js') }}"></script>
-
+    <!--  Core Js -->
+    <script src="{{ asset('theme/js/popper.min.js') }}"></script>
+    <script src="{{ asset('theme/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+<!-- Font Awesome Icons -->
     <!-- Select Plugin Js -->
     <script src="{{ asset('theme/plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>
    
@@ -32,13 +33,20 @@
     <script src="{{ asset('theme/plugins/flot-charts/jquery.flot.time.js') }}"></script>
     <!-- Sparkline Chart Plugin Js -->
     <script src="{{ asset('theme/plugins/jquery-sparkline/jquery.sparkline.js') }}"></script>
-     <script src="{{ asset('theme/plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
-  
+    <script src="{{ asset('theme/plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+    {{-- moment.js --}}
+    <script src="{{ asset('theme/plugins/momentjs/moment.min.js') }}"></script>
+    {{-- <script src="{{ asset('theme/plugins/momentjs/moment-with-locales.js') }}"></script> --}}
+    <!-- Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="{{ asset('theme/plugins/nouislider/nouislider.min.js') }}"></script>
+     <script src="./assets/js/plugins/nouislider.min.js"></script>
+    <!--  Plugin for the Carousel, full documentation here: http://jedrzejchalubek.com/  -->
+    {{-- <script src="./assets/js/plugins/glidejs.min.js"></script> --}}
     <!-- Custom Js -->
     <script src="{{ asset('theme/js/admin.js') }}"></script>
-    
+    <!--	Plugin for Select, full documentation here: https://joshuajohnson.co.uk/Choices/ -->
+    {{-- <script src="./assets/js/plugins/choices.min.js" type="text/javascript"></script>     --}}
     <script src="{{ asset('theme/js/pages/index.js') }}"></script>
-
     <!-- Demo Js -->
     <script src="{{ asset('theme/js/demo.js') }}"></script>
     <script src="{{ asset('js/leaflet.js') }}"></script>
