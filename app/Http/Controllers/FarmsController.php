@@ -14,10 +14,9 @@ class FarmsController extends Controller
 {
     public function index()
     {
-        
         if(request()->ajax())
            return  Farm::where('owner_id', request()->id)->get()->pluck('name','id');
-        $farms =auth()->user()->farms;       
+        $farms = Farm::where('owner_id', auth()->user()->NIN)->get();
         return view('assets.farms.index', compact('farms'));
     }
     public function create()
@@ -37,28 +36,14 @@ class FarmsController extends Controller
     public function store(FarmRequest $request)
     {
         $validated = $request->validated();
-
-        $farm = Farm::create($request->only([
-            'recordNbr',
-            'name',
-            'creationDt',
-            'address',
-            'phone',
-            'area',
-            'x_lon',
-            'y_lat',
-            'wilaya_id',
-            'owner_id',
-            'guardien_id'
-        ]));
-
+        $validated['owner_id'] = auth()->user()->NIN;
+        $farm = Farm::create($validated);
         if (isset($validated['animal_types'])) {
             foreach ($validated['animal_types'] as $typeId) {
                 $farm->animalTypes()->attach($typeId);
             }
         }
-
-        return redirect()->route('farms.index')->with('success', 'Farm created successfully.');
+        return redirect()->route('farms.index')->with('success', '{{ __("farm.created") }}');
     }
     public function show(Farm $farm)
     {
@@ -67,28 +52,14 @@ class FarmsController extends Controller
     public function update(FarmUpdateRequest $request, Farm $farm)
     {
         $validated = $request->validated();
-
-        $farm->update($request->only([
-            'recordNbr',
-            'name',
-            'creationDt',
-            'address',
-            'phone',
-            'area',
-            'x_lon',
-            'y_lat',
-            'wilaya_id',
-            'owner_id',
-            'guardien_id'
-        ]));
-
+        $validated['owner_id'] = auth()->user()->NIN;
+        $farm->update($validated);
         $farm->animalTypes()->detach();
         if (isset($validated['animal_types'])) {
             foreach ($validated['animal_types'] as $typeId) {
                 $farm->animalTypes()->attach($typeId);
             }
         }
-
         return redirect()->route('farms.index')->with('success', 'Farm updated successfully.');
     }
     public function getFarmAnimalType( $id) {

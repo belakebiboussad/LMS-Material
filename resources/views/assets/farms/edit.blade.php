@@ -41,18 +41,7 @@
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
-            <div class="mb-3 col-md-6">
-              <label class="form-label">{{ __('farm.owner') }}</label>
-              <select name="owner_id" class="form-control border border-2 p-2">
-                <option value="{{ $farm->owner_id }}" class="border-2 p-2">
-                  {{ $farm->owner->fullname }}
-                </option>
-              </select>
-              @error('owner_id')
-              <p class='text-danger inputerror'>{{ $message }}</p>
-              @enderror
-            </div>
-             <div class="mb-3 col-md-3">
+             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('farm.guardien_id') }}</label>
               <select name="guardien_id" class="form-control border border-2 p-2">
                 <option value="" >{{ __('selection')}}</option>  
@@ -64,7 +53,7 @@
               <p class='text-danger inputerror'>{{ $message }}</p>
               @enderror
             </div>
-            <div class="mb-3 col-md-3">
+            <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('farm.type') }}</label>
               <div class="col-md-12">
                 @foreach($animalTypes as $key=>$type)
@@ -111,7 +100,7 @@
             </div>
             <div class="mb-3 col-md-3">
               <label class="form-label">{{ __('farm.phone') }}</label>
-              <input type="tel" name="phone" pattern="^(0(?:5|6|7)\d{8})$" placeholder="0xxxxxxxxx" class="form-control border border-2 p-2" value="{{ old('phone', $farm->phone) }}">
+              <input type="tel" name="phone" pattern="^(0(?:5|6|7)\d{8})$" placeholder="0xxxxxxxxx" class="form-control phone border border-2 p-2" value="{{ old('phone', $farm->phone) }}">
               @error('phone')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror

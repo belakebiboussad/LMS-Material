@@ -21,4 +21,8 @@ class Movement extends Model
         'depDate' => 'datetime',
         'arrivDate' => 'datetime'
     ];
+    public function animals()
+    {
+        return $this->belongsToMany(Animal::class, 'animal_movement', 'movement_id', 'animal_id');
+    }
 }

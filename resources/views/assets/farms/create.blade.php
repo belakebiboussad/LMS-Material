@@ -40,7 +40,7 @@
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
-            <div class="mb-3 col-md-6">
+            {{-- <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('farm.owner') }}</label>
               <select name="owner_id" class="form-control border border-2 p-2">
                 <option value="{{ auth()->id() }}" class="border-2 p-2">
@@ -50,8 +50,8 @@
               @error('owner_id')
               <p class='text-danger inputerror'>{{ $message }}</p>
               @enderror
-            </div>
-            <div class="mb-3 col-md-3">
+            </div> --}}
+            <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('farm.guardien_id') }}</label>
               <select name="guardien_id" class="form-control border border-2 p-2">
                 <option value="" selected>{{ __('selection')}}</option>  
@@ -63,7 +63,7 @@
               <p class='text-danger inputerror'>{{ $message }}</p>
               @enderror
             </div>
-            <div class="mb-3 col-md-3">
+            <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('farm.type') }}</label>
               <div class="col-md-12">
                 @foreach($animalTypes as $key=>$type)

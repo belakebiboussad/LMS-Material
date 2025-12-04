@@ -24,7 +24,7 @@
     </div>
     <form method='POST' action="{{ route('movements.store') }}">
       @csrf
-      <input type="hidden" name="seller_id" value="{{ auth()->id() }}">
+      <input type="hidden" name="seller_id" value="{{ auth()->user()->NIN }}">
       <input type="hidden" name="type" value="{{ App\Enums\Transaction::SELL }}">
       <div class="card card-plain h-100">
         <div class="card-body p-3">
@@ -63,7 +63,7 @@
               <select type="text" name="buyer_id" class="form-control border border-2 p-2" required>
                 <option value="" selected>{{ __('selection') }}</option>
                 @foreach($farmers as $key=>$farmer)
-                <option value=" {{ $key }}" {{ $key == Auth::id() ? 'disabled' : '' }}>{{ $farmer }} </option>
+                <option value=" {{ $key }}" {{ $key == Auth::user()->NIN ? 'disabled' : '' }}>{{ $farmer }} </option>
                 @endforeach
               </select>
               @error('buyer_id')

@@ -5,7 +5,8 @@ namespace App\Models;
 use App\Enums\AnimalStatus;
 use App\Enums\Sexe;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Attributes\Scope;
 class Animal extends Model
 {
        protected $fillable = [
@@ -39,7 +40,15 @@ class Animal extends Model
             return null;
         }
         return \Carbon\Carbon::parse($this->dob)->diff(\Carbon\Carbon::now())->format('%y ans, %m mois');
-    }       
+    }   
+    /**
+     * Scope a query to only include animals present with a null status.
+     */
+    #[Scope]
+    public function present(Builder $query): void
+    {
+        $query->whereNull('status');
+    }    
     public function rfidTag()
     {
         return $this->belongsTo(Tag::class, 'eid', 'id');

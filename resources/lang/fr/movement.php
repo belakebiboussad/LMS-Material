@@ -10,7 +10,7 @@ return [
   // Actions
   'index'          => 'Liste mouvements',
   'create'         => 'Ajouter une mouvement',
-  'created'        => 'Une nouveau mouvement à été crée.',
+  'created'        => 'mouvement à été crée avec succée.',
   'show'           => 'Voir Détail du mouvement',
   'edit'           => 'Modifier le mouvement',
   'update'         => 'Métre à jour lu mouvement',

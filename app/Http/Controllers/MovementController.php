@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Enums\AnimalStatus;
 use App\Enums\Transaction;
 use App\Models\User;
 use App\Models\Animal;
 use App\Models\Farm;
 use App\Models\Movement;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
 use Auth;
@@ -26,7 +29,7 @@ class MovementController extends Controller
      */
     public function create() {
         $farms = Farm::all()->pluck('id','name');
-        $farmers = User::Role('farmer')->pluck('name', 'id');
+        $farmers = User::Role('farmer')->pluck('name', 'NIN');
         return view('movements.create', compact('farms','farmers'));
     }
     public function creation( $transaction)
@@ -55,14 +58,26 @@ class MovementController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'seller_id' => 'required|exists:users,id',
+            'seller_id' => 'required|exists:users,NIN',
             'sfarm_id' => 'nullable|exists:farms,id',
-            'type' =>'required|new Enum(Transaction::class',
+            'type' =>['required', Rule::Enum(Transaction::class)],
             'animals' => 'required|array|min:1',
-            'buyer_id' =>'required|exists:users,id'
+            'buyer_id' =>'required|exists:users,NIN',
+            'depDate' => 'date',
+            'arrivDate' => 'date|after_or_equal:depDate',
         ]);
-      
-        Movement::create($validated);
+        dd($validated);
+        $movement = Movement::create($validated);
+        foreach($validated['animals'] as $animal_id) {
+            $animal = Animal::find($animal_id); 
+            $movement->animals()->attach($animal->id);
+            $animal->update([
+                'owner_id' => $validated['buyer_id'],
+                'farm_id' => $validated['dfarm_id'] ?? $animal->farm_id,
+                'status '=> ($validated['type'] == Transaction::SELL) ?  AnimalStatus::SELLED : $animal->status, 
+            ]);
+            
+        }
         return redirect()->route('movements.index')->with('success', __('movement.created'));
     }
 

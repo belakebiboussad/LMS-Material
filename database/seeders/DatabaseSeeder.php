@@ -31,14 +31,14 @@ class DatabaseSeeder extends Seeder
              colorsSeeder::class,
              AnimalTypeSeeder::class,
              ProductionSeeder::class,
-             BreedSeeder::class,
-             
+             BreedSeeder::class    
        ]);
 
        $user = User::factory()->create([
             'name' => 'admin',
             'lastName' => 'admin',
             'username' => 'admin',
+            'NIN' => '11111111111111111111',
             'email' => 'admin@example.com',
             'password' => Hash::make('password'),
         ]);

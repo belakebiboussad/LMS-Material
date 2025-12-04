@@ -26,16 +26,15 @@ class FarmRequest extends FormRequest
         return [
             'recordNbr' => 'required|digits:10|unique:farms,recordNbr,',
             'name' => 'required|string|max:255',
-            'owner_id' => 'required|exists:users,id',
-            'owner_id' => 'required|exists:users,id',
             'guardieb_id' => 'nullable|exists:users,id',
             'creationDt' => 'required|date',
-            'animal_types' => 'required',
-    /* 'x_lon' => ['required', new LongitudeRule],'y_lat' => ['required', new LatitudeRule],*/
+            'area' => 'nullable|numeric',
+            'address' => 'nullable|string|max:500',
+            'phone' => 'nullable|string|max:10',
             'y_lat'  => 'nullable|required_with:x_lon|max:15',
             'x_lon' => 'nullable|required_with:y_lat|max:15',
             'wilaya_id' => 'required|exists:wilayas,id',
-            'animal_types' => 'array',
+            'animal_types' => 'required|array',
             'animal_types.*' => 'exists:animal_types,id',
         ];
     }

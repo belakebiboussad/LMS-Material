@@ -66,7 +66,7 @@ class UserCotroller extends Controller
             })->get();
 
             if (! $adminUsers->contains($user) || ($adminUsers->count() > 1))
-                return back()->withErrors(['status' => 'Only one admin user is allowed.']);
+                return back()->withErrors(['errors' => __('user.admin')]);
         }
         $user->update($request->all());
         $user->assignRole($request->input('role'));
