@@ -50,6 +50,7 @@
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
+            {{--
             <div class="mb-3 col-lg-6">
               <label class="form-label">{{ __('animals') }}</label>
               <select type="text" name="animals[]" class="form-control border border-2 p-2" data-placeholder="{{__('animal.selects')}}" multiple="miltiple">
@@ -57,6 +58,17 @@
               @error('animals')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
+            </div>
+            --}}
+            <div class="mb-3 col-lg-6">
+              <label class="form-label">{{ __('movement.transport')}}</label>
+             <select  class=""form-control border border-2 p-2" name="reset-multiple" id="reset-multiple" multiple>
+            <option value="Choice 1" selected>Choice 1</option>
+            <option value="Choice 2">Choice 2</option>
+            <option value="Choice 3">Choice 3</option>
+            <option value="Choice 4" disabled>Choice 4</option>
+          </select>
+
             </div>
             <div class="mb-3 col-lg-6">
               <label class="form-label">{{ __('movement.buyer_id')}}</label>
@@ -145,11 +157,18 @@
       });
     }
     $(document).ready(function() {
-      $('select[name="animals[]"]').select2({
-        placeholder: "{{ __('selection') }}",
-        minimumResultsForSearch: Infinity,
-        allowClear: true
-      });
+      // $('select[name="animals[]"]').select2({
+      //   placeholder: "{{ __('selection') }}",
+      //   minimumResultsForSearch: Infinity,
+      //   allowClear: true
+      // });
+      // Initialize Choices.js for the animal select
+        var resetMultiple = new Choices('#reset-multiple', {
+          allowHTML: true,
+          removeItemButton: true,
+        });
+      //end Choices.js initialization
+     
       $('select[name="sfarm_id"]').on('change', function() {
         animalsSelectFill($(this).val());
       });

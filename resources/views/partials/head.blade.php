@@ -18,9 +18,16 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- <link href="{{-- asset('theme/css/material-dashboard.css') --}}" rel="stylesheet">-->
     {{-- Nucleo Icons --}}
-    <link href="{{ asset('theme/css/nucleo-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('theme/css/nucleo-icons.css') }}" rel="stylesheet" />
     <link href="{{ asset('theme/css/nucleo-svg.css') }} rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="{{ asset('theme/css/choices.min.css') }} rel="stylesheet" />
+    {{-- <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/choices.js@11.1.0/public/assets/styles/choices.min.css"/> --}}
+ 
+
+
+    {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
     <link href="{{ asset('css/leaflet.css') }}" rel="stylesheet">
       <!-- Custom Css -->
     <link href="{{ asset('theme/css/style.css') }}" rel="stylesheet">

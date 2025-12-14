@@ -45,12 +45,14 @@
     <!-- Custom Js -->
     <script src="{{ asset('theme/js/admin.js') }}"></script>
     <!--	Plugin for Select, full documentation here: https://joshuajohnson.co.uk/Choices/ -->
-    {{-- <script src="./assets/js/plugins/choices.min.js" type="text/javascript"></script>     --}}
+    <script src="theme/js/choices.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js@11.1.0/public/assets/scripts/choices.min.js"></script>
+
     <script src="{{ asset('theme/js/pages/index.js') }}"></script>
     <!-- Demo Js -->
     <script src="{{ asset('theme/js/demo.js') }}"></script>
     <script src="{{ asset('js/leaflet.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
     <script src="{{ asset('theme/js/material-dashboard.js') }}"></script>
     <script src="{{ asset('js/mask/jquery.inputmask.min.js') }}"></script>
      <script src="{{ asset('js/app.js') }}"></script>
