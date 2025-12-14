@@ -25,10 +25,9 @@ return new class extends Migration
             $table->unsignedTinyInteger('wilaya_id')->nullable();
             $table->string('phone',10)->nulable();
             $table->foreign('owner_id')->references('NIN')->on('users')->onUpdate('cascade')->onDelete('cascade');
+           // $table->foreign('guardien_id')->references('NIN')->on('users')->nullable()->onUpdate('cascade')->onDelete('cascade');
            // $table->foreignId('owner_id')->constrained('users','NIN')->onUpdate('cascade')->onDelete('cascade');
-            //$table->foreignId('guardien_id')->nullable()->constrained('users','NIN')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('guardien_id')->references('NIN')->on('users')->nullable()->onUpdate('cascade')->onDelete('cascade');
-           
+            $table->foreignId('guardien_id')->nullable()->constrained('users','NIN')->onUpdate('cascade')->onDelete('cascade');
             $table->date('creationDt');         
             $table->timestamps();
         });

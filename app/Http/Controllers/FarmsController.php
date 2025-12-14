@@ -21,17 +21,13 @@ class FarmsController extends Controller
     }
     public function create()
     {
-        $wilayas = Wilaya::all()->pluck('name', 'id');
         $guardiens = User::role('guardien')->doesntHave('guardedFarm')->pluck('name','id');
-        $animalTypes = AnimalType::all()->pluck('name', 'id');
-        return view('assets.farms.create', compact('wilayas', 'animalTypes','guardiens'));
+        return view('assets.farms.create', compact('guardiens'));
     }
     public function edit(Farm $farm)
     {
-        $wilayas = Wilaya::all()->pluck('name', 'id');
         $guardiens = User::role('guardien')->pluck('name','id');
-        $animalTypes = AnimalType::all()->pluck('name', 'id');
-        return view('assets.farms.edit', compact('farm','wilayas', 'animalTypes','guardiens'));
+        return view('assets.farms.edit', compact('farm','guardiens'));
     }
     public function store(FarmRequest $request)
     {
