@@ -48,8 +48,6 @@ class MovementController extends Controller
                // return view('errors.500');
 
         }
-        
-
     }
 
     /**

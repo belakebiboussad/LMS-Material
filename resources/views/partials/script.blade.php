@@ -46,8 +46,7 @@
     <script src="{{ asset('theme/js/admin.js') }}"></script>
     <!--	Plugin for Select, full documentation here: https://joshuajohnson.co.uk/Choices/ -->
     <script src="theme/js/choices.min.js" type="text/javascript"></script>
-    <script src="https://cdn.jsdelivr.net/npm/choices.js@11.1.0/public/assets/scripts/choices.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
     <script src="{{ asset('theme/js/pages/index.js') }}"></script>
     <!-- Demo Js -->
     <script src="{{ asset('theme/js/demo.js') }}"></script>

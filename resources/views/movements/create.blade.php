@@ -5,10 +5,18 @@
     #mapid {
       height: 300px;
     }
-
-    .selection__choice {
-      line-height: 1rem;
-    }
+ .choices {
+    display:block;
+  }
+  .choices__inner {
+   
+    min-height: 30px; /* Set your desired minimum height */
+    padding: 5px; /* Adjust padding to center content vertically */
+}
+.choices__item {
+    padding: 0px 0px; /* Increase vertical padding to increase item height */
+    line-height: 0.9 /* Adjust line height for vertical alignment */
+}
   </style>
   @endsection
   @section('content')
@@ -61,15 +69,18 @@
             </div>
             --}}
             <div class="mb-3 col-lg-6">
-              <label class="form-label">{{ __('movement.transport')}}</label>
-             <select  class=""form-control border border-2 p-2" name="reset-multiple" id="reset-multiple" multiple>
-            <option value="Choice 1" selected>Choice 1</option>
-            <option value="Choice 2">Choice 2</option>
-            <option value="Choice 3">Choice 3</option>
-            <option value="Choice 4" disabled>Choice 4</option>
+            <label class="form-label">{{ __('movement.animals')}}</label>
+            <select class="form-control border border-2 p-2" id="choices-multiple-remove-button" multiple>
+              <option value="Choice 1">Choice 1</option>
+              <option value="Choice 2">Choice 2</option>
+              <!-- Options can be dynamically populated using Laravel backend data -->
+                @foreach(auth()->user()->farms as $farm)
+                <option value="{{  $farm->id }}"> {{ $farm->name }} </option>
+                @endforeach
           </select>
 
             </div>
+
             <div class="mb-3 col-lg-6">
               <label class="form-label">{{ __('movement.buyer_id')}}</label>
               <select type="text" name="buyer_id" class="form-control border border-2 p-2" required>
@@ -163,10 +174,11 @@
       //   allowClear: true
       // });
       // Initialize Choices.js for the animal select
-        var resetMultiple = new Choices('#reset-multiple', {
-          allowHTML: true,
-          removeItemButton: true,
-        });
+        var element = document.getElementById('choices-multiple-remove-button');
+        var choices = new Choices(element, {
+        removeItemButton: true, // Allows removing items in multi-select
+    // other configuration options...
+  });
       //end Choices.js initialization
      
       $('select[name="sfarm_id"]').on('change', function() {

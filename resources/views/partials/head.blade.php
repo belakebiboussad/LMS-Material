@@ -9,7 +9,7 @@
     {{-- test --}}
     <!-- Font Awesome Icons -->
      <!-- Load font awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"> --}}
     {{--fin test --}}
     <link href="{{asset('theme/plugins/morrisjs/morris.css')}}" rel="stylesheet" />
     <link href="{{ asset('theme/css/themes/all-themes.css') }}" rel="stylesheet" />
@@ -21,13 +21,7 @@
     <link href="{{ asset('theme/css/nucleo-icons.css') }}" rel="stylesheet" />
     <link href="{{ asset('theme/css/nucleo-svg.css') }} rel="stylesheet" />
     <link href="{{ asset('theme/css/choices.min.css') }} rel="stylesheet" />
-    {{-- <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/choices.js@11.1.0/public/assets/styles/choices.min.css"/> --}}
- 
-
-
-    {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
+{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/choices.js/1.1.6/styles/css/choices.css" integrity="sha512-0bYNWBaGnMqLCuum81OA7oZo7/pIEjWb/ad3vdKuKlgTZXalLMDkRT3P4Z262/aQBnNuznUg3WpTb5Vgu11abw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
     <link href="{{ asset('css/leaflet.css') }}" rel="stylesheet">
       <!-- Custom Css -->
     <link href="{{ asset('theme/css/style.css') }}" rel="stylesheet">
