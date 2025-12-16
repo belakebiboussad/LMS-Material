@@ -39,14 +39,10 @@
     {{-- <script src="{{ asset('theme/plugins/momentjs/moment-with-locales.js') }}"></script> --}}
     <!-- Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
     <script src="{{ asset('theme/plugins/nouislider/nouislider.min.js') }}"></script>
-     <script src="./assets/js/plugins/nouislider.min.js"></script>
     <!--  Plugin for the Carousel, full documentation here: http://jedrzejchalubek.com/  -->
     {{-- <script src="./assets/js/plugins/glidejs.min.js"></script> --}}
     <!-- Custom Js -->
     <script src="{{ asset('theme/js/admin.js') }}"></script>
-    <!--	Plugin for Select, full documentation here: https://joshuajohnson.co.uk/Choices/ -->
-    <script src="theme/js/choices.min.js" type="text/javascript"></script>
-    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
     <script src="{{ asset('theme/js/pages/index.js') }}"></script>
     <!-- Demo Js -->
     <script src="{{ asset('theme/js/demo.js') }}"></script>
