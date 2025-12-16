@@ -174,13 +174,13 @@
       //   allowClear: true
       // });
       // Initialize Choices.js for the animal select
-        var element = document.getElementById('choices-multiple-remove-button');
+        /*  
+         var element = document.getElementById('choices-multiple-remove-button');
         var choices = new Choices(element, {
-        removeItemButton: true, // Allows removing items in multi-select
-    // other configuration options...
-  });
+          removeItemButton: true,
+        });
+        */
       //end Choices.js initialization
-     
       $('select[name="sfarm_id"]').on('change', function() {
         animalsSelectFill($(this).val());
       });
