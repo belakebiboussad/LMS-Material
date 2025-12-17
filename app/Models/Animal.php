@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Attributes\Scope;
 class Animal extends Model
 {
        protected $fillable = [
-        'eid',
+        'tag_id',
         'animalType_id',
         'color_id',
         'farm_id',
@@ -51,7 +51,7 @@ class Animal extends Model
     }    
     public function rfidTag()
     {
-        return $this->belongsTo(Tag::class, 'eid', 'id');
+        return $this->belongsTo(Tag::class, 'tag_id', 'id');
     }
     public function animalType()
     {

@@ -71,7 +71,7 @@
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label>">{{ __('animal.eid') }}</label>
-              <select id="rfid_id" name="eid" class="form-control border border-2 p-2 {{ $errors->has('eid') ? ' is-invalid' : '' }}">
+              <select id="tag_id" name="tag_id" class="form-control border border-2 p-2 {{ $errors->has('eid') ? ' is-invalid' : '' }}">
                 <option value="">{{ __('Select RFID Tag') }}</option>
                 {{-- <option value="{{ $animal->rfidTag ? $animal->rfidTag->id :'' }}" selected> {{ $animal->rfidTag ? $animal->rfidTag->eid : '' }}</option> 
                 --}}
@@ -79,7 +79,7 @@
                 <option value="{{ $id }}" {{ $animal->rfidTag && $animal->rfidTag->id == $id ? 'selected' : '' }}>{{ $eid }}</option>
                 @endforeach 
               </select>
-              @error('eid')
+              @error('tag_id')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
@@ -129,13 +129,13 @@
                 text:  name // Assuming 'name' is the display text
               }));
             });
-            $('#rfid_id').empty();
-            $('#rfid_id').append($('<option>', {
+            $('#tag_id').empty();
+            $('#tag_id').append($('<option>', {
               value: '',
               text: 'Selectionner ...'
             }));    
             $.each(data.rfids, function(id, eid) {
-              $('#rfid_id').append($('<option>', {
+              $('#tag_id').append($('<option>', {
                 value: id, // Assuming 'id' is the value
                 text: eid // Assuming 'name' is the display text
               }));

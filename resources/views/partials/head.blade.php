@@ -20,7 +20,6 @@
     {{-- Nucleo Icons --}}
     <link href="{{ asset('theme/css/nucleo-icons.css') }}" rel="stylesheet" />
     <link href="{{ asset('theme/css/nucleo-svg.css') }} rel="stylesheet" />
-{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/choices.js/1.1.6/styles/css/choices.css" integrity="sha512-0bYNWBaGnMqLCuum81OA7oZo7/pIEjWb/ad3vdKuKlgTZXalLMDkRT3P4Z262/aQBnNuznUg3WpTb5Vgu11abw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
     <link href="{{ asset('css/leaflet.css') }}" rel="stylesheet">
       <!-- Custom Css -->
     <link href="{{ asset('theme/css/style.css') }}" rel="stylesheet">

@@ -23,7 +23,7 @@ class Tag extends Model
    ];
    protected $casts = [
         'type' => TagType::class, // Direct enum casting
-         'status' => TagStatus::class   
+        'status' => TagStatus::class   
     ];
     #[Scope]
     protected function inactive(Builder $q): Builder

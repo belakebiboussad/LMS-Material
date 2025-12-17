@@ -14,7 +14,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tags', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('brand')->nullable();
             $table->string('mac_address')->nullable();
             $table->integer('antenna_port')->nullable();

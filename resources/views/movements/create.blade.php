@@ -58,26 +58,15 @@
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
-            {{--
             <div class="mb-3 col-lg-6">
-              <label class="form-label">{{ __('animals') }}</label>
-              <select type="text" name="animals[]" class="form-control border border-2 p-2" data-placeholder="{{__('animal.selects')}}" multiple="miltiple">
-              </select>
+              <label class="form-label">{{ __('movement.animals')}}</label>
+              <select name="animals[]" class="form-control choices-select border border-2 p-2"  data-placeholder="{{__('animal.selects')}}" multiple>
+              
+                 
+            </select>
               @error('animals')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
-            </div>
-            --}}
-            <div class="mb-3 col-lg-6">
-            <label class="form-label">{{ __('movement.animals')}}</label>
-            <select class="form-control border border-2 p-2" id="choices-multiple-remove-button" multiple>
-              <option value="Choice 1">Choice 1</option>
-              <option value="Choice 2">Choice 2</option>
-              <!-- Options can be dynamically populated using Laravel backend data -->
-                @foreach(auth()->user()->farms as $farm)
-                <option value="{{  $farm->id }}"> {{ $farm->name }} </option>
-                @endforeach
-          </select>
 
             </div>
 
@@ -127,26 +116,36 @@
   @section('js')
   <script>
     function animalsSelectFill(farmId) {
+      
       $.ajax({
         url: "{{ route('animals.index') }}?id=" + farmId, // Replace with your server-side endpoint
         type: "GET", // Or "POST" depending on your server
         dataType: "json", // Expect JSON data
         success: function(data) {
+         /*
           var select = $('select[name="animals[]"]');
           select.empty();
           $.each(data, function(eid, id) {
-            select.append($('<option>', {
-              value: id, // Assuming 'id' is the value
-              text: eid // Assuming 'name' is the display text
+             select.append($('<option>', {
+                value: id, // Assuming 'id' is the value
+                text: eid // Assuming 'name' is the display text
             }));
           });
-        },
+          */
+         
+          var choices = new Choices('select[name="animals[]"]', {
+            removeItemButton: true,
+          });
+          choices.setChoices(data.map(function(item) {
+            alert(item.eid);
+            return { value: item.id, label: item.eid };
+          }), 'value', 'label', false);
+        },   
         error: function(xhr, status, error) {
           alert("AJAX Error: " + status + error);
         }
       });
     }
-
     function farmSelectFill(farmerID) {
       $.ajax({
         url: "{{ route('farms.index') }}?id=" + farmerID, // Replace with your server-side endpoint
@@ -168,19 +167,6 @@
       });
     }
     $(document).ready(function() {
-      // $('select[name="animals[]"]').select2({
-      //   placeholder: "{{ __('selection') }}",
-      //   minimumResultsForSearch: Infinity,
-      //   allowClear: true
-      // });
-      // Initialize Choices.js for the animal select
-        /*  
-         var element = document.getElementById('choices-multiple-remove-button');
-        var choices = new Choices(element, {
-          removeItemButton: true,
-        });
-        */
-      //end Choices.js initialization
       $('select[name="sfarm_id"]').on('change', function() {
         animalsSelectFill($(this).val());
       });

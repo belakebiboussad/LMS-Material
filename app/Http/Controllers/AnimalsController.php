@@ -17,9 +17,17 @@ class AnimalsController extends Controller
      public function index()
     {
         if(request()->ajax()) {
-           return( request()->id ? Animal::where('farm_id', request()->id)->with('rfidTag')->get()->pluck('id', 'rfidTag.eid') : Animal::with('rfidTag')->get()->pluck('id', 'rfidTag.eid')); 
+        //    return( request()->id ? Animal::where('farm_id', request()->id)->with('rfidTag')->get()->pluck('id', 'rfidTag.eid') : Animal::with('rfidTag')->get()->pluck('id', 'rfidTag.eid')); 
+            $animals = Animal::with('rfidTag:eid as eid1')->where('farm_id', request()->id)->get();
+           return response()->json($animals->map(function($animal) {
+                return [
+                    'id' => $animal->id,
+                    'eid' => $animal->eid1,
+                ];
+           }), 200);
         }
-         $animals = auth()->user()->hasRole('farmer') ? Animal::whereIn('farm_id', auth()->user()->farms->pluck('id'))->present()->with('rfidTag','animalType','breed','farm')->get() : Animal::whereIn('farm_id', auth()->user()->guardedFarm->pluck('id'))->with('rfidTag','animalType','breed','farm')->get();
+        $animals = auth()->user()->hasRole('farmer') ? Animal::with('rfidTag')->whereIn('farm_id', auth()->user()->farms->pluck('id'))->present()->with('rfidTag','animalType','breed','farm')->get() : Animal::whereIn('farm_id', auth()->user()->guardedFarm->pluck('id'))->with('rfidTag','animalType','breed','farm')->get();
+        //dd($animals[0]->tag_id);
         return view('assets.animals.index', compact('animals'));
     }
      public function create()
@@ -57,7 +65,7 @@ class AnimalsController extends Controller
     public  function update(Animal $animal) 
     {
         $validated = request()->validate([
-            'eid' => 'nullable|exists:tags,id',
+            'tag_id' => 'nullable|exists:tags,id',
             'animalType_id' => 'required|exists:animal_types,id',
             'weight' => 'nullable|numeric',
             'dob' => 'nullable|date',
@@ -66,11 +74,11 @@ class AnimalsController extends Controller
             'is_seek' => 'boolean',
             'farm_id' => 'required|exists:farms,id',
         ]);
-        if(isset(request()->eid) && request()->eid != $animal->rfidTag?->id) {
+        if(isset(request()->tag_id) && request()->tag_id != $animal->rfidTag?->id) {
             if($animal->rfidTag) {
                 Tag::findOrFail($animal->rfidTag->id)->update(['status'=>TagStatus::INACTIVE]);
             }
-            Tag::findOrFail(request()->eid)->update(['status'=>TagStatus::ACTIVE]);    
+            Tag::findOrFail(request()->tag_id)->update(['status'=>TagStatus::ACTIVE]);    
         }
         $animal->update($validated);
         return redirect()->route('animals.index')->with('success', __('animal.updated'));
