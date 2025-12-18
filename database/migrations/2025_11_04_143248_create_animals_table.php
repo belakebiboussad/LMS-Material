@@ -16,7 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('tag_id')->unique()->nullable();//rfid id
             $table->unsignedTinyInteger('animalType_id');
             $table->unsignedBigInteger('color_id')->nullable();
-            $table->unsignedBigInteger('farm_id');
+             $table->string('owner_id',20);
+            $table->unsignedBigInteger('farm_id')->nullable();
             $table->double('weight',8,2)->nullable();
             $table->dateTime('dob')->nullable();
             $table->string('sexe',10)->default(Sexe::MALE->value);
@@ -28,6 +29,7 @@ return new class extends Migration
             $table->foreign('tag_id')->references('id')->on('tags')->onUpdate('restrict')->onDelete('set null');
                $table->foreign('animalType_id')->references('id')->on('animal_types')->onUpdate('restrict')->onDelete('restrict'); 
             $table->foreign('color_id')->references('id')->on('colors')->nullable()->onUpdate('restrict')->onDelete('set null');  
+             $table->foreign('owner_id')->references('NIN')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('farm_id')->references('id')->on('farms')->constrained()->onUpdate('restrict')->onDelete('cascade');
             $table->foreign('breed_id')->references('id')->on('breeds')->constrained()->onUpdate('restrict')->onDelete('restrict');
             $table->string('status')->nullable();

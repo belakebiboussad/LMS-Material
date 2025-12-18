@@ -13,6 +13,7 @@ class Animal extends Model
         'tag_id',
         'animalType_id',
         'color_id',
+        'owner_id',
         'farm_id',
         'weight',
         'dob',
@@ -46,7 +47,11 @@ class Animal extends Model
     public function present(Builder $query): void
     {
         $query->whereNull('status');
-    }    
+    }   
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'owner_id','NIN');
+    } 
     public function rfidTag()
     {
         return $this->belongsTo(Tag::class, 'tag_id', 'id');
