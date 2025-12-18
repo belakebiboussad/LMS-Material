@@ -10,7 +10,7 @@ return [
   'animals'   => 'Animaux',
   // Actions
   'index'          => 'Liste mouvements',
-  'create'         => 'Ajouter une mouvement',
+  'create'         => 'Ajouter un mouvement',
   'created'        => 'mouvement à été crée avec succée.',
   'show'           => 'Voir Détail du mouvement',
   'edit'           => 'Modifier le mouvement',

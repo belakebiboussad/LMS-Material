@@ -21,9 +21,7 @@ class Animal extends Model
         'endDate',
         'is_castred',
         'is_seek',
-        'status',//silled,daed,consume
-
-        
+        'status',//silled,daed,consume      
     ];
      protected $casts = [
         'dob' => 'datetime',

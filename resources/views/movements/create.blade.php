@@ -60,9 +60,7 @@
             </div>
             <div class="mb-3 col-lg-6">
               <label class="form-label">{{ __('movement.animals')}}</label>
-              <select name="animals[]" class="form-control choices-select border border-2 p-2"  data-placeholder="{{__('animal.selects')}}" multiple>
-              
-                 
+              <select name="animals[]" class="form-control choices-select border border-2 p-2" multiple>
             </select>
               @error('animals')
               <p class='text-danger inputerror'>{{ $message }} </p>
@@ -115,34 +113,19 @@
   @endsection
   @section('js')
   <script>
-    function animalsSelectFill(farmId) {
-      
+    function animalsSelectFill(farmId, choiceElement) {
+   
       $.ajax({
         url: "{{ route('animals.index') }}?id=" + farmId, // Replace with your server-side endpoint
         type: "GET", // Or "POST" depending on your server
         dataType: "json", // Expect JSON data
         success: function(data) {
-         /*
-          var select = $('select[name="animals[]"]');
-          select.empty();
-          $.each(data, function(eid, id) {
-             select.append($('<option>', {
-                value: id, // Assuming 'id' is the value
-                text: eid // Assuming 'name' is the display text
-            }));
-          });
-          */
-         
-          var choices = new Choices('select[name="animals[]"]', {
-            removeItemButton: true,
-          });
-          choices.setChoices(data.map(function(item) {
-            alert(item.eid);
-            return { value: item.id, label: item.eid };
+        choiceElement.setChoices(data.map(function(item) { 
+            return { value: item.id, label: item.rfid_tag.eid };
           }), 'value', 'label', false);
         },   
         error: function(xhr, status, error) {
-          alert("AJAX Error: " + status + error);
+          console.log("AJAX Error: " + status + error);
         }
       });
     }
@@ -167,8 +150,17 @@
       });
     }
     $(document).ready(function() {
+      const select = document.querySelectorAll('select[name="animals[]"]')[0];
+      var choices = new Choices(select, {
+            searchEnabled: true,
+            itemSelectText: '', // Disable the "Press to select" text
+            closeDropdownOnSelect: 'auto',
+            removeItemButton: true,
+            duplicateItemsAllowed: false, 
+        });
       $('select[name="sfarm_id"]').on('change', function() {
-        animalsSelectFill($(this).val());
+        choices.clearChoices();
+        animalsSelectFill($(this).val(), choices);
       });
       $('select[name="buyer_id"]').on('change', function() {
         farmSelectFill($(this).val());

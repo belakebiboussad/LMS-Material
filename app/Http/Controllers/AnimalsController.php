@@ -17,20 +17,16 @@ class AnimalsController extends Controller
      public function index()
     {
         if(request()->ajax()) {
-        //    return( request()->id ? Animal::where('farm_id', request()->id)->with('rfidTag')->get()->pluck('id', 'rfidTag.eid') : Animal::with('rfidTag')->get()->pluck('id', 'rfidTag.eid')); 
-            $animals = Animal::with('rfidTag:eid as eid1')->where('farm_id', request()->id)->get();
-           return response()->json($animals->map(function($animal) {
-                return [
-                    'id' => $animal->id,
-                    'eid' => $animal->eid1,
-                ];
-           }), 200);
+           $query =  Animal::select('id','tag_id')->with(['rfidTag' => fn ($query) => $query->select('id','eid')]);
+           if(isset(request()->id))
+             $query->where('farm_id', request()->id);
+           return $query->get();
         }
         $animals = auth()->user()->hasRole('farmer') ? Animal::with('rfidTag')->whereIn('farm_id', auth()->user()->farms->pluck('id'))->present()->with('rfidTag','animalType','breed','farm')->get() : Animal::whereIn('farm_id', auth()->user()->guardedFarm->pluck('id'))->with('rfidTag','animalType','breed','farm')->get();
         //dd($animals[0]->tag_id);
         return view('assets.animals.index', compact('animals'));
     }
-     public function create()
+    public function create()
     {
         $animalTyps = AnimalType::pluck('name', 'id');
         $farms = (auth()->user()->hasRole('farmer')) ?  auth()->user()->farms()->pluck('name', 'id') : auth()->user()->guardedFarm()->pluck('name', 'id');
@@ -56,6 +52,7 @@ class AnimalsController extends Controller
             'is_seek' => 'boolean',
             'farm_id' => 'required|exists:farms,id',
         ]);
+        dd($request->eid);
         if(isset($request->eid))
             Tag::findOrFail($request->eid)->update(['status'=>TagStatus::ACTIVE]);
         Animal::create($validated);
@@ -92,7 +89,7 @@ class AnimalsController extends Controller
     public function getBreedsAndRFID($animalTypeId)
     {
         $breeds = Breed::where('animal_type_id', $animalTypeId)->get()->pluck('name', 'id'); 
-        $rfidTags = Tag::where('owner_id', auth()->id())->where('type', TagType::BIRTH)->where('animalType_id',$animalTypeId)->inactive()->get()->pluck('eid', 'id');
+        $rfidTags = Tag::inactive()->where('owner_id', auth()->id())->where('type', TagType::BIRTH)->where('animalType_id',$animalTypeId)->get()->pluck('eid', 'id');
         return response()->json([ 'breed'=> $breeds, 'rfids'=> $rfidTags ], 200);
     }
 }

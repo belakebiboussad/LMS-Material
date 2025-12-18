@@ -3,6 +3,7 @@ import Choices from 'choices.js';
 import 'choices.js/public/assets/styles/choices.min.css'; // Import the CSS
 window.Choices = Choices;
 document.addEventListener('DOMContentLoaded', () => {
+    /*
     const elements = document.querySelectorAll('.choices-select');
     elements.forEach(element => {
         new Choices(element, {
@@ -13,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             removeItemButton: true,
         });
     });
+    */
 });
 import Alpine from 'alpinejs';
 
