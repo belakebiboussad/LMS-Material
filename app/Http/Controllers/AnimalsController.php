@@ -8,7 +8,7 @@ use App\Models\AnimalType;
 use App\Models\Tag;
 use App\Enums\TagType;
 use App\Models\Breed;
-use App\Models\Farm;
+use Auth;
 
 use Illuminate\Http\Request;
 
@@ -52,7 +52,7 @@ class AnimalsController extends Controller
             'is_seek' => 'boolean',
             'farm_id' => 'required|exists:farms,id',
         ]);
-        dd($request->eid);
+        $validated['owner_id'] = Auth::user()->NIN;
         if(isset($request->eid))
             Tag::findOrFail($request->eid)->update(['status'=>TagStatus::ACTIVE]);
         Animal::create($validated);

@@ -121,7 +121,7 @@
         dataType: "json", // Expect JSON data
         success: function(data) {
         choiceElement.setChoices(data.map(function(item) { 
-            return { value: item.id, label: item.rfid_tag.eid };
+           return { value: item.id, label: item.rfid_tag.eid };
           }), 'value', 'label', false);
         },   
         error: function(xhr, status, error) {

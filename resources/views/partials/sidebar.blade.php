@@ -45,8 +45,9 @@
                 <div class=""></div>
             </li>
             <li class="nav-item">
-                <a href="#" class="menu-toggle">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAACNUlEQVR4nO2WvU4UURTHf402QGcDCzFKBIMxVHw8BFoLPgGCBfoCPAHqUkF4APmqxKWgk0cAJbTSAgEkcTe7mzHH/G9yMpmZnYExWvhPJjvn3HPvf87nXfiPfxADwDywCxwB13rsvQbMAf1lElaAFaAJRB2eNrAB3L8t6XPgSoc2gI/AC2AY6NJj79Naa8jW9jy7KelreRDJiwc59jwEtpz3lprCnraBFrDg9E+Ad8Chy/GhdLYW8FZ720U8r7jwBtK7wLIOS8uvrVVlG8hNfwn05iFec+ENpHvS/QTeA+MuxxPAB6Aumz1Hvi3dSp6WaalIQk6Xtfk78DRj7yhwIlvz3DCos5qKZCrmtdEqFOWtJU8DqfXqptJxJa8eOfK69oxIt6EzX2UR12Rk7YGKJtJvID1LyO+Z86gq3ZLkl5J3soiPZTQk+avkMcmbkj+JqKIDTbcumwnJB5KHJduES0Wo5p6Y3B2TK7G6MN2F5B43RJLkGxFfSi51JmeF2trHt8dO2eS1lOKyPkUfdOqKKg4bOOcdLpL9JOK5lHaqq1VQftcVdo/FHLdXlPLBv8PXVNPbwPftceLI43hTgDRKC/eqFu2WMdxxI7OuD5l0BUeO8EZ5iPtcNdugR7O3mnBJBHQ6OMpDjK6ycC0G8pDzJQ2HH3+COMzt8EdgWwM/DaUSG6bc0Gho4M8Aj2M5Lp3YcE99nPRnL6BIYUUUhPXvLPAZ+NYhx6USZ+GvEe8XIP1SJnFh/AIg2z1whiGA7AAAAABJRU5ErkJggg==" alt="rfid-sensor" width="18" height="18">
+                 <a href="#" class="menu-toggle">
+                <!--<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAACNUlEQVR4nO2WvU4UURTHf402QGcDCzFKBIMxVHw8BFoLPgGCBfoCPAHqUkF4APmqxKWgk0cAJbTSAgEkcTe7mzHH/G9yMpmZnYExWvhPJjvn3HPvf87nXfiPfxADwDywCxwB13rsvQbMAf1lElaAFaAJRB2eNrAB3L8t6XPgSoc2gI/AC2AY6NJj79Naa8jW9jy7KelreRDJiwc59jwEtpz3lprCnraBFrDg9E+Ad8Chy/GhdLYW8FZ720U8r7jwBtK7wLIOS8uvrVVlG8hNfwn05iFec+ENpHvS/QTeA+MuxxPAB6Aumz1Hvi3dSp6WaalIQk6Xtfk78DRj7yhwIlvz3DCos5qKZCrmtdEqFOWtJU8DqfXqptJxJa8eOfK69oxIt6EzX2UR12Rk7YGKJtJvID1LyO+Z86gq3ZLkl5J3soiPZTQk+avkMcmbkj+JqKIDTbcumwnJB5KHJduES0Wo5p6Y3B2TK7G6MN2F5B43RJLkGxFfSi51JmeF2trHt8dO2eS1lOKyPkUfdOqKKg4bOOcdLpL9JOK5lHaqq1VQftcVdo/FHLdXlPLBv8PXVNPbwPftceLI43hTgDRKC/eqFu2WMdxxI7OuD5l0BUeO8EZ5iPtcNdugR7O3mnBJBHQ6OMpDjK6ycC0G8pDzJQ2HH3+COMzt8EdgWwM/DaUSG6bc0Gho4M8Aj2M5Lp3YcE99nPRnL6BIYUUUhPXvLPAZ+NYhx6USZ+GvEe8XIP1SJnFh/AIg2z1whiGA7AAAAABJRU5ErkJggg==" alt="rfid-sensor"  width="14" height="12"> -->
+               <i class="material-icons">alternate_email</i>
                     <span>Tags</span>
                 </a>
                 <ul class="ml-menu">
