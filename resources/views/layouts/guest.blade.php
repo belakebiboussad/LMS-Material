@@ -6,7 +6,7 @@
    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
      <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Gestion Chaptel') }}</title>
+    <title>@yield('title') | {{ config('app.name') }}</title>
    
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.0/material.blue-light_blue.min.css">
 
@@ -22,7 +22,7 @@
     <link href="{{ asset('theme/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   
-	<title>Login</title>
+	<!-- <title>Login</title> -->
 	
     <!-- Scripts -->
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
@@ -30,6 +30,7 @@
 </head>
 
 <body class="font-sans text-gray-900 antialiased">
+    
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
         <div>
             <!-- <a href="/">

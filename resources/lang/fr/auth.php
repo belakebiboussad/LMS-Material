@@ -1,6 +1,7 @@
 <?php
 return [
   "Start_Session" => "Connectez-vous pour démarrer votre session",
+  "loginPageTitle"=>"Login",
   "Login" => "Connexion",
   "Logout" => "Se déconnecter",
   "Register" => "S'inscrire !",
