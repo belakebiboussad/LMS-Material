@@ -1,36 +1,65 @@
 @extends('layouts.guest')
-@section('title')
-   {{__('auth.loginPageTitle') }}
-@endsection
-@section('css')
-<style>
-</style>
-@endsection
-
+  @section('title', __('auth.loginPageTitle'))
 @section('content')
-<div class="mdl-layout mdl-js-layout mdl-color--grey-100 mdl-auth-form">
-        <main class="mdl-layout__content_auth">
-            <div class="mdl-card mdl-shadow--2dp">
-                <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-                    <h2 class="mdl-card__title-text text-center full-span block">
-
-                        {{ trans('titles.app') }}
-
-                    </h2>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    <form id="sign_in" method="POST" action="{{ route('login') }}">
-                     {{ csrf_field() }}
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label {{ $errors->has('email') ? 'is-invalid' :'' }}">
-                        <input type="email" name="email" id="email" class="mdl-textfield__input">
-                        <label for="email" class="mdl-textfield__label">{{__('auth.Email_Address')}}</label>
-                          @if ($errors->has('email'))
-                                <span class="mdl-textfield__error">{{ trans('auth.emailLoginError') }}</span>
-                            @endif
+<div class="container login-page">
+     <div class="login-box">
+        <div class="logo">
+            <a href="javascript:void(0);"><b>{{ config('app.name') }}</b></a>
+            <abbr title="Livestock managment system">{{ config('app.name') }} </abbr>
+        </div>
+        <div class="card">
+            <div class="body">
+                <form id="sign_in" method="POST" action="{{ route('login') }}">
+                    @csrf
+                    <div class="msg">{{ __('auth.Login') }}</div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                        <div class="form-line">
+                            <x-input-label for="email" :value="__('auth.Email_Address')" /><br>
+                            <input class="mdl-textfield__input @error('email') is-invalid @enderror" type="text" id="email" name="email" value="admin@example.com" required autocomplete="off" autofocus />
+                            @error('email')
+                             <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
-                    </form>
-                </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">lock</i>
+                        </span>
+                        <div class="form-line">
+                            <x-input-label for="password" :value="__('auth.Password')" />
+                            <input type="password" class="form-control" name="password" placeholder="Password" value="password" required>
+                            <x-input-error :message="$errors->get('password') class=" mt-2" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-check form-switch d-flex  col-xs-8 p-t-5">
+                            <input type="checkbox" name="rememberme" id="rememberme" class="form-check-input chk-col-pink" {{ old('remember') ? 'checked' : '' }}>
+                             <label class="form-check-label mb-0 ms-2" for="rememberme">{{ __('auth.Remember_Me') }}</label>   
+                              @error('password')
+                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        
+                        <div class="col-xs-4">
+                            <button class="btn btn-block bg-pink waves-effect" type="submit">{{ __('Login') }}</button>
+                        </div>
+                    </div>
+                    <div class="row m-t-15 m-b--20">
+                        <div class="col-xs-6">
+                            <a href="{{ route('register') }}">{{ __('auth.Register') }}</a>
+                        </div>
+                        <div class="col-xs-6 align-right">
+                            <a href="forgot-password.html">{{ __('auth.Forgot_Your_Password?') }}</a>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </main>
+        </div>
+     </div>
 </div>
 @endsection
