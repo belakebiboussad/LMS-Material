@@ -31,5 +31,6 @@ return [
   'undeleteable'   => 'Utilisateur peut pas étre supprimé.',
   'Farmes'         => 'Utilisateurs',
   'Farme'          => 'Utilisateur',
-  'admin'          => 'Un seul administrateur est autorisé.'
+  'admin'          => 'Un seul administrateur est autorisé.',
+  'deleteSelfError' =>'You cannot delete yourself! .',
 ];

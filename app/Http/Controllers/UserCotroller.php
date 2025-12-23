@@ -7,8 +7,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Requests\UpdateUserRequest;
-use App\Models\Farm;
-
+use App\Models\Profile;
+use Auth;
 class UserCotroller extends Controller
 {
     use AuthorizesRequests; // Use the trait here
@@ -56,7 +56,7 @@ class UserCotroller extends Controller
         $user = User::create($request->all());
         $role = $request->input('role');
         $user->assignRole($role);
-        return redirect()->route('users.index')->with('success', __('user.updated'));
+           return redirect()->route('users.index')->with('success', __('user.updated'));
     }
     public function update(UpdateUserRequest  $request, User $user)
     {
@@ -75,7 +75,12 @@ class UserCotroller extends Controller
     }
     public function destroy(User $user)
     {
-        $user->delete();
-        return redirect()->route('users.index')->with('success',  __('user.deleted'));
+        if($user->id != Auth::id())
+        {
+            $user->delete();
+            return redirect()->route('users.index')->with('success',  __('user.deleted'));
+        } 
+         return back()->with('error', trans('usersmanagement.deleteSelfError'));
+     
     }
 }

@@ -74,4 +74,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Tag::class, 'owner_id');
     }
+     public function profile()
+    {
+        return $this->hasOne('App\Models\Profile');
+    }
 }
