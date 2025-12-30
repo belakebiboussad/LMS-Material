@@ -39,7 +39,6 @@
     {{-- <script src="{{ asset('theme/plugins/momentjs/moment-with-locales.js') }}"></script> --}}
     <!-- Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
     <script src="{{ asset('theme/plugins/nouislider/nouislider.min.js') }}"></script>
-     <script src="./assets/js/plugins/nouislider.min.js"></script>
     <!--  Plugin for the Carousel, full documentation here: http://jedrzejchalubek.com/  -->
     {{-- <script src="./assets/js/plugins/glidejs.min.js"></script> --}}
     <!-- Custom Js -->
@@ -53,4 +52,4 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="{{ asset('theme/js/material-dashboard.js') }}"></script>
     <script src="{{ asset('js/mask/jquery.inputmask.min.js') }}"></script>
-     <script src="{{ asset('js/app.js') }}"></script>
+     <script src="{{ asset('js/app.js') }}"></script>++
