@@ -17,7 +17,7 @@
                     <li role="seperator" class="divider"></li>
                     <li>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <i class="material-icons">input</i> {{ __('Logout') }}
+                            <i class="material-icons">input</i> {{ __('auth.Logout') }}
                         </a>
                         <form method="POST" id="logout-form" action="{{ route('logout')}}">@csrf</form>
                     </li>
