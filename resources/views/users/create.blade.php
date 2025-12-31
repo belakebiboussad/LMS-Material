@@ -135,7 +135,10 @@
           </div>
           <div class="row mb-0">
             <div class="col-md-12 text-center">
-              <button type="submit" class="btn bg-gradient-primary">{{ __('Save') }}</button>
+              <x-primary-button>{{ __('Save') }}</x-primary-button>
+               <x-nav-link :href="route('users.index')" :active="request()->routeIs('dashboard')">
+                        {{ __('Cancel') }}
+                    </x-nav-link>
               <a href="{{ route('users.index') }}" class="btn btn-warning">{{ __('Cancel') }}</a>
             </div>
           </div>

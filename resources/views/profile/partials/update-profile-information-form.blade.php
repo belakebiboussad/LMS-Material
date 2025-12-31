@@ -45,7 +45,7 @@
             @endif
         </div>
 
-        <div class="flex items-center gap-4 mt-2">
+        <div class="flex items-center gap-4 px-12 mt-2">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
             @if (session('status') === 'profile-updated')
