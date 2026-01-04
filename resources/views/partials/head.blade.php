@@ -9,7 +9,7 @@
     {{-- test --}}
     <!-- Font Awesome Icons -->
      <!-- Load font awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     {{--fin test --}}
     <link href="{{asset('theme/plugins/morrisjs/morris.css')}}" rel="stylesheet" />
     <link href="{{ asset('theme/css/themes/all-themes.css') }}" rel="stylesheet" />

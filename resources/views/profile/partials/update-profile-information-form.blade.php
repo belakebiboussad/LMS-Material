@@ -54,7 +54,7 @@
                     x-show="show"
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600"
+                    class="text-sm text-success"
                 >{{ __('auth.update_profile_success') }}</p>
             @endif
         </div>

@@ -207,8 +207,6 @@ select:-webkit-autofill:focus {
 
 .bg-gradient {
   background-image: var(--bs-gradient) !important; }
-
-
 .gap-0 {
   gap: 0 !important; }
 
