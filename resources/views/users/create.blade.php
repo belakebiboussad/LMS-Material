@@ -49,7 +49,7 @@
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('user.birthDate') }}</label>
-              <input type="date" name="birthDate" class="form-control border border-2 p-2" value="{{ old('birthDate') ? : '' }}">
+              <input type="text" name="birthDate" class="form-control date border border-2 p-2" value="{{ old('birthDate') ? : '' }}">
               @error('birthDate')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
@@ -146,9 +146,13 @@
   </div>
   @endsection
   @section('js')
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
     $(function() {
       Inputmask("9", { repeat: 20 }).mask("#NIN");
+        $('.date').datepicker({
+             format: "{{ config('app.date_format_js') }}";
+        });
     })
   </script>
   @endsection
