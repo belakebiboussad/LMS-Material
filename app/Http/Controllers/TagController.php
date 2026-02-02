@@ -18,7 +18,7 @@ class TagController extends Controller
     public function index()
     {
         $tags= Tag::whereDoesntHave('owner')->get();
-        $owners = User::role(['farmer', 'guardien'])->get();
+        $owners = User::role(['farmer', 'guardien'])->get()->pluck('name', 'NIN');
         return view('tags.index',compact('tags','owners'));
     }
 
@@ -72,7 +72,7 @@ class TagController extends Controller
     public function assign(Request $request)
     {
         $request->validate([
-            'owner_id' => 'required|exists:users,id',
+            'owner_id' => 'required|exists:users,nin',
             'tagIds' => 'required|array',
             'tagIds.*' => 'exists:tags,id',
         ]);

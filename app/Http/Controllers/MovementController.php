@@ -66,7 +66,6 @@ class MovementController extends Controller
             'depDate' => 'date',
             'arrivDate' => 'date|after_or_equal:depDate',
         ]);
-        dd($validated);
         $movement = Movement::create($validated);
         foreach($validated['animals'] as $animal_id) {
             $animal = Animal::find($animal_id); 

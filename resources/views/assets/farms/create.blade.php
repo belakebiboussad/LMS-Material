@@ -134,7 +134,7 @@
           <div class="row mb-0">
             <div class="col-md-12 text-center mt-4">
               <button type="submit" class="btn bg-gradient-primary">{{ __('app.save') }}</button>
-              <a href="{{ route('farms.index') }}" class="btn btn-warning">{{ __('app.cancel') }}</a>
+              <a href="{{ route('farms.index') }}" class="btn btn-warning">{{ __('Cancel') }}</a>
             </div>
           </div>
       </div>

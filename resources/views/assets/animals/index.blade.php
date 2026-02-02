@@ -27,31 +27,31 @@
                 <thead>
                   <tr>
                     <th
-                      class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                      class="text-uppercase text-secondary text-sm font-weight-bolder">
                       {{ __('animal.eid') }}</th>
                     <th
-                      class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                      class="text-uppercase text-secondary text-xs font-weight-bolder">
                       {{ __('animal.animalType') }}</th>
                     <th
-                      class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">
+                      class="text-uppercase text-secondary text-xs font-weight-bolder ps-2">
                        {{ __('animal.breed_id') }}</th>
-                    <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">
+                    <th class="text-uppercase text-secondary text-xs font-weight-bolder ps-2">
                      Sexe</th> 
 
                     <th
-                      class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                      class="text-center text-uppercase text-secondary text-xs font-weight-bolder">
                       {{ __('animal.age') }}
                     </th>
                     <th
-                      class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                      class="text-center text-uppercase text-secondary text-xs font-weight-bolder">
                       {{ __('animal.is_seek') }}</th>
                     <th
-                      class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                      class="text-center text-uppercase text-secondary text-xs font-weight-bolder">
                       {{ __('animal.farm_id') }}</th>
                     <th
-                      class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                      class="text-center text-uppercase text-secondary text-xs">
                       {{ __('creation_at') }}</th>
-                    <th class="text-secondary opacity-7"></th>
+                    <th class="text-center text-uppercase text-secondary text-xs">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -59,7 +59,7 @@
                   <tr>
                     <td class="align-middle">
                       <div class="d-flex px-2 py-1">
-                        <span class="text-md">{{ $animal->rfidTag->eid ?? '' }}</span>
+                        <span class="text-xs">{{ $animal->rfidTag->eid ?? '' }}</span>
                       </div>
                     </td>
                     <td class="align-middle text-center">

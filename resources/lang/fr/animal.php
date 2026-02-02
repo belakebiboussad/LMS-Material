@@ -27,7 +27,7 @@ return [
   'updated'        => 'l\'animalà été mis à jour.',
   // 'delete'         => 'Supprimmer Ferme',
   // 'delete_confirm' => 'Are you sure to delete this Outlet?',
-  // 'deleted'        => 'Outlet has been deleted.',
+ 'deleted'        => 'l\'animalà été supprimé avec succé.',
   // 'undeleted'      => 'Outlet not deleted.',
   // 'undeleteable'   => 'Outlet data cannot be deleted.',
   // 'Farmes'         => 'Fermes',

@@ -22,30 +22,30 @@
                 <thead>
                   <tr>
                     <th
-                      class="text-uppercase text-secondary text-md font-weight-bolder opacity-7">
+                      class="text-uppercase text-secondary text-xs font-weight-bolder">
                       {{ __('farm.recordNbr') }}</th>
                     <th
-                      class="text-uppercase text-secondary text-md font-weight-bolder opacity-7">
+                      class="text-uppercase text-secondary text-xs font-weight-bolder">
                       nom</th>
                     <th
-                      class="text-uppercase text-secondary text-md font-weight-bolder opacity-7 ps-2">
+                      class="text-uppercase text-secondary text-xs font-weight-bolder ps-2">
                       {{ __('farm.type')}}</th>
                     <th
-                      class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">
+                      class="text-center text-uppercase text-secondary text-xs font-weight-bolder">
                       Wilaya
                     </th>
                     <th
-                      class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">
+                      class="text-center text-uppercase text-secondary text-xs font-weight-bolder">
                       Longitude</th>
                     <th
-                      class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">
+                      class="text-center text-uppercase text-secondary text-xs font-weight-bolder ">
                       Latitude</th>
 
                     <th
-                      class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">
+                      class="text-center text-uppercase text-secondary text-xs font-weight-bolder ">
                       Date création</th>
 
-                    <th class="text-secondary opacity-7"></th>
+                    <th class="text-secondary "></th>
                   </tr>
                 </thead>
                 <tbody>

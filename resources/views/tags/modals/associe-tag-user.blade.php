@@ -13,7 +13,6 @@
           <option value="{{ $owner->id }}" {{ old('owner_id') == $owner->id ? 'selected' : '' }}>{{ $owner->name }}</option>
           @endforeach
         </select>
-
       </div>
     </div>
     <x-slot name="footer">

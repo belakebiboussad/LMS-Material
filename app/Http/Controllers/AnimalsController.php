@@ -33,7 +33,8 @@ class AnimalsController extends Controller
         $animalTyps = AnimalType::pluck('name', 'id');
         $farms = auth()->user()->farms()->pluck('name', 'id');
         $animalTypes = AnimalType::all()->pluck('name', 'id');
-        $tags = $animal->farm->owner->rfidTags()->where('animalType_id', $animal->animalType_id)->where('status', TagStatus::INACTIVE)->get()->pluck('eid', 'id');
+        $tags = $animal->farm->owner->rfidTags()->where('animalType_id', $animal->animalType_id)
+                                                ->where('status', TagStatus::INACTIVE)->get()->pluck('eid', 'id');
         return view('assets.animals.edit', compact('animal','animalTypes', 'farms', 'tags'));
     }
     public function store(Request $request)
@@ -49,7 +50,7 @@ class AnimalsController extends Controller
             'farm_id' => 'required|exists:farms,id',
         ]);
         if(isset($request->tag_id))
-            Tag::findOrFail($request->eid)->update(['status'=>TagStatus::ACTIVE]);
+            Tag::findOrFail($request->tag_id)->update(['status'=>TagStatus::ACTIVE]);
         Animal::create($validated);
         return redirect()->route('animals.index')->with('success', __('animal.created'));
     }
@@ -84,7 +85,7 @@ class AnimalsController extends Controller
     public function getBreedsAndRFID($animalTypeId)
     {
         $breeds = Breed::where('animal_type_id', $animalTypeId)->get()->pluck('name', 'id'); 
-        $rfidTags = Tag::where('owner_id', auth()->id())->where('type', TagType::BIRTH)->where('animalType_id',$animalTypeId)->inactive()->get()->pluck('eid', 'id');
+        $rfidTags = Tag::where('owner_id', auth()->user()->NIN)->where('type', TagType::BIRTH)->where('animalType_id',$animalTypeId)->inactive()->get()->pluck('eid', 'id');
         return response()->json([ 'breed'=> $breeds, 'rfids'=> $rfidTags ], 200);
     }
 }

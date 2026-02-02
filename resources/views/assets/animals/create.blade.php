@@ -64,7 +64,7 @@
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label>">{{ __('animal.eid') }}</label>
-              <select id="rfid_id" name="eid" class="form-control border border-2 p-2 {{ $errors->has('eid') ? ' is-invalid' : '' }}">
+              <select id="rfid_id" name="tag_id" class="form-control border border-2 p-2 {{ $errors->has('eid') ? ' is-invalid' : '' }}">
                 <option value="">{{ __('Select RFID Tag') }}</option>
               </select>
               @error('eid')
@@ -80,7 +80,7 @@
             <div class="row mb-0">
               <div class="col-md-12 text-center mt-4">
                 <button type="submit" class="btn bg-gradient-primary">{{ __('app.save') }}</button>
-                <a href="{{ route('animals.index') }}" class="btn btn-warning">{{ __('app.cancel') }}</a>
+                <a href="{{ route('animals.index') }}" class="btn btn-warning">{{ __('Cancel') }}</a>
               </div>
             </div>
           </div>

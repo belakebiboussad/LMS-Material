@@ -29,25 +29,25 @@
                                 <thead>
                                     <tr>
                                         <th
-                                            class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                                            class="text-uppercase text-secondary text-xs font-weight-bolder ">
                                             {{ __('user.name')}}</th>
                                         <th
-                                            class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">
+                                            class="text-uppercase text-secondary text-xs font-weight-bolder  ps-2">
                                             {{ __('user.username') }}</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-secondary text-xs font-weight-bolder ">
                                             {{ __('user.email') }}</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-secondary text-xs font-weight-bolder ">
                                            {{ __('user.role') }}</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-secondary text-xs font-weight-bolder ">
                                               {{ __('user.status') }}
                                         </th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-secondary text-xs font-weight-bolder ">
                                             {{ __('creation_at') }}</th>
-                                        <th class="text-secondary opacity-7"></th>
+                                        <th class="text-secondary "></th>
                                     </tr>
                                 </thead>
                                 <tbody>

@@ -72,6 +72,6 @@ class User extends Authenticatable
     } 
     public  function rfidTags()
     {
-        return $this->hasMany(Tag::class, 'owner_id');
+        return $this->hasMany(Tag::class, 'owner_id','NIN');
     }
 }

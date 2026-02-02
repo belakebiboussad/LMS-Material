@@ -16,15 +16,18 @@
             </div>
           </div>
           <div class="me-3 my-3 text-end">
-            <button type="button" id="attributionBtn" class="btn btn-primary mb-0" data-toggle="modal" data-target="#associe-tag-farmer">
+            {{-- <button type="button" id="attributionBtn" class="btn btn-primary mb-0 rounded-md" data-toggle="modal" data-target="#associe-tag-farmer">
               <i class="material-icons">receipt_long</i>&nbsp;&nbsp;
               {{ __('Associe') }}
-            </button>
+            </button> --}}
             <!-- The button below triggers a modal in a typical setup (e.g., Breeze) -->
-            <x-primary-button x-data="" x-on:click.prevent="$dispatch('open-modal', 'associe-tag-farmer')" class="">
-               <i class="material-icons">receipt_long</i>&nbsp;&nbsp; {{ __('Associe') }}
-            </x-danger-button>
-           <a class="btn bg-gradient-dark mb-0" href="{{ route('tags.create') }}"><i
+            <!-- <x-primary-button x-data="" x-on:click.prevent="$dispatch('open-modal', 'associe-tag-farmer')" class="rounded-md">
+                <i class="material-icons">receipt_long</i>&nbsp;&nbsp; {{ __('Associe') }}
+            </x-danger-button> --><!-- bg-gray-950/5 px-2.5 py-1.5 text-sm font-semibold text-gray-900 hover:bg-gray-950/10 -->
+            <button id="attributionBtn" command="show-modal" commandfor="dialog" class="btn btn-primary mb-0 rounded-md over:bg-gray-950/10">
+              <i class="material-icons">receipt_long</i>&nbsp;&nbsp;{{ __('Associe') }}
+            </button>
+           <a class="btn bg-gradient-dark mb-0 rounded-md" href="{{ route('tags.create') }}"><i
                 class="material-icons">add</i>&nbsp;&nbsp;
               {{ __('tag.create') }}
             </a>
@@ -35,27 +38,27 @@
                 <thead>
                   <tr>
                     <th
-                      class="text-uppercase text-secondary text-md font-weight-bolder opacity-7">
+                      class="text-uppercase text-secondary text-md font-weight-bolder ">
                     </th>
                     <th
-                      class="text-uppercase text-secondary text-md font-weight-bolder opacity-7">
-                      {{ __('tag.eid') }}
+                      class="text-uppercase text-secondary text-md font-weight-bolder ">
+                      {{ __('tag.eid') }}dsds
                     </th>
                     <th
-                      class="text-uppercase text-secondary text-md font-weight-bolder opacity-7">{{ __('tag.vis_id') }}</th>
+                      class="text-uppercase text-secondary text-md font-weight-bolder ">{{ __('tag.vis_id') }}</th>
                     <th
-                      class="text-uppercase text-secondary text-md font-weight-bolder opacity-7 ps-2">{{ __('tag.animalType_id') }}</th>
+                      class="text-uppercase text-secondary text-md font-weight-bolder  ps-2">{{ __('tag.animalType_id') }}</th>
                     <th
-                      class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">{{ __('tag.type') }}</th>
+                      class="text-center text-uppercase text-secondary text-md font-weight-bolder ">{{ __('tag.type') }}</th>
                     <th
-                      class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">{{ __('status') }}
+                      class="text-center text-uppercase text-secondary text-md font-weight-bolder ">{{ __('status') }}
                     </th>
                     <th
-                      class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">
+                      class="text-center text-uppercase text-secondary text-md font-weight-bolder ">
                       {{ __('creation_at') }}
                     </th>
 
-                    <th class="text-secondary opacity-7"></th>
+                    <th class="text-secondary "></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -119,7 +122,7 @@
                       <form id="delete-form-{{ $tag->id }}" action="{{ route('tags.destroy', $tag->id) }}" method="POST" style="display: none;">
                         @csrf
                         @method('DELETE')
-                      </form>
+                      </form> @include('tags.modals.associe')
                     </td>
                   </tr>
                   @endforeach
@@ -131,8 +134,9 @@
       </div>
     </div>
   </div>
+  @include('tags.modals.associe')
+
 </main>
- @include('tags.modals.associe')
 @endsection
 @section('js')
 <script>
@@ -179,9 +183,6 @@
           $("#attributionBtn").prop("disabled", true);
       }
     });
-    $('#attributionBtn').click(function(){
-       $('#associe-tag-farmer').modal('show');
-    })
   });
 </script>
 
