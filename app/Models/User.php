@@ -64,11 +64,11 @@ class User extends Authenticatable
     }
     public function farms()
     {
-        return $this->hasMany(Farm::class, 'owner_id');
+        return $this->hasMany(Farm::class, 'owner_id','NIN');
     } 
     public function guardedFarm()
     {
-        return $this->hasOne(Farm::class, 'guardien_id');
+        return $this->hasOne(Farm::class, 'guardien_id','NIN');
     } 
     public  function rfidTags()
     {

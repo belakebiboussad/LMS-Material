@@ -76,7 +76,7 @@
           <div class="row">
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('farm.creationDt') }}</label>
-              <input type="date" name="creationDt" class="form-control border border-2 p-2" value="{{ old('creationDt') ?? '' }}">
+              <input type="date" name="creationDt" class="form-control border border-2 p-2 {{ $errors->has('creationDt') ? ' is-invalid' : '' }}" value="{{ old('creationDt') ?? '' }}">
               @error('creationDt')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror

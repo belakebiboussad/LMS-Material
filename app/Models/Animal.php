@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Attributes\Scope;
 class Animal extends Model
 {
        protected $fillable = [
-        'eid',
+        'tag_id',//'eid',
         'animalType_id',
         'color_id',
         'farm_id',
@@ -26,7 +26,7 @@ class Animal extends Model
         
     ];
      protected $casts = [
-        'dob' => 'datetime',
+        'dob' => 'date',
         'dethDate' => 'datetime',
         'sexe' => Sexe::class,
         'is_castred' => 'boolean',
@@ -51,7 +51,7 @@ class Animal extends Model
     }    
     public function rfidTag()
     {
-        return $this->belongsTo(Tag::class, 'eid', 'id');
+        return $this->belongsTo(Tag::class, 'tag_id', 'id');
     }
     public function animalType()
     {

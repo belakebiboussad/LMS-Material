@@ -45,7 +45,7 @@
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('animal.dob') }}</label>
-              <input type="date" name="dob" class="form-control border border-2 p-2 {{ $errors->has('dob') ? ' is-invalid' : '' }}" value="{{ old('dob') ?? '' }}">
+              <input type="date" name="dob" class="form-control date border border-2 p-2 {{ $errors->has('dob') ? ' is-invalid' : '' }}" value="{{ old('dob') ?? '' }}">
             </div>
             <div class="mb-3  col-md-6">
               <label class="form-label">{{ __('animal.sexe') }}</label>
@@ -91,10 +91,12 @@
   </div>
   @endsection
   @section('js')
+  <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
   <script>
     function animalTypeSelectFill(farmId) {
       var url = "{{ route('farm.animalTypes', ['id' => ':id']) }}";
       var url = url.replace(':id',  farmId);
+      
       $.ajax({
         url: url, // Replace with your server-side endpoint
         type: "GET", // Or "POST" depending on your server
@@ -166,6 +168,7 @@
           }
         });
       });
+
     });
   </script>
   @endsection

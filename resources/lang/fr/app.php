@@ -12,7 +12,7 @@ return [
   'save'          => 'Enregistrer',
   'edit'           => 'Edit',
   'delete'         => 'Supprimer',
-  'cancel'         => 'Annuler',
+  'Cancel'         => 'Annuler',
   'reset'          => 'Reset',
   'delete_confirm' => 'Êtes-vous sûr de vouloir supprimer ceci ?',
   'delete_confirm_button' => 'OUI, supprimez-le ! ',

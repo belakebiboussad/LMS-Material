@@ -16,11 +16,15 @@
             </div>
           </div>
           <div class="me-3 my-3 text-end">
-            <button type="button" id="attributionBtn" class="btn btn-primary mb-0" data-toggle="modal" data-target="#myModal">
+            <button type="button" id="attributionBtn" class="btn btn-primary mb-0" data-toggle="modal" data-target="#associe-tag-farmer">
               <i class="material-icons">receipt_long</i>&nbsp;&nbsp;
               {{ __('Associe') }}
             </button>
-            <a class="btn bg-gradient-dark mb-0" href="{{ route('tags.create') }}"><i
+            <!-- The button below triggers a modal in a typical setup (e.g., Breeze) -->
+            <x-primary-button x-data="" x-on:click.prevent="$dispatch('open-modal', 'associe-tag-farmer')" class="">
+               <i class="material-icons">receipt_long</i>&nbsp;&nbsp; {{ __('Associe') }}
+            </x-danger-button>
+           <a class="btn bg-gradient-dark mb-0" href="{{ route('tags.create') }}"><i
                 class="material-icons">add</i>&nbsp;&nbsp;
               {{ __('tag.create') }}
             </a>
@@ -127,32 +131,8 @@
       </div>
     </div>
   </div>
-  <x-modal id="myModal" name="myModal">
-    <x-slot name="header">
-      Attribuer des Tags RFID
-    </x-slot>
-    <p>This is the main content of the modal body.</p>
-
-    <div class="row">
-      <div class="mb-3 col-md-12">
-        <label class="form-label">{{ __('tag.owner_id') }}</label>
-        <select id="owner_id" class="form-control border border-2 p-2 {{ $errors->has('owner_id') ? ' is-invalid' : '' }}" required>
-          <option value="">{{ __('Select owner') }}</option>
-          @foreach($owners as $owner)
-          <option value="{{ $owner->id }}" {{ old('owner_id') == $owner->id ? 'selected' : '' }}>{{ $owner->name }}</option>
-          @endforeach
-        </select>
-
-      </div>
-    </div>
-    <x-slot name="footer">
-      <button type="button" class="btn btn-warning" data-dismiss="modal">{{ __('Cancel') }}</button>
-      <button type="submit" class="btn bg-gradient-primary" onclick="fct();">
-        <i class="material-icons">save</i>
-        {{ __('Save') }}</button>
-    </x-slot>
-  </x-modal>
 </main>
+ @include('tags.modals.associe')
 @endsection
 @section('js')
 <script>
@@ -199,6 +179,9 @@
           $("#attributionBtn").prop("disabled", true);
       }
     });
+    $('#attributionBtn').click(function(){
+       $('#associe-tag-farmer').modal('show');
+    })
   });
 </script>
 

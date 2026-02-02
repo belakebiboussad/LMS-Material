@@ -5,5 +5,4 @@ Inputmask("9", { repeat: 15 }).mask(".eid");
 Inputmask("9", { repeat: 16 }).mask(".pid");
 
 Inputmask("9", { repeat: 20 }).mask(".nin");
-
 // end mask input

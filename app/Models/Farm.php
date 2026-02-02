@@ -27,6 +27,9 @@ class Farm extends Model
         'y_lat',
         'phone'
     ];
+    protected $casts = [
+        'creationDt' => 'datetime'
+    ];
     public function owner()
     {
         return $this->belongsTo(User::class, 'owner_id');
