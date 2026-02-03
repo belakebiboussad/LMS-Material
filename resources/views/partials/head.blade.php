@@ -22,5 +22,7 @@
     <link href="{{ asset('theme/css/nucleo-svg.css') }} rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link href="{{ asset('css/leaflet.css') }}" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" /> -->
       <!-- Custom Css -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     <link href="{{ asset('theme/css/style.css') }}" rel="stylesheet">

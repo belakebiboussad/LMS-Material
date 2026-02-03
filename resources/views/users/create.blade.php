@@ -49,12 +49,11 @@
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('user.birthDate') }}</label>
-              <input type="text" name="birthDate" class="form-control date border border-2 p-2" value="{{ old('birthDate') ? : '' }}">
+              <input type="date" name="birthDate" class="form-control date border border-2 p-2" value="{{ old('birthDate') ? : '' }}">
               @error('birthDate')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
             </div>
-
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('user.address') }}</label>
               <input type="text" name="address" class="form-control border border-2 p-2" value="{{ old('address') ?: '' }}">
@@ -130,7 +129,7 @@
               <input type="password" name="password_confirmation" class="form-control border border-2 p-2" value="">
               @error('password')
               <p class='text-danger inputerror'>{{ $message }} </p>
-              @enderrordashboard
+              @enderror
             </div>
           </div>
           <div class="row mb-0">
@@ -142,13 +141,54 @@
               <a href="{{ route('users.index') }}" class="btn btn-warning">{{ __('Cancel') }}</a>
             </div>
           </div>
+
+<!-- test -->
+   <div class="flex items-center justify-center h-screen max-w-2xl mx-auto">
+        
+    <div class="relative max-w-sm">
+    <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+        </svg>
+    </div>
+    <input datepicker id="default-datepicker" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+    </div>
+
+    </div>
+
+
+<!-- test -->
     </form>
   </div>
   @endsection
   @section('js')
+  <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+ 
   <script>
+    var options = {
+            weekStart: 1,
+            autohide: false,
+            format: 'dd/mm/yyyy',
+          }
     $(function() {
-      Inputmask("9", { repeat: 20 }).mask("#NIN");       
-    });
+        Inputmask("9", { repeat: 20 }).mask("#NIN");
+      
+        // const datepickerEl = document.getElementById('datepickerId');
+        // if (datepickerEl) {
+         
+        //     new Datepicker(datepickerEl, options);
+        // }
+        // datepickerEl.addEventListener('changeDate', (e) => {
+         
+        //   console.log(e.target.value);
+        // });
+          /*
+      // or jQuery
+      $('#datepickerId').on('changeDate', function(){
+          alert("dsfds");
+          console.log(e.target.value);
+      });
+      */
+    })
   </script>
   @endsection

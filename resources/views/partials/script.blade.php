@@ -52,4 +52,5 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="{{ asset('theme/js/material-dashboard.js') }}"></script>
     <script src="{{ asset('js/mask/jquery.inputmask.min.js') }}"></script>
-     <script src="{{ asset('js/app.js') }}"></script>++
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+     <script src="{{ asset('js/app.js') }}"></script>

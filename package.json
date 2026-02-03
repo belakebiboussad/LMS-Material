@@ -1,22 +1,28 @@
 {
+    "name": "Gestion cheptel DZ",
+    "version": "1.0.0",
     "$schema": "https://www.schemastore.org/package.json",
     "private": true,
+    "author": "CDTA.",
     "type": "module",
     "scripts": {
         "build": "vite build",
         "dev": "vite"
     },
-    "devDependencies": {
-        "@tailwindcss/vite": "^4.1.18",
-        "axios": "^1.11.0",
-        "concurrently": "^9.0.1",
-        "laravel-vite-plugin": "^2.0.0",
-        "tailwindcss": "^4.1.18",
-        "vite": "^7.0.7"
-    },
     "dependencies": {
+        "@tailwindcss/vite": "^4.0.7",
         "alpinejs": "^3.15.3",
-        "autoprefixer": "^10.4.24",
-        "postcss": "^8.5.6"
+        "autoprefixer": "^10.4.20",
+        "axios": "^1.7.4",
+        "concurrently": "^9.0.1",
+        "flowbite": "^3.1.2",
+        "laravel-vite-plugin": "^1.0",
+        "tailwindcss": "^4.0.7",
+        "vite": "^6.0"
+    },
+    "optionalDependencies": {
+        "@rollup/rollup-linux-x64-gnu": "4.9.5",
+        "@tailwindcss/oxide-linux-x64-gnu": "^4.0.1",
+        "lightningcss-linux-x64-gnu": "^1.29.1"
     }
 }
