@@ -3,7 +3,8 @@
 @plugin "flowbite/plugin";
 @source "../../node_modules/flowbite";
 
-
+@source "../views";
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 /*
 @tailwind base;
 @tailwind components;

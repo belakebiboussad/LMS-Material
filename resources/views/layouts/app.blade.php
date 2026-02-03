@@ -10,6 +10,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/favicon/favicon.ico') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @include('partials.head')
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @yield('css')
 </head>
