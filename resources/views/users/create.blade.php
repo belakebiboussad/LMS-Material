@@ -130,7 +130,7 @@
               <input type="password" name="password_confirmation" class="form-control border border-2 p-2" value="">
               @error('password')
               <p class='text-danger inputerror'>{{ $message }} </p>
-              @enderror
+              @enderrordashboard
             </div>
           </div>
           <div class="row mb-0">
@@ -146,13 +146,9 @@
   </div>
   @endsection
   @section('js')
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
     $(function() {
-      Inputmask("9", { repeat: 20 }).mask("#NIN");
-        $('.date').datepicker({
-             format: "{{ config('app.date_format_js') }}";
-        });
-    })
+      Inputmask("9", { repeat: 20 }).mask("#NIN");       
+    });
   </script>
   @endsection
