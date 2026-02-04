@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
-
+<html lang="{{ config('app.locale') }}">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="content-type" content="text/html">
