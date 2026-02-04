@@ -155,23 +155,6 @@
           }
     $(function() {
         Inputmask("9", { repeat: 20 }).mask("#NIN");
-      
-        // const datepickerEl = document.getElementById('datepickerId');
-        // if (datepickerEl) {
-         
-        //     new Datepicker(datepickerEl, options);
-        // }
-        // datepickerEl.addEventListener('changeDate', (e) => {
-         
-        //   console.log(e.target.value);
-        // });
-          /*
-      // or jQuery
-      $('#datepickerId').on('changeDate', function(){
-          alert("dsfds");
-          console.log(e.target.value);
-      });
-      */
     })
   </script>
   @endsection
