@@ -1,3 +1,4 @@
+ <link href="{{-- asset('theme/plugins/bootstrap/css/bootstrap.min.css')--}}" rel="stylesheet">
 <!-- Waves Effect Css -->
 <link href="{{ asset('theme/plugins/node-waves/waves.css') }}" rel="stylesheet" />
 
@@ -11,6 +12,7 @@
 {{--fin test --}}
 <link href="{{asset('theme/plugins/morrisjs/morris.css')}}" rel="stylesheet" />
 <link href="{{ asset('theme/css/themes/all-themes.css') }}" rel="stylesheet" />
+<link href="{{ asset('theme/css/material.css') }}" rel="stylesheet" />
 <link href="{{ asset('theme/css/themes/material-plugins.min.css') }}" rel="stylesheet">
 <link href="{{ asset('theme/css/material.indigo-pink.min.css') }}" rel="stylesheet">
 <link href="{{ asset('css/app.css') }}" rel="stylesheet"><!-- icon ne saffiche pas -->

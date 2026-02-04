@@ -1,6 +1,7 @@
 <?php
 
 return [
+  
   // Labels
   'table_no'          => '#',
   'total'             => 'Total',
@@ -279,6 +280,4 @@ return [
     'years' => 'ans',
     'months' => 'mois',
     'days' => 'jours',
-
-  
   ];
