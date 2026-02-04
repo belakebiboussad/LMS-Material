@@ -48,7 +48,7 @@
     </div>
     <!-- #END# Search Bar -->
     <!-- Top Bar -->
-    @include('partials.navbar')
+   {{-- @include('partials.navbar') --}}
     <!-- #Top Bar -->
     <section>
         <!-- Left Sidebar -->
