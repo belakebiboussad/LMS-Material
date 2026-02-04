@@ -1,5 +1,5 @@
     <!-- Bootstrap Core Css -->
-    <link href="{{ asset('theme/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('theme/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">  <!-- date picker fct pas avec bootstrap  -->
     <!-- Waves Effect Css -->
     <link href="{{ asset('theme/plugins/node-waves/waves.css') }}" rel="stylesheet" />
 
