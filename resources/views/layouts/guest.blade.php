@@ -3,12 +3,12 @@
 
 <head>
     <meta charset="utf-8">
-   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Gestion Chaptel') }}</title>
-   
-    <link rel="stylesheet" href="https://code.getmdl.io/1.1.0/material.blue-light_blue.min.css">
+
+    <!-- <link rel="stylesheet" href="https://code.getmdl.io/1.1.0/material.blue-light_blue.min.css"> -->
 
     <!-- Bootstrap Core Css -->
     <link href="{{ asset('theme/plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
@@ -21,9 +21,9 @@
     <!-- Custom Css -->
     <link href="{{ asset('theme/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-  
-	<title>Login</title>
-	
+
+    <title>Login</title>
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @yield('css')
@@ -38,7 +38,7 @@
         </div>
 
         <!-- <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg"> -->
-        <div class="w-full sm:max-w-2xl  bg-blue shadow-md overflow-hidden sm:rounded-lg">
+        <div class="w-full sm:max-w-2xl bg-blue shadow-md overflow-hidden sm:rounded-lg">
             @yield('content')
         </div>
     </div>
@@ -59,4 +59,5 @@
     <!-- <script src="{{-- asset('theme/js/pages/examples/sign-in.js') --}}"></script> -->
     @yield('script')
 </body>
+
 </html>
