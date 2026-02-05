@@ -5,7 +5,6 @@
      <div class="login-box">
         <div class="logo">
             <a href="javascript:void(0);"><b>{{ config('app.name') }}</b></a>
-            <abbr title="Livestock managment system">LMS </abbr>
         </div>
         <div class="card">
             <div class="body">
