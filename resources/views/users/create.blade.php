@@ -4,6 +4,12 @@
   <div class="main-content position-relative bg-gray-100  h-100">
     <form method='POST' action="{{ route('users.store') }}">
       @csrf
+      @if (session('errors'))
+      @foreach (session('errors')->all() as $error)
+      <div class="alert alert-warning">{{ $error }}</div>
+      @endforeach
+      @endif
+    
       <div class="card card-plain h-100">
         <div class="card-header pb-0 p-3">
           <div class="row">
@@ -13,11 +19,6 @@
           </div>
         </div>
         <div class="card-body p-3">
-          @if (session('errors'))
-          @foreach (session('errors')->all() as $error)
-          <div class="alert alert-warning">{{ $error }}</div>
-          @endforeach
-          @endif
           <div class="row">
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('user.prof_id') }}</label>
@@ -28,7 +29,7 @@
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-label"><abbr title="">{{ __('user.NIN') }}</abbr></label>
-              <input type="text" id ="NIN" name="NIN" class="form-control nin border border-2 p-2" value="{{ old('NIN') ? : '' }}" required>
+              <input type="text" id="NIN" name="NIN" class="form-control nin border border-2 p-2" value="{{ old('NIN') ? : '' }}" required>
               @error('NIN')
               <p class='text-danger inputerror'>{{ $message }} </p>
               @enderror
@@ -135,10 +136,10 @@
           <div class="row mb-0">
             <div class="col-md-12 text-center">
               <x-primary-button>{{ __('Save') }}</x-primary-button>
-               <x-nav-link :href="route('users.index')" :active="request()->routeIs('dashboard')">
-                        {{ __('Cancel') }}
-                    </x-nav-link>
-              <a href="{{ route('users.index') }}" class="btn btn-warning">{{ __('Cancel') }}</a>
+              <x-nav-link :href="route('users.index')" :active="request()->routeIs('dashboard')" class="btn btn-warning">
+                {{ __('Cancel') }}
+              </x-nav-link>
+              <!-- <a href="{{-- route('users.index') --}}" class="btn btn-warning">{{ __('Cancel') }}</a> -->
             </div>
           </div>
     </form>
@@ -146,26 +147,28 @@
   @endsection
   @section('js')
   <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
- 
+
   <script>
     var options = {
-            weekStart: 1,
-            autohide: false,
-            format: 'dd/mm/yyyy',
-          }
+      weekStart: 1,
+      autohide: false,
+      format: 'dd/mm/yyyy',
+    }
     $(function() {
-        Inputmask("9", { repeat: 20 }).mask("#NIN");
-      
-        // const datepickerEl = document.getElementById('datepickerId');
-        // if (datepickerEl) {
-         
-        //     new Datepicker(datepickerEl, options);
-        // }
-        // datepickerEl.addEventListener('changeDate', (e) => {
-         
-        //   console.log(e.target.value);
-        // });
-          /*
+      Inputmask("9", {
+        repeat: 20
+      }).mask("#NIN");
+
+      // const datepickerEl = document.getElementById('datepickerId');
+      // if (datepickerEl) {
+
+      //     new Datepicker(datepickerEl, options);
+      // }
+      // datepickerEl.addEventListener('changeDate', (e) => {
+
+      //   console.log(e.target.value);
+      // });
+      /*
       // or jQuery
       $('#datepickerId').on('changeDate', function(){
           alert("dsfds");

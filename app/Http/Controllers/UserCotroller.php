@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\UserRequest;
 use App\Models\Farm;
 
 class UserCotroller extends Controller
@@ -30,20 +31,8 @@ class UserCotroller extends Controller
         return view('users.edit', compact('roles', 'cities'))->with('user', $user);
     }
     public function show(User $user) {}
-    public function store(Request $request)
+    public function store(UserRequest $request,User $model)
     {
-        $request->validate([
-            'prof_id' => 'required|string|size:16|unique:users,prof_id',
-            'NIN' => 'required|string|size:20|unique:users,NIN',
-            'name' => 'required|string|max:255',
-            'lastName' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email',
-            'commune_id' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users,username',
-            'role' => 'required|string|max:255',
-            'password' => 'required|min:6|confirmed',
-        
-        ]);
         if ($request->input('role') === 'admin') {
 
             $adminUsers = User::whereHas('roles', function ($query) {
@@ -53,10 +42,9 @@ class UserCotroller extends Controller
                 return back()->withInput()->withErrors(['errors' => __('user.admin')]);
             }
         }
-        $user = User::create($request->all());
-        $role = $request->input('role');
-        $user->assignRole($role);
-        return redirect()->route('users.index')->with('success', __('user.updated'));
+        $model->create($request->merge(['password' => bcrypt($request->get('password'))])->all());
+        $model->assignRole($ $request->input('role'));
+        return redirect()->route('user.index')->withStatus(__('user.updated'));
     }
     public function update(UpdateUserRequest  $request, User $user)
     {

@@ -4,6 +4,22 @@
     <form method='POST' action="{{ route('users.update', $user) }}">
       @csrf
       @method('PUT')
+      {{-- @if (session('errors'))
+      @foreach (session('errors')->all() as $error)
+      <div class="alert alert-warning">{{ $error }}</div>
+      @endforeach
+      @endif --}}
+      @if (session('errors'))
+      @foreach (session('errors')->all() as $error)
+      <div class="alert alert-warning alert-dismissible text-white" role="alert">
+        <span class="text-sm">{{ $error }}</span>
+        <button type="button" class="btn-close text-lg py-3 opacity-10"
+          data-bs-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      @endforeach
+      @endif
       <div class="card card-plain h-100">
         <div class="card-header pb-0 p-3">
           <div class="row">
@@ -13,11 +29,6 @@
           </div>
         </div>
         <div class="card-body p-3">
-          @if (session('errors'))
-          <div class="alert alert-warning" role="alert">
-            {{ session('errors') }}
-          </div>
-          @endif
           <div class="row">
             <div class="mb-3 col-md-6">
               <label class="form-label">{{ __('user.prof_id') }}</label>
@@ -117,10 +128,10 @@
                 @endforeach
               </select>
             </div>
-          </div> 
+          </div>
           <div class="row mb-0">
             <div class="text-center mt-4">
-                 <button type="submit" class="btn bg-gradient-primary">{{ __('Save') }}</button>
+              <button type="submit" class="btn bg-gradient-primary">{{ __('Save') }}</button>
             </div>
           </div>
     </form>

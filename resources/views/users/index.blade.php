@@ -20,7 +20,6 @@
                     <div class="me-3 my-3 text-end">
                         <a class="btn bg-gradient-dark  mb-0" href="{{ route('users.create') }}"><i class="material-icons text-sm">add</i>&nbsp;&nbsp;
                             {{ __('user.create') }}
-
                         </a>
                     </div>
                     <div class="card-body px-0 pb-2">
