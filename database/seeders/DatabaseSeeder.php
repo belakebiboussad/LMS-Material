@@ -27,11 +27,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             communeWseeder::class, 
             PemissionSeeder::class,
-             RolesSeeder::class,
-             colorsSeeder::class,
-             AnimalTypeSeeder::class,
-             ProductionSeeder::class,
-             BreedSeeder::class    
+            RolesSeeder::class,
+            colorsSeeder::class,
+            AnimalTypeSeeder::class,
+            ProductionSeeder::class,
+            BreedSeeder::class    
        ]);
 
        $user = User::factory()->create([
