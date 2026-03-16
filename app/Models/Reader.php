@@ -13,5 +13,5 @@ class Reader extends Model
         'type',
         'location',
         'is_broken'
-    ]
+    ];
 }

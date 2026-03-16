@@ -10,5 +10,5 @@ class tagScan extends Model
         'reader_id',
         'tag_id',
         'location'
-    ]
+    ];
 }
