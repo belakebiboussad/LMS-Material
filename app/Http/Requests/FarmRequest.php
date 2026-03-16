@@ -27,7 +27,6 @@ class FarmRequest extends FormRequest
             'recordNbr' => 'required|digits:10|unique:farms,recordNbr,',
             'name' => 'required|string|max:255',
             'owner_id' => 'required|exists:users,id',
-            'owner_id' => 'required|exists:users,id',
             'guardieb_id' => 'nullable|exists:users,id',
             'creationDt' => 'required|date',
             'animal_types' => 'required',
